@@ -1,0 +1,16 @@
+header{
+    background-color: rgb(103, 58, 183);
+    height: 8%;
+    font-size: 30px;
+}
+
+header > label{
+    font-weight: bold;
+    margin: 25px 0px 0px 25px;
+    display: inline-block;
+}
+
+header > .btnHeader{
+    float: right;
+    margin-right: 25px;
+}
