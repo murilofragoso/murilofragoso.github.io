@@ -27,12 +27,22 @@ body{
     font-size: 22px;
 }
 
-#divContent label, #divContent input, #divContent button{
-    margin-top: 25px;
+#divContent label, #divContent button{
+    margin-top: 4.5%;
 } 
+
+#divContent input{
+    margin-top: 0.5%;
+}
 
 #divContent button{
     background-color: rgb(103, 58, 183);
     color: white;
     padding: 15px 25px 15px 25px;
+    border-radius: 8px;
+    outline: none;
+}
+
+#divContent button:active{
+    background-color: rgb(69, 39, 160);
 }
