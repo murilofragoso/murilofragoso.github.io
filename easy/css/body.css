@@ -18,4 +18,21 @@ body{
     width: 70%;
     height: 70%;
     border: 4px solid rgb(103, 58, 183);
+    text-align: center;
+}
+
+#divContent label{
+    display: inline-block;
+    color: rgb(103, 58, 183);
+    font-size: 22px;
+}
+
+#divContent label, #divContent input, #divContent button{
+    margin-top: 25px;
+} 
+
+#divContent button{
+    background-color: rgb(103, 58, 183);
+    color: white;
+    padding: 15px 25px 15px 25px;
 }
