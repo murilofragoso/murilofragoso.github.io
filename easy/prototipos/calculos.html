@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head></head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function qualitativaNominal(valor) {
+
+            let vet = valor.toLowerCase().split(";");
+            vet.sort();
+
+            let matriz = [];
+            let cont = 0;
+
+            for (let i = 0; i < vet.length; i++) {
+
+                if (i == 0) {
+                    matriz.push([vet[i]]);
+                }
+                else if (vet[i] == vet[i - 1]) {
+                    matriz[cont].push(vet[i]);
+                }
+                else {
+                    matriz.push([vet[i]]);
+                    cont++;
+                }
+
+            }
+
+
+            //Parte de colocar a tabela
+            return matriz
+        }
+
+        console.log(qualitativaNominal('leo;pedro;pedro;murilo;helio;leo;murilo;helio;thales;renata;thales;bruna;leo;caio'))
+
+        function qualitativaOrdinal(valor, ordem) {
+
+            let vet = valor.toLowerCase().split(";");
+            let VetOrd = ordem.toLowerCase().split(";");
+            let matriz = [];
+            let cont = 0;
+
+            vet.sort();
+
+            for (let i = 0; i < VetOrd.length; i++) {
+
+                let ord = VetOrd[i];
+                matriz.push([])
+
+                for (let j = 0; j < vet.length; j++) {
+                    
+                   if (vet[j] == ord) {
+                        matriz[cont].push(vet[j]);
+                    }
+                }
+                cont++;
+            }
+
+            //Parte para colocar as tabelas
+            return matriz
+        } 
+
+        console.log(qualitativaOrdinal("helio;murilo;helio;leo;thales;renata;renata;Renata;MURiLO;LEO;thales;renata", 'renata;thales;leo;helio;murilo'))
+
+        function quantitativaDiscreta(valor) {
+
+            let vet = valor.toLowerCase().split(";");
+            vet.sort(); 
+
+            let matriz = [];
+            let cont = 0;
+
+            for (let i = 0; i < vet.length; i++) {
+
+                if (i == 0) {
+                    matriz.push([vet[i]]);
+                }
+                else if (vet[i] == vet[i - 1]) {
+                    matriz[cont].push(vet[i]);
+                }
+                else {
+                    matriz.push([vet[i]]);
+                    cont++;
+                }
+
+            }
+
+
+            //Parte de colocar a tabela
+            return matriz
+        }
+
+        console.log(quantitativaDiscreta("heli;murilo;helio;leo;thales;renata;renata;Renata;MURiLO;LEO;thales;renata;leo;pedro;pedro;murilo;helio;leo;murilo;helio;thales;renata;thales;bruna;leo;caio"))
+
+    </script>
+
+</body>
+
+</html>
