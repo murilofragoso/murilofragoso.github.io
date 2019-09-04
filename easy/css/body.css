@@ -12,37 +12,143 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     height: 90%;
+    
 }
 
 #divContent{
-    width: 70%;
-    height: 70%;
+    width: 35%;
+    height: 55%;
     border: 4px solid rgb(103, 58, 183);
+    background-color: rgb(103, 58, 183);
+    border-radius: 8px;
     text-align: center;
 }
 
 #divContent label{
     display: inline-block;
-    color: rgb(103, 58, 183);
-    font-size: 22px;
+    color: rgb(237, 231, 246);
+    font-size: 20px;
 }
 
 #divContent label, #divContent button{
-    margin-top: 4.5%;
-} 
-
-#divContent input{
-    margin-top: 0.5%;
+    margin-top: 5%;
 }
 
+
 #divContent button{
-    background-color: rgb(103, 58, 183);
-    color: white;
-    padding: 15px 25px 15px 25px;
-    border-radius: 8px;
-    outline: none;
+    margin-top: 1%;
+}
+
+#idEmail{
+    margin-top: 10%;
+    border-radius: 4px;
+    width: 50%;
+    height: 10%;
+    text-align: center;
+    font-size: 15px;
+}
+
+#idSenha{
+    margin-top: 2%;
+    border-radius: 4px;
+    width: 50%;
+    height: 10%;
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+#idEntrar{
+    background-color: rgb(237, 231, 246);
+    color: rgb(103, 58, 183);
+    padding: 7px 25px 7px 25px;
+    border-radius: 4px;
+    border:1px solid;
+    font-size: 20px;
+}
+
+#idCriarConta{
+    background-color: #ede7f6;
+    color: rgb(103, 58, 183);
+    padding: 7px 20px 7px 20px;
+    border-radius: 4px;
+    border:1px solid;
+    font-size: 20px;
 }
 
 #divContent button:active{
     background-color: rgb(69, 39, 160);
+}
+
+#divContent label:active{
+    color: rgb(69, 39, 160);
+}
+
+#idTipoDePesquisa {
+    background-color: white;
+    color: rgb(103, 58, 183);
+    padding: 3px 8px 3px 8px;
+    border-radius: 4px;
+    border:1px solid;
+    font-size: 15px;
+}
+
+#idTipoDeVariavel {
+    background-color: white;
+    color:rgb(103, 58, 183);
+    padding: 3px 8px 3px 8px;
+    border-radius: 4px;
+    border:1px solid;
+    font-size: 15px;
+}
+
+#idSeparatrizes {
+    background-color: white;
+    color: rgb(103, 58, 183);
+    padding: 3px 8px 3px 8px;
+    border-radius: 4px;
+    border:1px solid;
+    font-size: 15px;
+    
+}
+
+#idNumeroSeparatrizes {
+    background-color: white;
+    color: rgb(103, 58, 183);
+    padding: 3px 4px 3px 4px;
+    border-radius: 4px;
+    border:1px solid;
+    font-size: 15px;
+}
+
+#idNomeVariavel{
+    border-radius: 4px;
+    width: 40%;
+    height: 8%;
+    text-align: center;
+    font-size: 15px;
+
+}
+
+#idValores{
+    border-radius: 4px;
+    width: 40%;
+    height: 8%;
+    text-align: center;
+    font-size: 15px;
+}
+
+#idCalcular{
+    background-color: white;
+    color: rgb(103, 58, 183);
+    padding: 7px 4px 7px 4px;
+    border-radius: 4px;
+    border:1px solid;
+    font-size: 15px;
+}
+
+#idEntradaDados {
+    color: rgb(103, 58, 183);
+    padding: 5px 4px 5px 4px;
+    font-size: 15px;
 }
