@@ -1,13 +1,16 @@
-function login(){
-    /*$("#divContent").load("./view/login.html"); 
-    console.log("Yes")*/
+$( document ).ready(function(){
+    $("#returnForm").click(function(){
+        limparCampos();
+        $("#divContentTable").hide();
+        $("#divContentForm").show();
+    })
 
-    /*$.ajax({
-        url: "view/login.html",
-        type: 'GET',
-        crossDomain: true,
-        success: function(res) {
-            console.log(res)
-        }
-    });*/
-}
+    function limparCampos(){
+        $("#idTipoDePesquisa").val("");
+        $("#idTipoDeVariavel").val("");
+        $("#idNomeVariavel").val("");
+        $("#idSeparatrizes").val("");
+        $("#idNumeroSeparatrizes").val("");
+        $("#idValores").val("");
+    }
+})

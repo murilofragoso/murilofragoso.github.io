@@ -8,6 +8,7 @@ header > label{
     font-weight: bold;
     margin: 25px 0px 0px 25px;
     display: inline-block;
+    cursor: pointer;
 }
 
 header > .btnHeader{
