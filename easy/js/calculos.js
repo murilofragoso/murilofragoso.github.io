@@ -176,32 +176,30 @@ $( document ).ready(function(){
     function quantitativaContinua(valor) {
 
         let vet = valor.toLowerCase().split(";");
-        let tamanhoTotal =  vet.length;
         vet.sort();
 
         let matriz = [];
         let cont = 0;
 
-        let al = vet[vet.length] - vet[0];
-        let k = Math.floor(Math.sqrt(vet.lenght - 1));
-
-        for (let i = 0; ; i++) {
-
-            if (al + i % k == 0) {
-                passo = (al + i) / k
-                break
+        let al = vet[vet.length-1] - vet[0];
+        let k = Math.round(Math.sqrt(vet.length - 1));
+        var passo = "";
+        
+        while(passo == ""){
+            al++;
+            if (al % k == 0) {
+                passo = al / k
             }
-            else if ((al + i) % (k + 1) == 0) {
-                passo = (al + i) / (k + 1)
-                break
+            else if (al % (k + 1) == 0) {
+                passo = al / (k + 1);
+                k++;
             }    
-            else if ((al + i) % (k + 2) == 0) {
-                passo = (al + i) / (k + 2)
-                break
+            else if (al % (k - 1) == 0) {
+                passo = al / (k - 1);
+                k--;
             }
         }
-
-
+            
         for (let i = 0; i < vet.length; i++) {
 
             if (i == 0) {
@@ -217,12 +215,27 @@ $( document ).ready(function(){
 
         }
 
+        var matrizFormatada = [];
+        var auxPasso = parseInt(matriz[0][0]) + passo;
+        for(let x = 0; x < k -1; x++){
+            matrizFormatada.push([]);
+            for(let i = auxPasso - passo; i < matriz.length; i++){
+                if(matriz[i][0] < auxPasso){
+                    matriz[i].forEach(element => matrizFormatada[x].push(element));
+                }
+            }
+            auxPasso += passo;
+        }
+
         var fac = 0;
-        matriz.forEach(element => {
+        matrizFormatada.forEach(element => {
             fac += element.length;
+            let primeiroItem = element[0] + " |-- "
+            let segundoItem = element[0] + passo
             addLinhaTabela(element[0], element.length, returnPercent(element.length, tamanhoTotal), fac, returnPercent(fac, tamanhoTotal))
         });
+
     }
 
     //qualitativaNominal('leo;pedro;pedro;murilo;helio;leo;murilo;helio;thales;renata;thales;bruna;leo;caio');
-})
+}) 
