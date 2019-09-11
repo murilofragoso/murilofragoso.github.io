@@ -1,7 +1,7 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     color: white;
-    background-color: rgb(237, 231, 246);
+    background-color: whitesmoke;
     margin: 0px;
 }
 
@@ -11,40 +11,42 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    height: 90%;
 }
 
 #divContent{
     width: 70%;
     height: 70%;
-    border: 4px solid rgb(103, 58, 183);
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(25,25,112,0.22);
     text-align: center;
-    position: relative;
+    position: absolute;
+    top: 80;
+    background-color: whitesmoke;
+    z-index: 500;
     overflow: auto;
 }
 
 #divContent label{
     display: inline-block;
-    color: rgb(103, 58, 183);
+    color: rgb(25,25,112);
     font-size: 22px;
 }
 
-#divContent label, #divContent button{
+#divContentForm label, #divContentForm button{
     margin-top: 4.5%;
 } 
 
-#divContent input{
+#divContentForm input{
     margin-top: 0.5%;
 }
 
-#divContent button{
-    background-color: rgb(103, 58, 183);
+#divContentForm button{
+    background-color: rgb(25,25,112);
     color: white;
     padding: 15px 25px 15px 25px;
     border-radius: 8px;
     outline: none;
 }
 
-#divContent button:active{
-    background-color: rgb(69, 39, 160);
+#divContentForm button:active{
+    background-color: rgb(10,10,50);
 }

@@ -1,5 +1,5 @@
-#divContentTable .centerTable{
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
+#divContentTable table{
+    margin-top: 20px;
+    margin-left: 15px;
+    color: midnightblue;
 }

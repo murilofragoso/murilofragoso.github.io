@@ -10,6 +10,8 @@ $( document ).ready(function(){
             case "QC": alert("Quantitativa Continua não implementada"); break;
             default: alert("Escolha um tipo de variável");
         }
+
+        $("#headVariavel").text($("#idNomeVariavel").val());
     });
 
     function getQualitativaNominal(){
