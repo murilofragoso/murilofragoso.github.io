@@ -1,5 +1,6 @@
 $( document ).ready(function(){
-
+    var vetGlobal = [];
+    var indQuantiGlobal = false;
     //Eventos Form
     $("#bntCalcular").click(function(){
         let tipoVariavel = $("#idTipoDeVariavel").val()
@@ -7,12 +8,32 @@ $( document ).ready(function(){
             case "QN": getQualitativaNominal(); break;
             case "QO": getQualitativaOrdinal(); break;
             case "QD": getQuantitativaDiscreta(); break;
-            case "QC": alert("Quantitativa Continua não implementada"); break;
+            case "QC": getQuantitativaContinua(); break;
             default: alert("Escolha um tipo de variável");
         }
 
         $("#headVariavel").text($("#idNomeVariavel").val());
     });
+
+    $("#idSeparatrizes").change(function(){
+        let qtdItens = 0
+        switch ($(this).val()){
+            case "Q": qtdItens = 4; break;
+            case "Qui": qtdItens = 5; break;
+            case "D": qtdItens = 10; break;
+            case "Pe": qtdItens = 100; break;
+            default: qtdItens = 0;
+        }
+
+        let opcoes = "<option value=''>Selecione</option>"
+        for(let x = 1; x <= qtdItens; x++){
+            opcoes += "<option value=" + x + ">" + x + "</option>";
+        }
+
+        $("#idNumeroSeparatrizes").html(opcoes);
+    })
+
+    $("#idNumeroSeparatrizes").change(medidasSeparatrizes);
 
     function getQualitativaNominal(){
         if(!$("#idValores").val()){
@@ -81,6 +102,67 @@ $( document ).ready(function(){
         return ((val/total) * 100).toFixed();
     }
 
+    function setModa(matriz){
+        let maiorValor = 0;
+        let arrayModa = [];
+        for(let i=0; i < matriz.length; i++){
+            if(matriz[i].length > maiorValor){
+                maiorValor = matriz[i].length;
+                arrayModa = [matriz[i][0]];
+            } else if(matriz[i].length == maiorValor){
+                arrayModa.push(matriz[i][0]);
+            }
+        }
+
+        let moda = "Moda: Não existe";
+        if(arrayModa.length < matriz.length){
+            moda = "Moda: "
+            arrayModa.forEach(function(element, index){
+                moda += element;
+                if(index < arrayModa.length -1)
+                    moda += ", ";
+            });
+        }
+
+        $("#divModa label").text(moda)
+    }
+
+    function medidasSeparatrizes(){
+        let porcentagem = $("#idNumeroSeparatrizes").val();
+        switch($("#idSeparatrizes").val()){
+            case "Q": porcentagem *= 25; break;
+            case "Qui": porcentagem *= 20; break;
+            case "D": porcentagem *= 10; break;
+        }
+
+        let result = "Resultado: "
+        if(vetGlobal.length % 2 != 0)
+            result += vetGlobal[Math.round((vetGlobal.length - 1) /(100/porcentagem))];
+        else{
+            if(indQuantiGlobal){
+                result += (parseInt(vetGlobal[Math.round((vetGlobal.length -1) /(100/porcentagem)) - 1])+ parseInt(vetGlobal[Math.round((vetGlobal.length -1)/(100/porcentagem))])) /2;
+            }
+            else
+                result += vetGlobal[Math.round((vetGlobal.length -1)/(100/porcentagem) - 1)] + " e " + vetGlobal[Math.round((vetGlobal.length -1)/(100/porcentagem))];
+        }
+
+        $("#resultMedidasSeparatrizes").text(result);
+    }
+
+    function setMediana(vet, indQuanti = false){
+        let mediana = "Mediana: ";
+        if(vet.length % 2 != 0 )
+            mediana += vet[Math.round((vet.length - 1) /2)]; 
+        else{
+            if(indQuanti)
+                mediana += (parseInt(vet[Math.round((vet.length -1)/2 - 1)]) + parseInt(vet[Math.round((vet.length -1)/2)])) /2; 
+            else
+                mediana += vet[Math.round((vet.length -1)/2 - 1)] + " e " + vet[Math.round((vet.length -1)/2)]; 
+        } 
+
+        $("#divMediana label").text(mediana)
+    }
+
     //Calculos
     function qualitativaNominal(valor) {
 
@@ -106,11 +188,22 @@ $( document ).ready(function(){
 
         }
 
+        //populando tabela
         var fac = 0;
         matriz.forEach(element => {
             fac += element.length;
             addLinhaTabela(element[0], element.length, returnPercent(element.length, tamanhoTotal), fac, returnPercent(fac, tamanhoTotal))
         });
+
+        //setando globais
+        vetGlobal = vet;
+        indQuantiGlobal = false;
+
+        //moda
+        setModa(matriz);
+
+        //mediana
+        setMediana(vet);
     }
 
     function qualitativaOrdinal(valor, ordem) {
@@ -137,23 +230,39 @@ $( document ).ready(function(){
             cont++;
         }
 
+        //populando tabela
         var fac = 0;
         matriz.forEach(element => {
             fac += element.length;
             addLinhaTabela(element[0], element.length, returnPercent(element.length, tamanhoTotal), fac, returnPercent(fac, tamanhoTotal))
         });
+        
+        //setando globais
+        vetGlobal = vet;
+        indQuantiGlobal = false;
+
+        //moda
+        setModa(matriz);
+
+        //mediana
+        setMediana(vet);
     }
 
     function quantitativaDiscreta(valor) {
 
         let vet = valor.toLowerCase().split(";");
         let tamanhoTotal =  vet.length;
-        vet.sort();
+        vet.sort(function(a, b) {
+            return a - b;
+        });
 
         let matriz = [];
         let cont = 0;
+        let somaTotal = 0;
 
         for (let i = 0; i < vet.length; i++) {
+
+            somaTotal += parseInt(vet[i]);
 
             if (i == 0) {
                 matriz.push([vet[i]]);
@@ -167,18 +276,38 @@ $( document ).ready(function(){
             }
 
         }
-
+        
+        //populando tabela
         var fac = 0;
         matriz.forEach(element => {
             fac += element.length;
             addLinhaTabela(element[0], element.length, returnPercent(element.length, tamanhoTotal), fac, returnPercent(fac, tamanhoTotal))
         });
+        
+        //setando globais
+        vetGlobal = vet;
+        indQuantiGlobal = true;
+        
+        //média
+        if(!isNaN(somaTotal)){
+            $("#divMedia label").text("Média: " + Math.round(somaTotal/tamanhoTotal));
+            $("#divMedia").show();
+        }
+
+        //moda
+        setModa(matriz);
+
+        //mediana
+        setMediana(vet, true);
     }
 
     function quantitativaContinua(valor) {
 
         let vet = valor.toLowerCase().split(";");
-        vet.sort();
+        let tamanhoTotal =  vet.length;
+        vet.sort(function(a, b) {
+            return a - b;
+        });
 
         let matriz = [];
         let cont = 0;
@@ -219,7 +348,7 @@ $( document ).ready(function(){
 
         var matrizFormatada = [];
         var auxPasso = parseInt(matriz[0][0]) + passo;
-        for(let x = 0; x < k -1; x++){
+        for(let x = 0; x < k; x++){
             matrizFormatada.push([]);
             for(let i = auxPasso - passo; i < matriz.length; i++){
                 if(matriz[i][0] < auxPasso){
@@ -230,13 +359,13 @@ $( document ).ready(function(){
         }
 
         var fac = 0;
-        matrizFormatada.forEach(element => {
-            fac += element.length;
-            let primeiroItem = element[0] + " |-- "
-            let segundoItem = element[0] + passo
-            addLinhaTabela(element[0], element.length, returnPercent(element.length, tamanhoTotal), fac, returnPercent(fac, tamanhoTotal))
-        });
-
+        auxPasso = parseInt(matriz[0][0]) + passo;
+        for(let x = 0; x < matrizFormatada.length; x++){
+            fac += matrizFormatada[x].length;
+            let nomeItem = (auxPasso - passo) + " |-- " + auxPasso;
+            addLinhaTabela(nomeItem, matrizFormatada[x].length, returnPercent(matrizFormatada[x].length, tamanhoTotal), fac, returnPercent(fac, tamanhoTotal));
+            auxPasso += passo;
+        }
     }
 
     //qualitativaNominal('leo;pedro;pedro;murilo;helio;leo;murilo;helio;thales;renata;thales;bruna;leo;caio');
