@@ -48,34 +48,10 @@
                         <input type="text" id="idNomeVariavel">
                     </div>
                     <div>
-                        <label for="idSeparatrizes">Medidas Separatrizes</label>
-                        <select id="idSeparatrizes">
-                            <option value="">Selecione</option>
-                            <option value="Q">Quartil</option>
-                            <option value="Qui">Quintil</option>
-                            <option value="D">Decil</option>
-                            <option value="Po">Porcentil</option>
-                            <option value="Pe">Personalizada</option>
-                        </select>
-                        <select id="idNumeroSeparatrizes">
-                            <option value="">Selecione</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
-                    </div>
-                    <div>
                         <label>Entrada de Dados</label>
                     </div>
                     <div>
-                        <input type="text" id="idValores" placeholder="Ex: 1;2;3;...">
+                        <input type="text" id="idValores" placeholder="Ex: 1;2;3;..." style="width: 450px;">
                     </div>
                     <div>
                         <button id="bntCalcular">Calcular</button>
@@ -91,7 +67,7 @@
                                             <tr>
                                                 <th scope="col" id="headVariavel">Variável pesquisada</th>
                                                 <th scope="col">Frequência simples (Fi)</th>
-                                                <th scope="col">Frequência simples % (Fi%)</th>
+                                                <th scope="col">Frequência simples % (Fr%)</th>
                                                 <th scope="col">Frequência acumulada(Fac)</th>
                                                 <th scope="col">Frequência acumulada % (Fac%)</th>
                                             </tr>
@@ -104,14 +80,30 @@
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-sm-2">
+                            <div class="col-sm-2" id="divMedia" style="display: none;">
                                 <label>Média: 5</label>
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-2" id="divModa">
                                 <label>Moda: 5</label>
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-2" id="divMediana">
                                 <label>Mediana: 5</label>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-sm-8">
+                                <label for="idSeparatrizes">Medidas Separatrizes</label>
+                                <select id="idSeparatrizes">
+                                    <option value="">Selecione</option>
+                                    <option value="Q">Quartil</option>
+                                    <option value="Qui">Quintil</option>
+                                    <option value="D">Decil</option>
+                                    <option value="Pe">Percentil</option>
+                                </select>
+                                <select id="idNumeroSeparatrizes">
+                                    <option value="">Selecione</option>
+                                </select>
+                                <label id="resultMedidasSeparatrizes"></label>
                             </div>
                         </div>
                     </div>
