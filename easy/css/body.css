@@ -23,6 +23,7 @@ body{
     background-color: whitesmoke;
     z-index: 500;
     overflow: auto;
+    border-radius: 1em;
 }
 
 #divContent label{
