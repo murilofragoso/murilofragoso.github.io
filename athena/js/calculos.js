@@ -324,7 +324,7 @@ $(document).ready(function () {
             dados.push(element.length);
             nomes.push(element[0]);
             cores.push(coresGraficos[indiceCores])
-            if(indiceCores == 5)
+            if(indiceCores == coresGraficos.length -1)
                 indiceCores = 0;
             else
                 indiceCores++
@@ -392,7 +392,7 @@ $(document).ready(function () {
             dados.push(element.length);
             nomes.push(element[0]);
             cores.push(coresGraficos[indiceCores])
-            if(indiceCores == 5)
+            if(indiceCores == coresGraficos.length -1)
                 indiceCores = 0;
             else
                 indiceCores++
@@ -471,7 +471,7 @@ $(document).ready(function () {
             dados.push(element.length);
             nomes.push(element[0].toString());
             cores.push(coresGraficos[indiceCores])
-            if(indiceCores == 5)
+            if(indiceCores == coresGraficos.length -1)
                 indiceCores = 0;
             else
                 indiceCores++
@@ -565,7 +565,7 @@ $(document).ready(function () {
         matrizFormatada.forEach(element => {
             dados.push(element.length);
             cores.push(coresGraficos[indiceCores])
-            if(indiceCores == 5)
+            if(indiceCores == coresGraficos.length -1)
                 indiceCores = 0;
             else
                 indiceCores++
