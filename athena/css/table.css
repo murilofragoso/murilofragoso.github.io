@@ -1,0 +1,13 @@
+.table{
+    margin: auto;
+    color: midnightblue;
+    width: 90% !important;
+}
+
+.table-responsive{
+    width: 100% !important;
+}
+
+#headVariavel{
+    min-width: 100px;
+}

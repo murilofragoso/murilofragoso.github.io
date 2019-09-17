@@ -1,8 +1,21 @@
 $(document).ready(function () {
     var vetGlobal = [];
     var indQuantiGlobal = false;
+    var coresGraficos = [
+        'rgba(77, 166, 253, 0.85)',
+        'rgba(0, 0, 255, 1)',
+        'rgba(24, 255, 255)',
+        'rgba(26, 35, 126)',
+        'rgba(100, 149, 237, 1)',
+        'rgba(0, 131, 143)',
+    ]
     //Eventos Form
     $("#bntCalcular").click(function () {
+        if(!$("#idNomeVariavel").val()){
+            alert("Insira o nome da variável");
+            return;
+        }    
+
         let tipoVariavel = $("#idTipoDeVariavel").val()
         switch (tipoVariavel) {
             case "QN": getQualitativaNominal(); break;
@@ -41,9 +54,10 @@ $(document).ready(function () {
             return;
         }
 
-        qualitativaNominal($("#idValores").val());
-        $("#divContentForm").hide();
-        $("#divContentTable").show();
+        if(qualitativaNominal($("#idValores").val())){
+            $("#divContentForm").hide();
+            $("#divContentTable").show();
+        };
     }
 
     function getQualitativaOrdinal() {
@@ -57,9 +71,10 @@ $(document).ready(function () {
             return;
         }
 
-        qualitativaOrdinal($("#idValores").val(), $("#idOrdemVariavel").val());
-        $("#divContentForm").hide();
-        $("#divContentTable").show();
+        if(qualitativaOrdinal($("#idValores").val(), $("#idOrdemVariavel").val())){
+            $("#divContentForm").hide();
+            $("#divContentTable").show();
+        };
     }
 
     function getQuantitativaDiscreta() {
@@ -68,9 +83,10 @@ $(document).ready(function () {
             return;
         }
 
-        quantitativaDiscreta($("#idValores").val());
-        $("#divContentForm").hide();
-        $("#divContentTable").show();
+        if(quantitativaDiscreta($("#idValores").val())){
+            $("#divContentForm").hide();
+            $("#divContentTable").show();
+        };
     }
 
     function getQuantitativaContinua() {
@@ -79,9 +95,10 @@ $(document).ready(function () {
             return;
         }
 
-        quantitativaContinua($("#idValores").val());
-        $("#divContentForm").hide();
-        $("#divContentTable").show();
+        if(quantitativaContinua($("#idValores").val())){
+            $("#divContentForm").hide();
+            $("#divContentTable").show();
+        };
     }
 
     //Funcoes de suporte
@@ -135,8 +152,8 @@ $(document).ready(function () {
             case "D": porcentagem *= 10; break;
         }
 
-        let result = "Resultado: "
-        if (vetGlobal.length % 2 != 0)
+        let result = "Resultado: " + vetGlobal[Math.round((vetGlobal.length - 1) / (100 / porcentagem))];
+        /*if (vetGlobal.length % 2 != 0)
             result += vetGlobal[Math.round((vetGlobal.length - 1) / (100 / porcentagem))];
         else {
             if (indQuantiGlobal) {
@@ -144,7 +161,7 @@ $(document).ready(function () {
             }
             else
                 result += vetGlobal[Math.round((vetGlobal.length - 1) / (100 / porcentagem) - 1)] + " e " + vetGlobal[Math.round((vetGlobal.length - 1) / (100 / porcentagem))];
-        }
+        }*/
 
         $("#resultMedidasSeparatrizes").text(result);
     }
@@ -167,20 +184,88 @@ $(document).ready(function () {
         for (let x = 0; x < vetor.length; x++) {
             let aux = (vetor[x]);
             if (!isNaN(aux)) {
-                alert('Este tipo de variavel so aceita string')
-                return true;
+                alert('Este tipo de variável so aceita texto')
+                return false;
             }
         }
+
+        return true;
     }
 
     function validaNumeros(vetor) {
         for (let x = 0; x < vetor.length; x++) {
             let aux = parseInt(vetor[x]);
             if (isNaN(aux)) {
-                alert('Este tipo de Variavel só aceita numeros ')
-                return true;
+                alert('Este tipo de variável só aceita números ')
+                return false;
             }
         }
+
+        return true;
+    }
+
+    //Grágicos
+    function graficoPizza(dados, nomes) {   
+        var ctx = $("#canvasGraph")
+
+        var pieChart = new Chart(ctx, {
+            type: "doughnut",
+            data: {
+                datasets: dados,
+                labels: nomes
+            }
+        });
+    }
+
+    function GraficoBarrasSeparadas(dados, nomes) {
+        var ctx = $("#canvasGraph");
+
+        var chartGraph = new Chart(ctx, {
+            type: "bar",
+            data: {
+                datasets: dados,
+                labels: nomes
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+
+                        }
+                    }]
+                }
+            }
+        });
+    }
+
+    function GraficoBarrasJuntas(dados, nomes) {
+        var ctx = $("#canvasGraph")
+
+        var chartGraph = new Chart(ctx, {
+            type: "bar",
+            data: {
+                datasets: dados,
+                labels: nomes,
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        categoryPercentage: 1.0,
+                        barPercentage: 1.0,
+                        ticks: {
+                            fonColor: '#000'
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            fontColor: '#000',
+                        }
+                    }]
+                }
+            }
+        });
     }
 
     //Calculos
@@ -192,19 +277,9 @@ $(document).ready(function () {
 
         let matriz = [];
         let cont = 0;
-
-        /*for (let x = 0; x < vet.length;x++){
-            let aux = (vet[x]);
-             if (!isNaN(aux)){
-                 alert('Este tipo de variavel so aceita string')
-                 return;
-             }
-    
-        }*/
-
         
-        if (validaLetras(vet) == true) {
-            return;
+        if (!validaLetras(vet)) {
+            return false;
         }
 
 
@@ -239,6 +314,28 @@ $(document).ready(function () {
 
         //mediana
         setMediana(vet);
+
+        //grafico
+        let dados = [],
+            nomes = [],
+            cores = [],
+            indiceCores = 0;
+        matriz.forEach(element => {
+            dados.push(element.length);
+            nomes.push(element[0]);
+            cores.push(coresGraficos[indiceCores])
+            if(indiceCores == 5)
+                indiceCores = 0;
+            else
+                indiceCores++
+        });
+
+        graficoPizza([{
+            data:dados,
+            backgroundColor: cores,
+        }], nomes);
+
+        return true;
     }
 
     function qualitativaOrdinal(valor, ordem) {
@@ -251,8 +348,8 @@ $(document).ready(function () {
 
         vet.sort();
 
-        if (validaLetras (vet) == true){
-            return;
+        if (!validaLetras(vet)){
+            return false;
         }
 
         for (let i = 0; i < VetOrd.length; i++) {
@@ -285,6 +382,28 @@ $(document).ready(function () {
 
         //mediana
         setMediana(vet);
+
+        //grafico
+        let dados = [],
+            nomes = [],
+            cores = [],
+            indiceCores = 0;
+        matriz.forEach(element => {
+            dados.push(element.length);
+            nomes.push(element[0]);
+            cores.push(coresGraficos[indiceCores])
+            if(indiceCores == 5)
+                indiceCores = 0;
+            else
+                indiceCores++
+        });
+
+        graficoPizza([{
+            data:dados,
+            backgroundColor: cores,
+        }], nomes);
+
+        return true;
     }
 
     function quantitativaDiscreta(valor) {
@@ -299,8 +418,8 @@ $(document).ready(function () {
         let cont = 0;
         let somaTotal = 0;
 
-        if (validaNumeros (vet) == true){
-            return;
+        if (!validaNumeros(vet)){
+            return false;;
         }
 
         for (let i = 0; i < vet.length; i++) {
@@ -319,7 +438,6 @@ $(document).ready(function () {
             }
 
         }
-
 
         //populando tabela
         var fac = 0;
@@ -343,6 +461,29 @@ $(document).ready(function () {
 
         //mediana
         setMediana(vet, true);
+
+        //grafico
+        let dados = [],
+            nomes = [],
+            cores = [],
+            indiceCores = 0;
+        matriz.forEach(element => {
+            dados.push(element.length);
+            nomes.push(element[0].toString());
+            cores.push(coresGraficos[indiceCores])
+            if(indiceCores == 5)
+                indiceCores = 0;
+            else
+                indiceCores++
+        });
+
+        GraficoBarrasSeparadas([{
+            data:dados,
+            backgroundColor: cores,
+            label: $("#idNomeVariavel").val()
+        }], nomes);
+
+        return true;
     }
 
     function quantitativaContinua(valor) {
@@ -360,8 +501,8 @@ $(document).ready(function () {
         let k = Math.round(Math.sqrt(vet.length - 1));
         var passo = "";
 
-        if (validaNumeros (vet )== true){
-            return;
+        if (!validaNumeros(vet)){
+            return false;
         }
 
         while (passo == "") {
@@ -406,15 +547,37 @@ $(document).ready(function () {
             auxPasso += passo;
         }
 
-        var fac = 0;
+        var fac = 0,
+            nomes = [];
         auxPasso = parseInt(matriz[0][0]) + passo;
         for (let x = 0; x < matrizFormatada.length; x++) {
             fac += matrizFormatada[x].length;
             let nomeItem = (auxPasso - passo) + " |-- " + auxPasso;
+            nomes.push(nomeItem);
             addLinhaTabela(nomeItem, matrizFormatada[x].length, returnPercent(matrizFormatada[x].length, tamanhoTotal), fac, returnPercent(fac, tamanhoTotal));
             auxPasso += passo;
         }
+
+        //grafico
+        let dados = [],
+            cores = [],
+            indiceCores = 0;
+        matrizFormatada.forEach(element => {
+            dados.push(element.length);
+            cores.push(coresGraficos[indiceCores])
+            if(indiceCores == 5)
+                indiceCores = 0;
+            else
+                indiceCores++
+        });
+
+        GraficoBarrasJuntas([{
+            data:dados,
+            backgroundColor: cores,
+            label: $("#idNomeVariavel").val()
+        }], nomes);
+
+        return true;
     }
 
-    //qualitativaNominal('leo;pedro;pedro;murilo;helio;leo;murilo;helio;thales;renata;thales;bruna;leo;caio');
 }) 

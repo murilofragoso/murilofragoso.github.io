@@ -22,7 +22,7 @@
                 type: "doughnut",
                 data: {
                     datasets: [{
-                        data: [20, 30, 30, 20],
+                        data: [20, 30, 10, 20,10, 10],
                         backgroundColor: ['rgba(24, 255, 255)',
                             'rgba(26, 35, 126)',
                             'rgba(100, 149, 237, 1)',
@@ -33,7 +33,9 @@
                             'EF',
                             'EM',
                             'ES',
-                            'PG'
+                            'PG',
+                            'teste',
+                            'teste2'
                         ]
                 }
             });
@@ -48,9 +50,8 @@
                 data: {
                     labels: ['2000', '3000', '4000', '5000'],
                     datasets: [{
-                        label: "Número de peças produzidas por dia",
+                        label: ["Número de peças produzidas por dia", "teste"],
                         data: [20, 40, 20, 10],
-                        borderColor: 'rgba(77, 166, 253, 0.85)',
                         backgroundColor: ['rgba(24, 255, 255)',
                             'rgba(26, 35, 126)',
                             'rgba(100, 149, 237, 1)',
@@ -94,11 +95,6 @@
                     }]
                 },
                 options: {
-                    legend: {
-                        labels: {
-                            fontColor: '#000'
-                        }
-                    },
                     scales: {
                         xAxes: [{
                             categoryPercentage: 1.0,
