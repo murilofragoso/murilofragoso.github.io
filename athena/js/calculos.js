@@ -539,8 +539,8 @@ $(document).ready(function () {
         var auxPasso = parseInt(matriz[0][0]) + passo;
         for (let x = 0; x < k; x++) {
             matrizFormatada.push([]);
-            for (let i = auxPasso - passo; i < matriz.length; i++) {
-                if (matriz[i][0] < auxPasso) {
+            for (let i = 0; i < matriz.length; i++) {
+                if (matriz[i][0] < auxPasso && matriz[i][0] >= auxPasso - passo) {
                     matriz[i].forEach(element => matrizFormatada[x].push(element));
                 }
             }
