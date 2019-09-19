@@ -162,13 +162,13 @@
 
        /* Declarar
 
-        passoGlobal
-        facsGlobal
-        MatrizGlobal
-        ptMedioGlobal
-        mediaGlobal*/
+        var passoGlobal
+        var facsGlobal
+        var MatrizGlobal
+        var ptMedioGlobal
+        var mediaGlobal*/
 
-        function Separatrizes() {
+        function separatrizesContinua() { //done
 
             let porcentagem = $("#idNumeroSeparatrizes").val();
 
@@ -203,7 +203,7 @@
             $("#resultMedidasSeparatrizes").text(result);
         }
 
-        function medianaa() {
+        function medianaContinua() { //done
 
             let posicao = vetGlobal[Math.round((vet.length - 1) / (100 / 50))];
             let fi = 0;
@@ -227,7 +227,7 @@
             }
         }
 
-        function modaa(matriz) {
+        function modaContinua(matriz) { //done
             let maiorValor = 0;
             let arrayModa = [];
             for (let i = 0; i < matriz.length; i++) {
@@ -253,7 +253,7 @@
         }
 
 
-        function media() {
+        function mediaContinua() { //done
 
             ptMedioGlobal = [];
             mediaGlobal = 0;

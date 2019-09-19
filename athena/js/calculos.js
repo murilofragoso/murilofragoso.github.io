@@ -1,6 +1,12 @@
 $(document).ready(function () {
     var vetGlobal = [];
     var indQuantiGlobal = false;
+    var tipoVarGlobal;
+    var passoGlobal;
+    var facsGlobal = [];
+    var matrizGlobal = [];
+    var ptMedioGlobal = [];
+    var mediaGlobal;
     var coresGraficos = [
         'rgba(77, 166, 253, 0.85)',
         'rgba(0, 0, 255, 1)',
@@ -25,6 +31,8 @@ $(document).ready(function () {
             default: alert("Escolha um tipo de variável");
         }
 
+        tipoVarGlobal = tipoVariavel;
+
         $("#headVariavel").text($("#idNomeVariavel").val());
     });
 
@@ -46,7 +54,9 @@ $(document).ready(function () {
         $("#idNumeroSeparatrizes").html(opcoes);
     })
 
-    $("#idNumeroSeparatrizes").change(medidasSeparatrizes);
+    $("#idNumeroSeparatrizes").change(function(){
+        tipoVarGlobal == "QC" ? medidasSeparatrizesContinua() : medidasSeparatrizes();  
+    });
 
     function getQualitativaNominal() {
         if (!$("#idValores").val()) {
@@ -144,6 +154,31 @@ $(document).ready(function () {
         $("#divModa label").text(moda)
     }
 
+    function setModaContinua(matriz) {
+            let maiorValor = 0;
+            let arrayModa = [];
+            for (let i = 0; i < matriz.length; i++) {
+                if (matriz[i].length > maiorValor) {
+                    maiorValor = matriz[i].length;
+                    arrayModa = [matriz[i][0] + passoGlobal];
+                } else if (matriz[i].length == maiorValor) {
+                    arrayModa.push(matriz[i][0] + passoGlobal);
+                }
+            }
+
+            let moda = "Moda: Não existe";
+            if (arrayModa.length < matriz.length) {
+                moda = "Moda: "
+                arrayModa.forEach(function (element, index) {
+                    moda += element;
+                    if (index < arrayModa.length - 1)
+                        moda += ", ";
+                });
+            }
+
+            $("#divModa label").text(moda)
+        }
+
     function medidasSeparatrizes() {
         let porcentagem = $("#idNumeroSeparatrizes").val();
         switch ($("#idSeparatrizes").val()) {
@@ -166,6 +201,39 @@ $(document).ready(function () {
         $("#resultMedidasSeparatrizes").text(result);
     }
 
+    function medidasSeparatrizesContinua() {
+
+        let porcentagem = $("#idNumeroSeparatrizes").val();
+
+        switch ($("#idSeparatrizes").val()) {
+            case "Q": porcentagem *= 25; break;
+            case "Qui": porcentagem *= 20; break;
+            case "D": porcentagem *= 10; break;
+        }
+
+        let posicao = Math.round((vetGlobal.length) / (100 / porcentagem));
+        let fi = 0;
+        let aux = 0;
+        let limite = 0;
+        let facant = 0;
+
+        for (let i = 0; i < matrizGlobal.length; i++) {
+            
+            if (posicao >= facant && posicao <= facsGlobal[i]) {
+                limite = parseInt(matrizGlobal[i][0]);
+                fi = matrizGlobal[i].length;
+                facant = i == 0 ? 0 : facsGlobal[i - 1];
+                break;
+            }
+
+            facant = i == 0 ? 0 : facsGlobal[i - 1];
+        }
+
+        let result = "Resultado: " +  (limite + ((posicao - facant) / fi) * passoGlobal).toFixed(2);
+
+        $("#resultMedidasSeparatrizes").text(result);
+    }
+
     function setMediana(vet, indQuanti = false) {
         let mediana = "Mediana: ";
         if (vet.length % 2 != 0)
@@ -176,6 +244,31 @@ $(document).ready(function () {
             else
                 mediana += vet[Math.round((vet.length - 1) / 2 - 1)] + " e " + vet[Math.round((vet.length - 1) / 2)];
         }
+
+        $("#divMediana label").text(mediana)
+    }
+
+    function setMedianaContinua() {
+
+        let posicao = Math.round((vetGlobal.length) / 2);
+        let fi = 0;
+        let aux = 0;
+        let limite = 0;
+        let facant = 0;
+
+        for (let i = 0; i < matrizGlobal.length; i++) {
+            
+            if (posicao >= facant && posicao <= facsGlobal[i]) {
+                limite = parseInt(matrizGlobal[i][0]);
+                fi = matrizGlobal[i].length;
+                facant = i == 0 ? 0 : facsGlobal[i - 1];
+                break;
+            }
+
+            facant = i == 0 ? 0 : facsGlobal[i - 1];
+        }
+
+        let mediana = "Mediana: " +  (limite + ((posicao - facant) / fi) * passoGlobal).toFixed(2);
 
         $("#divMediana label").text(mediana)
     }
@@ -552,12 +645,13 @@ $(document).ready(function () {
         auxPasso = parseInt(matriz[0][0]) + passo;
         for (let x = 0; x < matrizFormatada.length; x++) {
             fac += matrizFormatada[x].length;
+            facsGlobal.push(fac);
             let nomeItem = (auxPasso - passo) + " |-- " + auxPasso;
             nomes.push(nomeItem);
             addLinhaTabela(nomeItem, matrizFormatada[x].length, returnPercent(matrizFormatada[x].length, tamanhoTotal), fac, returnPercent(fac, tamanhoTotal));
             auxPasso += passo;
         }
-
+        
         //grafico
         let dados = [],
             cores = [],
@@ -576,6 +670,32 @@ $(document).ready(function () {
             backgroundColor: cores,
             label: $("#idNomeVariavel").val()
         }], nomes);
+
+        //setando globais
+        passoGlobal = passo;         
+        matrizGlobal = matrizFormatada;
+        vetGlobal = vet;        
+        //ptMedioGlobal -> media
+        //mediaGlobal; -> media
+
+        //mediana
+        setMedianaContinua();
+
+        //moda
+        setModaContinua(matrizFormatada)
+
+        //media
+        ptMedio = [];
+        somaTotal = 0;
+        for (let i = 0; i < matrizFormatada.length; i++) {
+            somaTotal += (matrizFormatada[i][0] + passoGlobal) * (matrizFormatada[i].length);
+            ptMedio.push([(matrizFormatada[i][0] + passoGlobal)]);
+        }
+
+        if(!isNaN(somaTotal)){
+            media = somaTotal / matrizFormatada.length;
+            $("#divMedia label").text("Média: " + media);
+        }
 
         return true;
     }
