@@ -12,6 +12,7 @@ $( document ).ready(function(){
         $("#idSeparatrizes").val("");
         $("#idNumeroSeparatrizes").val("");
         $("#idValores").val("");
-        $("#tableResult tbody").html("")
+        $("#tableResult tbody").html("");
+        $("#divGraph").html('<canvas id="canvasGraph"></canvas>');
     }
 })
