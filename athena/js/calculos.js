@@ -364,7 +364,7 @@ $(document).ready(function () {
     //Calculos
     function qualitativaNominal(valor) {
 
-        let vet = valor.toLowerCase().split(";");
+        let vet = valor.split(";");
         let tamanhoTotal = vet.length;
         vet.sort();
 
@@ -433,9 +433,9 @@ $(document).ready(function () {
 
     function qualitativaOrdinal(valor, ordem) {
 
-        let vet = valor.toLowerCase().split(";");
+        let vet = valor.split(";");
         let tamanhoTotal = vet.length;
-        let VetOrd = ordem.toLowerCase().split(";");
+        let VetOrd = ordem.split(";");
         let matriz = [];
         let cont = 0;
 
@@ -501,7 +501,7 @@ $(document).ready(function () {
 
     function quantitativaDiscreta(valor) {
 
-        let vet = valor.toLowerCase().split(";");
+        let vet = valor.split(";");
         let tamanhoTotal = vet.length;
         vet.sort(function (a, b) {
             return a - b;
@@ -581,7 +581,7 @@ $(document).ready(function () {
 
     function quantitativaContinua(valor) {
 
-        let vet = valor.toLowerCase().split(";");
+        let vet = valor.split(";");
         let tamanhoTotal = vet.length;
         vet.sort(function (a, b) {
             return a - b;
