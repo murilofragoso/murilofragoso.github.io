@@ -8,12 +8,11 @@ $(document).ready(function () {
     var ptMedioGlobal = [];
     var mediaGlobal;
     var coresGraficos = [
-        'rgba(77, 166, 253, 0.85)',
-        'rgba(0, 0, 255, 1)',
-        'rgba(24, 255, 255)',
-        'rgba(26, 35, 126)',
-        'rgba(100, 149, 237, 1)',
-        'rgba(0, 131, 143)',
+        'rgb(25,25,112)',
+        'rgb(0,0,205)',
+        'rgb(65,105,225)',
+        'rgb(70,130,180)',
+        'rgb(100,149,237)',
     ]
     //Eventos Form
     $("#bntCalcular").click(function () {
