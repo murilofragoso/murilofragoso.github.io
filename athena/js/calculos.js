@@ -590,7 +590,9 @@ $(document).ready(function () {
         let cont = 0;
 
         let al = vet[vet.length - 1] - vet[0];
-        let k = Math.round(Math.sqrt(vet.length - 1));
+        console.log(al)
+        let k = Math.trunc(Math.sqrt(vet.length));
+        console.log(k)
         var passo = "";
 
         if (!validaNumeros(vet)){
@@ -611,6 +613,7 @@ $(document).ready(function () {
                 k--;
             }
         }
+        console.log(passo)
 
         for (let i = 0; i < vet.length; i++) {
 
@@ -638,6 +641,7 @@ $(document).ready(function () {
             }
             auxPasso += passo;
         }
+        console.log(matrizFormatada)
 
         var fac = 0,
             nomes = [];
