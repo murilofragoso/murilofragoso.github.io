@@ -4,6 +4,7 @@ var tipoVarGlobal;
 var passoGlobal;
 var facsGlobal = [];
 var matrizGlobal = [];
+var mediaGlobal;
 var coresGraficos = [
     'rgb(25,25,112)',
     'rgb(0,0,205)',
@@ -294,6 +295,43 @@ $(document).ready(function () {
         return true;
     }
 
+    function desvioPadrao(matriz){
+        if($("#idTipoDePesquisa").val() == "A"){
+            return desvioPadraoAmostra(matriz);
+        }else if($("#idTipoDePesquisa").val() == "P"){
+            return desvioPadraoPopulacao(matriz);
+        }
+
+        return 0;
+    }
+
+    function desvioPadraoPopulacao(matriz) {
+        let dp = 0;
+
+        for (let i = 0; i < matriz.length; i++) {
+            dp += ((matriz[i][0] - mediaGlobal) ** 2) * matriz[i].length;
+        }
+
+        return dp = Math.sqrt(dp / vetGlobal.length).toFixed(2);
+    }
+
+
+    function desvioPadraoAmostra(matriz) {
+        let dp = 0;
+
+        for (let i = 0; i < matriz.length; i++) {
+            dp += ((matriz[i][0] - mediaGlobal) ** 2) * matriz[i].length;
+        }
+
+        return dp = Math.sqrt(dp / (vetGlobal.length - 1)).toFixed(2);
+    }
+
+    function coeficienteVariacao(dp){
+        let cv = ((dp/mediaGlobal)*100).toFixed(2)
+
+        return cv
+    }
+
     //Grágicos
     function graficoPizza(dados, nomes) {   
         var ctx = $("#canvasGraph")
@@ -542,7 +580,8 @@ $(document).ready(function () {
 
         //média
         if (!isNaN(somaTotal)) {
-            $("#divMedia label").text("Média: " + Math.round(somaTotal / tamanhoTotal));
+            mediaGlobal = Math.round(somaTotal / tamanhoTotal);
+            $("#divMedia label").text("Média: " + mediaGlobal);
             $("#divMedia").show();
         }
 
@@ -551,6 +590,17 @@ $(document).ready(function () {
 
         //mediana
         setMediana(vet, true);
+
+        //desvio padrão
+        let desvio = desvioPadrao(matriz);
+        $("#divDesvioPadrao label").text("Desvio Padrão: " + desvio);
+
+        //coeficiente de variação
+        let coef = coeficienteVariacao(desvio)
+        $("#divCoeficiente label").text("Coeficiente de variação: " + coef);
+
+        //liberando linha
+        $("#rowDesvioPadrao").show();
 
         //grafico
         let dados = [],
@@ -588,9 +638,7 @@ $(document).ready(function () {
         let cont = 0;
 
         let al = vet[vet.length - 1] - vet[0];
-        console.log(al)
         let k = Math.trunc(Math.sqrt(vet.length));
-        console.log(k)
         var passo = "";
 
         if (!validaNumeros(vet)){
@@ -611,7 +659,6 @@ $(document).ready(function () {
                 k--;
             }
         }
-        console.log(passo)
 
         for (let i = 0; i < vet.length; i++) {
 
@@ -639,7 +686,6 @@ $(document).ready(function () {
             }
             auxPasso += passo;
         }
-        console.log(matrizFormatada)
 
         var fac = 0,
             nomes = [];
@@ -692,12 +738,23 @@ $(document).ready(function () {
             somaTotal += (parseInt(matrizFormatada[i][0]) + passoGlobal) * (matrizFormatada[i].length);
             ptMedio.push([(matrizFormatada[i][0] + passoGlobal)]);
         }
-        console.log(somaTotal)
         if(!isNaN(somaTotal)){
             media = somaTotal / matrizFormatada.length;
+            mediaGlobal = media;
             $("#divMedia label").text("Média: " + media);
             $("#divMedia").show();
         }
+
+        //desvio padrão
+        let desvio = desvioPadrao(ptMedio);
+        $("#divDesvioPadrao label").text("Desvio Padrão: " + desvio);
+
+        //coeficiente de variação
+        let coef = coeficienteVariacao(desvio)
+        $("#divCoeficiente label").text("Coeficiente de variação: " + coef);
+
+        //liberando linha
+        $("#rowDesvioPadrao").show();
 
         return true;
     }
