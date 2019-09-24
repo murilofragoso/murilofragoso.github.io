@@ -1,19 +1,17 @@
+var vetGlobal = [];
+var indQuantiGlobal = false;
+var tipoVarGlobal;
+var passoGlobal;
+var facsGlobal = [];
+var matrizGlobal = [];
+var coresGraficos = [
+    'rgb(25,25,112)',
+    'rgb(0,0,205)',
+    'rgb(65,105,225)',
+    'rgb(70,130,180)',
+    'rgb(100,149,237)',
+]
 $(document).ready(function () {
-    var vetGlobal = [];
-    var indQuantiGlobal = false;
-    var tipoVarGlobal;
-    var passoGlobal;
-    var facsGlobal = [];
-    var matrizGlobal = [];
-    var ptMedioGlobal = [];
-    var mediaGlobal;
-    var coresGraficos = [
-        'rgb(25,25,112)',
-        'rgb(0,0,205)',
-        'rgb(65,105,225)',
-        'rgb(70,130,180)',
-        'rgb(100,149,237)',
-    ]
     //Eventos Form
     $("#bntCalcular").click(function () {
         if(!$("#idNomeVariavel").val()){
@@ -688,16 +686,17 @@ $(document).ready(function () {
         setModaContinua(matrizFormatada)
 
         //media
-        ptMedio = [];
-        somaTotal = 0;
+        var ptMedio = [];
+        var somaTotal = 0;
         for (let i = 0; i < matrizFormatada.length; i++) {
-            somaTotal += (matrizFormatada[i][0] + passoGlobal) * (matrizFormatada[i].length);
+            somaTotal += (parseInt(matrizFormatada[i][0]) + passoGlobal) * (matrizFormatada[i].length);
             ptMedio.push([(matrizFormatada[i][0] + passoGlobal)]);
         }
-
+        console.log(somaTotal)
         if(!isNaN(somaTotal)){
             media = somaTotal / matrizFormatada.length;
             $("#divMedia label").text("Média: " + media);
+            $("#divMedia").show();
         }
 
         return true;

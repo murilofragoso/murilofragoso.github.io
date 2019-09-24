@@ -14,5 +14,9 @@ $( document ).ready(function(){
         $("#idValores").val("");
         $("#tableResult tbody").html("");
         $("#divGraph").html('<canvas id="canvasGraph"></canvas>');
+        vetGlobal = [];
+        indQuantiGlobal = false;
+        facsGlobal = [];
+        matrizGlobal = [];
     }
 })
