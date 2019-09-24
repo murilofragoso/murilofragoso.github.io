@@ -688,12 +688,14 @@ $(document).ready(function () {
         }
 
         var fac = 0,
-            nomes = [];
+            nomes = [],
+            vetPassosAux = [];
         auxPasso = parseInt(matriz[0][0]) + passo;
         for (let x = 0; x < matrizFormatada.length; x++) {
             fac += matrizFormatada[x].length;
             facsGlobal.push(fac);
             let nomeItem = (auxPasso - passo) + " |-- " + auxPasso;
+            vetPassosAux.push(auxPasso - passo);
             nomes.push(nomeItem);
             addLinhaTabela(nomeItem, matrizFormatada[x].length, returnPercent(matrizFormatada[x].length, tamanhoTotal), fac, returnPercent(fac, tamanhoTotal));
             auxPasso += passo;
@@ -736,7 +738,7 @@ $(document).ready(function () {
         var somaTotal = 0;
         for (let i = 0; i < matrizFormatada.length; i++) {
             somaTotal += (parseInt(matrizFormatada[i][0]) + passoGlobal) * (matrizFormatada[i].length);
-            ptMedio.push([(matrizFormatada[i][0] + passoGlobal)]);
+            ptMedio.push([(vetPassosAux + (passo / 2))]);
         }
         if(!isNaN(somaTotal)){
             media = somaTotal / matrizFormatada.length;
