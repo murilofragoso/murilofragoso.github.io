@@ -681,7 +681,7 @@ $(document).ready(function () {
             matrizFormatada.push([]);
             for (let i = 0; i < matriz.length; i++) {
                 if (matriz[i][0] < auxPasso && matriz[i][0] >= auxPasso - passo) {
-                    matriz[i].forEach(element => matrizFormatada[x].push(element));
+                    matriz[i].forEach(element => matrizFormatada[x].push(parseInt(element)));
                 }
             }
             auxPasso += passo;
@@ -737,11 +737,11 @@ $(document).ready(function () {
         var ptMedio = [];
         var somaTotal = 0;
         for (let i = 0; i < matrizFormatada.length; i++) {
-            somaTotal += (parseInt(matrizFormatada[i][0]) + passoGlobal) * (matrizFormatada[i].length);
-            ptMedio.push([(vetPassosAux + (passo / 2))]);
+            somaTotal += ((parseInt(vetPassosAux) + (passoGlobal / 2))) * (matrizFormatada[i].length);
+            ptMedio.push([(vetPassosAux + (passoGlobal / 2))]);
         }
         if(!isNaN(somaTotal)){
-            media = somaTotal / matrizFormatada.length;
+            media = somaTotal / vetGlobal.length;
             mediaGlobal = media;
             $("#divMedia label").text("Média: " + media);
             $("#divMedia").show();
