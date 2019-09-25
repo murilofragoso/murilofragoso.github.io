@@ -741,8 +741,7 @@ $(document).ready(function () {
         var somaTotal = 0;
         for (let i = 0; i < matrizFormatada.length; i++) {
             somaTotal += (parseInt(vetPassosAux[i]) + (passoGlobal / 2)) * matrizFormatada[i].length;
-            ptMedio.push([(parseInt(vetPassosAux[i])+ (passoGlobal / 2))], [matrizFormatada[i].length]);
-            console.log("pt medio for: "+ptMedio)
+            ptMedio.push([(parseInt(vetPassosAux[i])+ (passoGlobal / 2))]);
         }
         if(!isNaN(somaTotal)){
             media = (somaTotal / vetGlobal.length).toFixed(2);
@@ -751,7 +750,6 @@ $(document).ready(function () {
             $("#divMedia").show();
         }
 
-        console.log(ptMedio)
         //desvio padrão
         let desvio = desvioPadrao(ptMedio);
         $("#divDesvioPadrao label").text("Desvio Padrão: " + desvio);
