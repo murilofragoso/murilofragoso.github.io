@@ -5,6 +5,8 @@ var passoGlobal;
 var facsGlobal = [];
 var matrizGlobal = [];
 var mediaGlobal;
+var vetPassosAux=[];
+var ptMedio = [];
 var coresGraficos = [
     'rgb(25,25,112)',
     'rgb(0,0,205)',
@@ -158,12 +160,11 @@ $(document).ready(function () {
             for (let i = 0; i < matriz.length; i++) {
                 if (matriz[i].length > maiorValor) {
                     maiorValor = matriz[i].length;
-                    arrayModa = [matriz[i][0] + passoGlobal];
+                    arrayModa = [vetPassosAux[i]+(passoGlobal/2)];
                 } else if (matriz[i].length == maiorValor) {
-                    arrayModa.push(matriz[i][0] + passoGlobal);
+                    arrayModa.push(vetPassosAux[i]+(passoGlobal/2));
                 }
             }
-
             let moda = "Moda: Não existe";
             if (arrayModa.length < matriz.length) {
                 moda = "Moda: "
@@ -248,7 +249,7 @@ $(document).ready(function () {
 
     function setMedianaContinua() {
 
-        let posicao = Math.round((vetGlobal.length) / 2);
+        let posicao = ((vetGlobal.length) / 2);
         let fi = 0;
         let aux = 0;
         let limite = 0;
@@ -687,9 +688,10 @@ $(document).ready(function () {
             auxPasso += passo;
         }
 
+        vetPassosAux = [];
+
         var fac = 0,
-            nomes = [],
-            vetPassosAux = [];
+            nomes = [];
         auxPasso = parseInt(matriz[0][0]) + passo;
         for (let x = 0; x < matrizFormatada.length; x++) {
             fac += matrizFormatada[x].length;
@@ -734,19 +736,21 @@ $(document).ready(function () {
         setModaContinua(matrizFormatada)
 
         //media
-        var ptMedio = [];
+        ptMedio = [];
         var somaTotal = 0;
         for (let i = 0; i < matrizFormatada.length; i++) {
-            somaTotal += ((parseInt(vetPassosAux) + (passoGlobal / 2))) * (matrizFormatada[i].length);
-            ptMedio.push([(vetPassosAux + (passoGlobal / 2))]);
+            somaTotal += (parseInt(vetPassosAux[i]) + (passoGlobal / 2)) * matrizFormatada[i].length;
+            ptMedio.push([(parseInt(vetPassosAux[i])+ (passoGlobal / 2))], [matrizFormatada[i].length]);
+            console.log("pt medio for: "+ptMedio)
         }
         if(!isNaN(somaTotal)){
-            media = somaTotal / vetGlobal.length;
+            media = (somaTotal / vetGlobal.length).toFixed(2);
             mediaGlobal = media;
             $("#divMedia label").text("Média: " + media);
             $("#divMedia").show();
         }
 
+        console.log(ptMedio)
         //desvio padrão
         let desvio = desvioPadrao(ptMedio);
         $("#divDesvioPadrao label").text("Desvio Padrão: " + desvio);

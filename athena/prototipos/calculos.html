@@ -294,6 +294,27 @@
             return cv
         }
 
+
+        function desvioPadraoPopulacaoContinua(matriz) {
+        let dp = 0;
+
+        for (let i = 0; i < matriz.length; i++) {
+            dp += ((matriz[i][0] - mediaGlobal) ** 2) * matriz[i][1];
+        }
+
+        return dp = Math.sqrt(dp / vetGlobal.length).toFixed(2);
+    }
+
+
+    function desvioPadraoAmostraContinua(matriz) {
+        let dp = 0;
+
+        for (let i = 0; i < matriz.length; i++) {
+            dp += ((matriz[i][0] - mediaGlobal) ** 2) * matriz[i][1];
+        }
+
+        return dp = Math.sqrt(dp / (vetGlobal.length - 1)).toFixed(2);
+    }
     </script>
 
 </body>
