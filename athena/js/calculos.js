@@ -310,7 +310,7 @@ $(document).ready(function () {
         let dp = 0;
 
         for (let i = 0; i < matriz.length; i++) {
-            dp += ((matriz[i][0] - mediaGlobal) ** 2) * matriz[i].length;
+            dp += ((matriz[i][0] - mediaGlobal) ** 2) * matrizGlobal[i].length;
         }
 
         return dp = Math.sqrt(dp / vetGlobal.length).toFixed(2);
@@ -321,7 +321,7 @@ $(document).ready(function () {
         let dp = 0;
 
         for (let i = 0; i < matriz.length; i++) {
-            dp += ((matriz[i][0] - mediaGlobal) ** 2) * matriz[i].length;
+            dp += ((matriz[i][0] - mediaGlobal) ** 2) * matrizGlobal[i].length;
         }
 
         return dp = Math.sqrt(dp / (vetGlobal.length - 1)).toFixed(2);
@@ -578,6 +578,7 @@ $(document).ready(function () {
         //setando globais
         vetGlobal = vet;
         indQuantiGlobal = true;
+        matrizGlobal = matriz;
 
         //média
         if (!isNaN(somaTotal)) {
