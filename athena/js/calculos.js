@@ -210,7 +210,7 @@ $(document).ready(function () {
             case "D": porcentagem *= 10; break;
         }
 
-        let posicao = Math.round((vetGlobal.length) / (100 / porcentagem));
+        let posicao = ((vetGlobal.length) / (100 / porcentagem));
         let fi = 0;
         let aux = 0;
         let limite = 0;
@@ -582,7 +582,7 @@ $(document).ready(function () {
 
         //média
         if (!isNaN(somaTotal)) {
-            mediaGlobal = Math.round(somaTotal / tamanhoTotal);
+            mediaGlobal = (somaTotal / tamanhoTotal).toFixed(2);
             $("#divMedia label").text("Média: " + mediaGlobal);
             $("#divMedia").show();
         }
