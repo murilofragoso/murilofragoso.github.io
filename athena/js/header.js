@@ -14,6 +14,7 @@ $( document ).ready(function(){
         $("#idValores").val("");
         $("#tableResult tbody").html("");
         $("#divGraph").html('<canvas id="canvasGraph"></canvas>');
+        $("#resultMedidasSeparatrizes").html("");
         vetGlobal = [];
         indQuantiGlobal = false;
         facsGlobal = [];

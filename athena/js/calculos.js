@@ -59,6 +59,8 @@ $(document).ready(function () {
     });
 
     function getQualitativaNominal() {
+        $("#divMedia").hide();
+        $("#rowDesvioPadrao").hide();
         if (!$("#idValores").val()) {
             alert("Insira os valores");
             return;
@@ -71,6 +73,8 @@ $(document).ready(function () {
     }
 
     function getQualitativaOrdinal() {
+        $("#divMedia").hide();
+        $("#rowDesvioPadrao").hide();
         if (!$("#idValores").val()) {
             alert("Insira os valores");
             return;
