@@ -222,17 +222,29 @@ $(document).ready(function () {
 
         for (let i = 0; i < matrizGlobal.length; i++) {
             
-            if (posicao >= facant && posicao <= facsGlobal[i]) {
-                limite = parseInt(matrizGlobal[i][0]);
+            facant = i == 0 ? 0 : facsGlobal[i - 1];
+            
+            if (facant <= posicao  && posicao <= facsGlobal[i]) {
+                console.log("i "+i)
+                for(let x = vetPassosAux.length; x >= 0; x--){
+                    if(limite == 0 && parseInt(vetPassosAux[x]) <= parseInt(matrizGlobal[i][0]))
+                        limite = parseInt(vetPassosAux[x]);
+                }
+                //limite = parseInt(matrizGlobal[i][0]);
                 fi = matrizGlobal[i].length;
                 facant = i == 0 ? 0 : facsGlobal[i - 1];
                 break;
             }
 
-            facant = i == 0 ? 0 : facsGlobal[i - 1];
         }
 
         let result = "Resultado: " +  (limite + ((posicao - facant) / fi) * passoGlobal).toFixed(2);
+
+        console.log(limite)
+        console.log(posicao)
+        console.log(facant)
+        console.log(fi)
+        console.log(passoGlobal)
 
         $("#resultMedidasSeparatrizes").text(result);
     }
