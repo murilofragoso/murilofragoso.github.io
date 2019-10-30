@@ -1,135 +1,233 @@
 <html>
-    <head>
-        <meta charset="utf8"/>
-        <title>Athena</title>
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/header.css">
-        <link rel="stylesheet" href="css/body.css">
-        <link rel="stylesheet" href="css/table.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="js/calculos.js"></script>
-        <script src="js/header.js"></script>
-        <script src="js/form.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>       
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    </head>
-    <body>
-        <header>
-            <label id="returnForm"><img src="img/athena.png" alt="logo" style="width: 70px;"> Athena</label>
-            <label class="btnHeader">Entrar</label>
-        </header>
-        <div id="divMae">
-            <div id="divContent">
-                <div id="divContentForm">
-                     <div>
-                        <label>Entrada de Dados</label>
-                    </div>
-                    <div>
-                        <input type="text" id="idValores" placeholder="Ex: 1;2;3;..." style="width: 450px;">
-                    </div>
-                    <div>
-                        <label for="idNomeVariavel">Nome da Variável</label>
-                        <input type="text" id="idNomeVariavel">
-                    </div>
-                    <div>
-                        <label for="idTipoDePesquisa">Tipo de Pesquisa</label>
-                        <select id="idTipoDePesquisa">
-                            <option value="">Selecione</option>
-                            <option value="A">Amostra</option>
-                            <option value="P">População</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="idTipoDeVariavel">Tipo de Variável</label>
-                        <select id="idTipoDeVariavel">
-                            <option value="">Selecione</option>
-                            <option value="QN">Qualitativa Nominal</option>
-                            <option value="QO">Qualitativa Ordinal</option>
-                            <option value="QD">Quantitativa Discreta</option>
-                            <option value="QC">Quantitativa Contínua</option>
-                        </select>
-                    </div>
-                    <div style="display: none" id="divOrdemVariaveis">
-                        <label for="idOrdemVariavel">Ordem das Variavéis</label>
-                        <input type="text" id="idOrdemVariavel" placeholder="Ex: 1;2;3;...">
-                    </div>
-                    
-                   
-                    <div>
-                        <button id="bntCalcular">Calcular</button>
+
+<head>
+    <meta charset="utf8" />
+    <title>Athena</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/telaPrincipal.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/calculos.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/form.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: rgb(25,25,112);">
+        <a class="navbar-brand" href="" style="color: white;">
+            <img src="img/athena.png" width="70" height="70" class="d-inline-block">
+            Athena
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a id="navLinkDescritiva" class="nav-link" href="" style="color: white">Estatística Descritiva <span
+                            class="sr-only">(página atual)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: white">Probabilidade</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: white">Correlação</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="containerCard" class="container my-4">
+        <div class="row">
+
+            <div class="card col-lg-4 col-md-6 my-3 align-items-center" style="border: white;">
+                <div class="face face1 rounded">
+                    <div class="content text-center">
+                        <img src="img/primeiro.png">
+                        <h3>Estatística</h3>
+                        <h4>Descritiva</h4>
                     </div>
                 </div>
-                <div id="divContentTable" style="display: none;">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-sm-12">
-                                <div class="table-responsive">
-                                    <table class="table table-striped" id="tableResult">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" id="headVariavel">Variável pesquisada</th>
-                                                <th scope="col">Frequência simples (Fi)</th>
-                                                <th scope="col">Frequência simples % (Fr%)</th>
-                                                <th scope="col">Frequência acumulada(Fac)</th>
-                                                <th scope="col">Frequência acumulada % (Fac%)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
+                <div class="face face2 rounded">
+                    <div class="content text-center">
+                        <p>Um pouco de texto.</p>
+                        <a id="bntDescritiva" class="bnt rounded" style="color: white;">Clique-me</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="card col-lg-4  col-md-6 my-3 align-items-center" style="border: white;">
+                <div class="face face1 rounded">
+                    <div class="content text-center">
+                        <img src="img/segundo.png">
+                        <h3>Probabilidade</h3>
+                    </div>
+                </div>
+                <div class="face face2 rounded">
+                    <div class="content text-center">
+                        <p> Um pouco de Texto.</p>
+                        <a id="bntProbabilidade" class="bnt rounded" style="color: white;">Clique-me</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card col-lg-4 col-md-12 my-3 align-items-center" style="border: white;">
+                <div class="face face1 rounded">
+                    <div class="content text-center">
+                        <img src="img/terceiro.png">
+                        <h3>Correlação e </h3>
+                        <h4>Regressão</h4>
+                    </div>
+                </div>
+                <div class="face face2 rounded">
+                    <div class="content text-center">
+                        <p>Um pouco de Texto.</p>
+                        <a id="bntRegressão" class="bnt rounded" style="color: white;">Clique-me</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!---->
+    <div id="divMae" style="display: none;">
+        <div id="divContent">
+            <div id="divContentForm">
+                <div>
+                    <label>Entrada de Dados</label>
+                </div>
+                <div>
+                    <input type="text" id="idValores" placeholder="Ex: 1;2;3;..." style="width: 450px;">
+                </div>
+                <div>
+                    <label for="idNomeVariavel">Nome da Variável</label>
+                    <input type="text" id="idNomeVariavel">
+                </div>
+                <div>
+                    <label for="idTipoDePesquisa">Tipo de Pesquisa</label>
+                    <select id="idTipoDePesquisa">
+                        <option value="">Selecione</option>
+                        <option value="A">Amostra</option>
+                        <option value="P">População</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="idTipoDeVariavel">Tipo de Variável</label>
+                    <select id="idTipoDeVariavel">
+                        <option value="">Selecione</option>
+                        <option value="QN">Qualitativa Nominal</option>
+                        <option value="QO">Qualitativa Ordinal</option>
+                        <option value="QD">Quantitativa Discreta</option>
+                        <option value="QC">Quantitativa Contínua</option>
+                    </select>
+                </div>
+                <div style="display: none" id="divOrdemVariaveis">
+                    <label for="idOrdemVariavel">Ordem das Variavéis</label>
+                    <input type="text" id="idOrdemVariavel" placeholder="Ex: 1;2;3;...">
+                </div>
+
+
+                <div>
+                    <button id="bntCalcular">Calcular</button>
+                </div>
+            </div>
+
+            <div id="divContentTable" style="display: none;">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="tableResult">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" id="headVariavel">Variável pesquisada</th>
+                                            <th scope="col">Frequência simples (Fi)</th>
+                                            <th scope="col">Frequência simples % (Fr%)</th>
+                                            <th scope="col">Frequência acumulada(Fac)</th>
+                                            <th scope="col">Frequência acumulada % (Fac%)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="row justify-content-center">
-                            <div class="col-sm-4" id="divMedia" style="display: none;">
-                                <label>Média: 5</label>
-                            </div>
-                            <div class="col-sm-4" id="divModa">
-                                <label>Moda: 5</label>
-                            </div>
-                            <div class="col-sm-4" id="divMediana">
-                                <label>Mediana: 5</label>
-                            </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4" id="divMedia" style="display: none;">
+                            <label>Média: 5</label>
                         </div>
-                        <div id="rowDesvioPadrao" class="row justify-content-center" style="display: none;">
-                            <div class="col-sm-6" id="divDesvioPadrao">
-                                <label></label>
-                            </div>
-                            <div class="col-sm-6" id="divCoeficiente">
-                                <label></label>
-                            </div>
+                        <div class="col-sm-4" id="divModa">
+                            <label>Moda: 5</label>
                         </div>
-                        <hr style="color: midnightblue;">
-                        <div class="row justify-content-center">
-                            <div class="col-sm-8">
-                                <label for="idSeparatrizes">Medidas Separatrizes</label>
-                                <select id="idSeparatrizes">
-                                    <option value="">Selecione</option>
-                                    <option value="Q">Quartil</option>
-                                    <option value="Qui">Quintil</option>
-                                    <option value="D">Decil</option>
-                                    <option value="Pe">Percentil</option>
-                                </select>
-                                <select id="idNumeroSeparatrizes">
-                                    <option value="">Selecione</option>
-                                </select>
-                                <label id="resultMedidasSeparatrizes"></label>
-                            </div>
+                        <div class="col-sm-4" id="divMediana">
+                            <label>Mediana: 5</label>
                         </div>
-                        <hr style="color: midnightblue;">
-                        <div class="row justify-content-center">
-                            <div class="col-sm-8" id="divGraph">
-                                <canvas id="canvasGraph"></canvas>
-                            </div>
+                    </div>
+                    <div id="rowDesvioPadrao" class="row justify-content-center" style="display: none;">
+                        <div class="col-sm-6" id="divDesvioPadrao">
+                            <label></label>
+                        </div>
+                        <div class="col-sm-6" id="divCoeficiente">
+                            <label></label>
+                        </div>
+                    </div>
+                    <hr style="color: midnightblue;">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-8">
+                            <label for="idSeparatrizes">Medidas Separatrizes</label>
+                            <select id="idSeparatrizes">
+                                <option value="">Selecione</option>
+                                <option value="Q">Quartil</option>
+                                <option value="Qui">Quintil</option>
+                                <option value="D">Decil</option>
+                                <option value="Pe">Percentil</option>
+                            </select>
+                            <select id="idNumeroSeparatrizes">
+                                <option value="">Selecione</option>
+                            </select>
+                            <label id="resultMedidasSeparatrizes"></label>
+                        </div>
+                    </div>
+                    <hr style="color: midnightblue;">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-8" id="divGraph">
+                            <canvas id="canvasGraph"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    <div style="color: midnightblue; position: absolute; bottom: 0; margin-left: 5px;">Icon made by <a href="https://br.flaticon.com/autores/freepik" title="Freepik">Freepik</a> from <a href="https://br.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
-    </body>
-</html>
+    </div>
+    <div style="color: midnightblue; position: absolute; bottom: 0; margin-left: 5px;">Icon made by <a
+            href="https://br.flaticon.com/autores/freepik" title="Freepik">Freepik</a> from <a
+            href="https://br.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+    </div>
+</body>
 
+</html>

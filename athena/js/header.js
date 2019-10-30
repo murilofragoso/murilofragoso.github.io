@@ -5,6 +5,9 @@ $( document ).ready(function(){
         $("#divContentForm").show();
     })
 
+
+
+
     function limparCampos(){
         $("#idTipoDePesquisa").val("");
         $("#idTipoDeVariavel").val("");
