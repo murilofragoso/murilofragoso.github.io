@@ -10,7 +10,7 @@ $(document).ready(function () {
 
 $(document).ready (function(){
     $("#bntDescritiva").click (function(){
-        $("#divMae").show ('1');
+        $("#divMae").show ('slow');
         $("#containerCard").hide ();
     })
 })
