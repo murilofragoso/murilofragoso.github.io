@@ -780,4 +780,25 @@ $(document).ready(function () {
         return true;
     }
 
+    var leitorCSV = new FileReader();
+    leitorCSV.onload = function(evt){
+        let fileArr  = evt.target.result.split('\n').filter(x => x && x != " ");
+        console.log(fileArr);
+        let fileString = "";
+
+        //x = 1 se o primeiro item for o nome da variavel, se não mudar para x = 0
+        for (let x = 1; x < fileArr.length; x++) {
+            fileString += fileArr[x] + (x == fileArr.length -1 ? "" : ";")
+        }
+
+        console.log(fileString);
+
+    }
+
+    $("#btnGenerate").click(function(){
+        
+        let file = document.getElementById("idFileValores").files[0];
+        leitorCSV.readAsText(file);
+        
+    })
 }) 
