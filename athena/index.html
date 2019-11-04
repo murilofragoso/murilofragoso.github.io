@@ -43,11 +43,11 @@
                             class="sr-only">(página atual)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: white">Probabilidade</a>
+                    <a id="navLinkProbabilidade" class="nav-link" href="#" style="color: white">Probabilidade</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: white">Correlação</a>
+                    <a id="navLinkCorrelação" class="nav-link" href="#" style="color: white">Correlação</a>
                 </li>
             </ul>
         </div>
@@ -109,125 +109,301 @@
             </div>
 
         </div>
+
+
+
     </div>
-
-
-
     <!---->
-    <div id="divMae" style="display: none;">
-        <div id="divContent">
-            <div id="divContentForm">
-                <div>
-                    <label>Entrada de Dados</label>
-                </div>
-                <div>
-                    <input type="text" id="idValores" placeholder="Ex: 1;2;3;..." style="width: 450px;">
-                </div>
-                <div>
-                    <label for="idNomeVariavel">Nome da Variável</label>
-                    <input type="text" id="idNomeVariavel">
-                </div>
-                <div>
-                    <label for="idTipoDePesquisa">Tipo de Pesquisa</label>
-                    <select id="idTipoDePesquisa">
-                        <option value="">Selecione</option>
-                        <option value="A">Amostra</option>
-                        <option value="P">População</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="idTipoDeVariavel">Tipo de Variável</label>
-                    <select id="idTipoDeVariavel">
-                        <option value="">Selecione</option>
-                        <option value="QN">Qualitativa Nominal</option>
-                        <option value="QO">Qualitativa Ordinal</option>
-                        <option value="QD">Quantitativa Discreta</option>
-                        <option value="QC">Quantitativa Contínua</option>
-                    </select>
-                </div>
-                <div style="display: none" id="divOrdemVariaveis">
-                    <label for="idOrdemVariavel">Ordem das Variavéis</label>
-                    <input type="text" id="idOrdemVariavel" placeholder="Ex: 1;2;3;...">
+    <div id="containerDivMae" class="container my-3" style="display: none;">
+
+        <div id="divMae">
+            <div id="divContent">
+
+                <div id="divContentForm" class="my-3">
+                    <div>
+                        <label>Entrada de Dados</label>
+                    </div>
+                    <div>
+                        <input type="text" id="idValores" placeholder="Ex: 1;2;3;..." style="width: 450px;">
+                    </div>
+                    <div>
+                        <label for="idNomeVariavel">Nome da Variável</label>
+                        <input type="text" id="idNomeVariavel">
+                    </div>
+                    <div>
+                        <label for="idTipoDePesquisa">Tipo de Pesquisa</label>
+                        <select id="idTipoDePesquisa">
+                            <option value="">Selecione</option>
+                            <option value="A">Amostra</option>
+                            <option value="P">População</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="idTipoDeVariavel">Tipo de Variável</label>
+                        <select id="idTipoDeVariavel">
+                            <option value="">Selecione</option>
+                            <option value="QN">Qualitativa Nominal</option>
+                            <option value="QO">Qualitativa Ordinal</option>
+                            <option value="QD">Quantitativa Discreta</option>
+                            <option value="QC">Quantitativa Contínua</option>
+                        </select>
+                    </div>
+                    <div style="display: none" id="divOrdemVariaveis">
+                        <label for="idOrdemVariavel">Ordem das Variavéis</label>
+                        <input type="text" id="idOrdemVariavel" placeholder="Ex: 1;2;3;...">
+                    </div>
+
+
+                    <div>
+                        <button id="bntCalcular">Calcular</button>
+                    </div>
                 </div>
 
 
-                <div>
-                    <button id="bntCalcular">Calcular</button>
-                </div>
-            </div>
 
-            <div id="divContentTable" style="display: none;">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-sm-12">
-                            <div class="table-responsive">
-                                <table class="table table-striped" id="tableResult">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" id="headVariavel">Variável pesquisada</th>
-                                            <th scope="col">Frequência simples (Fi)</th>
-                                            <th scope="col">Frequência simples % (Fr%)</th>
-                                            <th scope="col">Frequência acumulada(Fac)</th>
-                                            <th scope="col">Frequência acumulada % (Fac%)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                <div id="divContentTable" style="display: none;">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-sm-12">
+                                <div class="table-responsive">
+                                    <table class="table table-striped" id="tableResult">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" id="headVariavel">Variável pesquisada</th>
+                                                <th scope="col">Frequência simples (Fi)</th>
+                                                <th scope="col">Frequência simples % (Fr%)</th>
+                                                <th scope="col">Frequência acumulada(Fac)</th>
+                                                <th scope="col">Frequência acumulada % (Fac%)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-sm-4" id="divMedia" style="display: none;">
-                            <label>Média: 5</label>
+                        <div class="row justify-content-center">
+                            <div class="col-sm-4" id="divMedia" style="display: none;">
+                                <label>Média: 5</label>
+                            </div>
+                            <div class="col-sm-4" id="divModa">
+                                <label>Moda: 5</label>
+                            </div>
+                            <div class="col-sm-4" id="divMediana">
+                                <label>Mediana: 5</label>
+                            </div>
                         </div>
-                        <div class="col-sm-4" id="divModa">
-                            <label>Moda: 5</label>
+                        <div id="rowDesvioPadrao" class="row justify-content-center" style="display: none;">
+                            <div class="col-sm-6" id="divDesvioPadrao">
+                                <label></label>
+                            </div>
+                            <div class="col-sm-6" id="divCoeficiente">
+                                <label></label>
+                            </div>
                         </div>
-                        <div class="col-sm-4" id="divMediana">
-                            <label>Mediana: 5</label>
+                        <hr style="color: midnightblue;">
+                        <div class="row justify-content-center">
+                            <div class="col-sm-8">
+                                <label for="idSeparatrizes">Medidas Separatrizes</label>
+                                <select id="idSeparatrizes">
+                                    <option value="">Selecione</option>
+                                    <option value="Q">Quartil</option>
+                                    <option value="Qui">Quintil</option>
+                                    <option value="D">Decil</option>
+                                    <option value="Pe">Percentil</option>
+                                </select>
+                                <select id="idNumeroSeparatrizes">
+                                    <option value="">Selecione</option>
+                                </select>
+                                <label id="resultMedidasSeparatrizes"></label>
+                            </div>
                         </div>
-                    </div>
-                    <div id="rowDesvioPadrao" class="row justify-content-center" style="display: none;">
-                        <div class="col-sm-6" id="divDesvioPadrao">
-                            <label></label>
-                        </div>
-                        <div class="col-sm-6" id="divCoeficiente">
-                            <label></label>
-                        </div>
-                    </div>
-                    <hr style="color: midnightblue;">
-                    <div class="row justify-content-center">
-                        <div class="col-sm-8">
-                            <label for="idSeparatrizes">Medidas Separatrizes</label>
-                            <select id="idSeparatrizes">
-                                <option value="">Selecione</option>
-                                <option value="Q">Quartil</option>
-                                <option value="Qui">Quintil</option>
-                                <option value="D">Decil</option>
-                                <option value="Pe">Percentil</option>
-                            </select>
-                            <select id="idNumeroSeparatrizes">
-                                <option value="">Selecione</option>
-                            </select>
-                            <label id="resultMedidasSeparatrizes"></label>
-                        </div>
-                    </div>
-                    <hr style="color: midnightblue;">
-                    <div class="row justify-content-center">
-                        <div class="col-sm-8" id="divGraph">
-                            <canvas id="canvasGraph"></canvas>
+                        <hr style="color: midnightblue;">
+                        <div class="row justify-content-center">
+                            <div class="col-sm-8" id="divGraph">
+                                <canvas id="canvasGraph"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
+    <div id="containerProbabilidade" class=" container my-4 border rounded" style="display: none;">
+
+        <div class="card-header bg-transparent border-2">
+
+
+            <div class="col-12">
+
+                <uL class="nav nav-pills justify-content-center my-3 " id="pills-nav" role="tablist">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" id="nav-pills-01" data-toggle="pill" href="#nav-item-01">Uniforme</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " id="nav-pills-02" data-toggle="pill" href="#nav-item-02">Binomial</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " id="nav-pills-03" data-toggle="pill" href="#nav-item-03">Normal</a>
+                    </li>
+
+                </uL>
+
+                <div class="col-12 text-center my-1">
+                    <h3 style="color:black">Entrada de Dados</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="tab-content" id="nav-pills-content">
+
+            <div class="tab-pane fade show active" id="nav-item-01" role="tabpanel">
+
+                <div class="form-group text-center">
+                    <h3 style="color: black">Uniforme</h3>
+                    <!--label id="teste" for="inputEntradaDeDados">Entrada de Dados</label-->
+                </div>
+
+                <div class="form-group">
+
+                    <select class="custom-select my-1 mr-sm-2" id="selectUniforme">
+                        <option selected>Selecione</option>
+                        <option value="maior">Maior</option>
+                        <option value="entre">Entre</option>
+                        <option value="menor">Menor</option>
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+                    <!--label for="inputQuantidade">Quantidade</label -->
+                    <input type="text" class="form-control" id="inputQuantidade" placeholder="Quantidade">
+
+                </div>
+
+                <div class="form-group">
+                    <!--label for="inputQuantidade">Quantidade</label -->
+                    <input type="text" class="form-control" id="inputPontoMininmo" placeholder="Ponto Mìnimo">
+                </div>
+
+                <div class="form-group">
+                    <!--label for="inputQuantidade">Quantidade</label -->
+                    <input type="text" class="form-control" id="inputPontoMaximo" placeholder="Ponto Máximo">
+                </div>
+
+                <div id="entreUniforme" class="form-row" style="display: none;">
+                    <div class="form-group col-sm-6">
+                        <!--label for="inputQuantidade">Quantidade</label -->
+                        <input type="text" class="form-control" id="uniformeInputDe" placeholder="De">
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <!--label for="inputQuantidade">Quantidade</label -->
+                        <input type="text" class="form-control" id="uniformeInputAte" placeholder="Até">
+                    </div>
+
+                </div>
+
+
+                <button id="bnt-probabilidade-Uniforme" type="button" class="btn btn-lg btn-block my-2"
+                    style="background:rgb(25,25,112); color: white;">Calcular</button>
+
+            </div>
+
+            <div class="tab-pane fade" id="nav-item-02" role="tabpanel">
+
+                <div class="form-group text-center">
+                    <h3 style="color: black;">Binomial</h3>
+                    <!--label id="teste" for="inputEntradaDeDados">Entrada de Dados</label-->
+                </div>
+
+
+                <div class="form-group">
+
+
+                    <!--label for="inputQuantidade">Quantidade</label -->
+                    <input type="text" class="form-control " id="amostraN" placeholder="Amostra (N)">
+
+                    <input type="text" class="form-control my-3" id=chanceSucesso placeholder="Sucesso (p)">
+
+                    <input type="text" class="form-control" id="chanceFracasso" placeholder="Fracasso (q)">
+
+                    <input type="text" class="form-control my-3" id="eventoK" placeholder="Evento (K)">
+
+                </div>
+
+
+                <button id="bnt-probabilidade-Binomial" type="button" class="btn btn-lg btn-block my-2"
+                    style="background:rgb(25,25,112); color: white;">Calcular</button>
+
+            </div>
+
+            <div class="tab-pane fade" id="nav-item-03" role="tabpanel">
+                <div class="form-group text-center">
+                    <h3 style="color: black;">Normal</h3>
+                    <!--label id="teste" for="inputEntradaDeDados">Entrada de Dados</label-->
+                </div>
+
+                <div class="form-group">
+
+                    <select class="custom-select my-1 mr-sm-2" id="selectNormal">
+                        <option selected>Selecione</option>
+                        <option value="maior">Maior</option>
+                        <option value="entre">Entre</option>
+                        <option value="menor">Menor</option>
+                    </select>
+
+                </div>
+
+                <div class="fomr-group">
+                    <input type="text" class="form-control" id="normalMedia" placeholder="Média">
+                </div>
+
+                <div class="fomr-group">
+                    <input type="text" class="form-control my-3" id="normalQuantidade" placeholder="Quantidade">
+                </div>
+
+                <div class="fomr-group my-3">
+                    <input type="text" class="form-control" id="normalDesvioPadrao" placeholder="Desvio Padrão">
+                </div>
+
+
+                <div id="entreNormal" class="form-row " style="display: none;">
+                    <div class="form-group col-sm-6">
+                        <!--label for="inputQuantidade">Quantidade</label -->
+                        <input type="text" class="form-control" id="normalInputDe" placeholder="De">
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <!--label for="inputQuantidade">Quantidade</label -->
+                        <input type="text" class="form-control" id="nomralInputDe" placeholder="Até">
+                    </div>
+
+                </div>
+
+                <button id="bnt-probabilidade-normal" type="button" class="btn btn-lg btn-block my-2"
+                style="background:rgb(25,25,112); color: white;">Calcular</button>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
     <div style="color: midnightblue; position: absolute; bottom: 0; margin-left: 5px;">Icon made by <a
             href="https://br.flaticon.com/autores/freepik" title="Freepik">Freepik</a> from <a
             href="https://br.flaticon.com/" title="Flaticon">www.flaticon.com</a>
     </div>
+
 </body>
 
 </html>

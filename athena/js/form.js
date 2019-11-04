@@ -8,12 +8,58 @@ $(document).ready(function () {
     })
 })
 
-$(document).ready (function(){
-    $("#bntDescritiva").click (function(){
-        $("#divMae").show ('slow');
-        $("#containerCard").hide ();
+$(document).ready(function () {
+    $("#bntDescritiva").click(function () {
+        $("#containerDivMae").show();
+        $("#containerCard").hide();
     })
 })
+
+$(document).ready(function () {
+    $("#bntProbabilidade").click(function () {
+        $("#containerCard").hide();
+        $("#containerProbabilidade").show();
+    })
+})
+
+$(document).ready(function () {
+    $("#selectUniforme").change(function () {
+        if ($(this).val() == "entre")
+            $("#entreUniforme").slideDown()
+
+        else
+            $("#entreUniforme").slideUp()
+
+    })
+})
+
+$(document).ready(function () {
+    $("#selectNormal").change(function () {
+        if ($(this).val() == "entre")
+            $("#entreNormal").slideDown()
+
+        else
+            $("#entreNormal").slideUp()
+
+    })
+})
+
+$(document).ready(function () {
+    $("#navLinkProbabilidade").click(function () {
+        $("#containerCard").hide ();
+        $("#containerProbabilidade").show();
+    })
+})
+
+$(document).ready(function () {
+    $("#navLinkDescritiva").click(function () {
+        $("#containerDivMae").show();
+        $("#containerCard").hide();
+
+    })
+})
+
+
 
 
 

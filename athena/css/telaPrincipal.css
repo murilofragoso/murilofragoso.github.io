@@ -111,4 +111,14 @@ p{
     background: whitesmoke;
 }
 
+#containerProbabilidade{
+
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+  
+}
+
 
