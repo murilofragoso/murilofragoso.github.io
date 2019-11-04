@@ -10,8 +10,8 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#bntDescritiva").click(function () {
-        $("#containerDivMae").show();
-        $("#containerCard").hide();
+        $("#containerDivMae").show ();
+        $("#containerCard").hide ();
     })
 })
 
@@ -51,13 +51,7 @@ $(document).ready(function () {
     })
 })
 
-$(document).ready(function () {
-    $("#navLinkDescritiva").click(function () {
-        $("#containerDivMae").show();
-        $("#containerCard").hide();
 
-    })
-})
 
 
 
