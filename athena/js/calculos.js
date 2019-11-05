@@ -14,6 +14,7 @@ var coresGraficos = [
     'rgb(70,130,180)',
     'rgb(100,149,237)',
 ]
+var valoresCalculo;
 $(document).ready(function () {
     //Eventos Form
     $("#bntCalcular").click(function () {
@@ -22,18 +23,8 @@ $(document).ready(function () {
             return;
         }    
 
-        let tipoVariavel = $("#idTipoDeVariavel").val()
-        switch (tipoVariavel) {
-            case "QN": getQualitativaNominal(); break;
-            case "QO": getQualitativaOrdinal(); break;
-            case "QD": getQuantitativaDiscreta(); break;
-            case "QC": getQuantitativaContinua(); break;
-            default: alert("Escolha um tipo de variável");
-        }
-
-        tipoVarGlobal = tipoVariavel;
-
-        $("#headVariavel").text($("#idNomeVariavel").val());
+        valoresCalculo = "";
+        setValoresCalc();
     });
 
     $("#idSeparatrizes").change(function () {
@@ -61,12 +52,8 @@ $(document).ready(function () {
     function getQualitativaNominal() {
         $("#divMedia").hide();
         $("#rowDesvioPadrao").hide();
-        if (!$("#idValores").val()) {
-            alert("Insira os valores");
-            return;
-        }
 
-        if(qualitativaNominal($("#idValores").val())){
+        if(qualitativaNominal(valoresCalculo)){
             $("#divContentForm").hide();
             $("#divContentTable").show();
         };
@@ -75,41 +62,27 @@ $(document).ready(function () {
     function getQualitativaOrdinal() {
         $("#divMedia").hide();
         $("#rowDesvioPadrao").hide();
-        if (!$("#idValores").val()) {
-            alert("Insira os valores");
-            return;
-        }
 
         if (!$("#idOrdemVariavel").val()) {
             alert("Insira a ordem das variaveis");
             return;
         }
 
-        if(qualitativaOrdinal($("#idValores").val(), $("#idOrdemVariavel").val())){
+        if(qualitativaOrdinal(valoresCalculo, $("#idOrdemVariavel").val())){
             $("#divContentForm").hide();
             $("#divContentTable").show();
         };
     }
 
     function getQuantitativaDiscreta() {
-        if (!$("#idValores").val()) {
-            alert("Insira os valores");
-            return;
-        }
-
-        if(quantitativaDiscreta($("#idValores").val())){
+        if(quantitativaDiscreta(valoresCalculo)){
             $("#divContentForm").hide();
             $("#divContentTable").show();
         };
     }
 
     function getQuantitativaContinua() {
-        if (!$("#idValores").val()) {
-            alert("Insira os valores");
-            return;
-        }
-
-        if(quantitativaContinua($("#idValores").val())){
+        if(quantitativaContinua(valoresCalculo)){
             $("#divContentForm").hide();
             $("#divContentTable").show();
         };
@@ -225,7 +198,6 @@ $(document).ready(function () {
             facant = i == 0 ? 0 : facsGlobal[i - 1];
             
             if (facant <= posicao  && posicao <= facsGlobal[i]) {
-                console.log("i "+i)
                 for(let x = vetPassosAux.length; x >= 0; x--){
                     if(limite == 0 && parseInt(vetPassosAux[x]) <= parseInt(matrizGlobal[i][0]))
                         limite = parseInt(vetPassosAux[x]);
@@ -239,12 +211,6 @@ $(document).ready(function () {
         }
 
         let result = "Resultado: " +  (limite + ((posicao - facant) / fi) * passoGlobal).toFixed(2);
-
-        console.log(limite)
-        console.log(posicao)
-        console.log(facant)
-        console.log(fi)
-        console.log(passoGlobal)
 
         $("#resultMedidasSeparatrizes").text(result);
     }
@@ -780,10 +746,11 @@ $(document).ready(function () {
         return true;
     }
 
+    //funções de leitura
+
     var leitorCSV = new FileReader();
     leitorCSV.onload = function(evt){
         let fileArr  = evt.target.result.split('\n').filter(x => x && x != " ");
-        console.log(fileArr);
         let fileString = "";
 
         //x = 1 se o primeiro item for o nome da variavel, se não mudar para x = 0
@@ -791,14 +758,46 @@ $(document).ready(function () {
             fileString += fileArr[x] + (x == fileArr.length -1 ? "" : ";")
         }
 
-        console.log(fileString);
-
+        valoresCalculo = fileString;
+        calcular();
     }
 
-    $("#btnGenerate").click(function(){
-        
+    function getValoresCsv(){
         let file = document.getElementById("idFileValores").files[0];
+        if(!file){
+            alert("Nenhum documento selecionado!")
+            return;
+        }
         leitorCSV.readAsText(file);
-        
-    })
+    }
+
+    function setValoresCalc(){
+        if($("[name='tipoEntrada']:checked").val() == "csv")
+            getValoresCsv();
+        else{
+            if (!$("#idValores").val()) {
+                alert("Insira os valores");
+                return;
+            }
+
+            valoresCalculo = $("#idValores").val()
+            calcular();
+        }
+    }
+
+    function calcular(){
+        let tipoVariavel = $("#idTipoDeVariavel").val()
+        switch (tipoVariavel) {
+            case "QN": getQualitativaNominal(); break;
+            case "QO": getQualitativaOrdinal(); break;
+            case "QD": getQuantitativaDiscreta(); break;
+            case "QC": getQuantitativaContinua(); break;
+            default: alert("Escolha um tipo de variável");
+        }
+
+        tipoVarGlobal = tipoVariavel;
+
+        $("#headVariavel").text($("#idNomeVariavel").val());
+    }
+
 }) 

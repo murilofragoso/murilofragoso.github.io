@@ -120,20 +120,19 @@
             <div id="divContent">
 
                 <div id="divContentForm" class="my-3">
-                    <div>
-                        <label>Entrada de Dados CSV</label>
-                    </div>
-                    <div>
-                        <input type="file" id="idFileValores" style="color: black;">
-                    </div>
-                    <div>
-                        <button id="btnGenerate">Generate</button>
-                    </div>
+                    
                     <div>
                         <label>Entrada de Dados</label>
                     </div>
                     <div>
+                        <input type="radio" name="tipoEntrada" checked value="txt"> Texto
+                        <input type="radio" name="tipoEntrada" value="csv"> CSV
+                    </div>
+                    <div id="divValoresTxt">
                         <input type="text" id="idValores" placeholder="Ex: 1;2;3;..." style="width: 450px;">
+                    </div>
+                    <div id="divValoresCsv" style="display: none;">
+                        <input type="file" id="idFileValores">
                     </div>
                     <div>
                         <label for="idNomeVariavel">Nome da Variável</label>
