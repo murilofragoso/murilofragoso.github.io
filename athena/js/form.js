@@ -6,23 +6,17 @@ $(document).ready(function () {
             $("#divOrdemVariaveis").slideUp()
 
     })
-})
 
-$(document).ready(function () {
     $("#bntDescritiva").click(function () {
         $("#containerDivMae").show();
         $("#containerCard").hide();
     })
-})
 
-$(document).ready(function () {
     $("#bntProbabilidade").click(function () {
         $("#containerCard").hide();
         $("#containerProbabilidade").show();
     })
-})
 
-$(document).ready(function () {
     $("#selectUniforme").change(function () {
         if ($(this).val() == "entre")
             $("#entreUniforme").slideDown()
@@ -31,9 +25,7 @@ $(document).ready(function () {
             $("#entreUniforme").slideUp()
 
     })
-})
 
-$(document).ready(function () {
     $("#selectNormal").change(function () {
         if ($(this).val() == "entre")
             $("#entreNormal").slideDown()
@@ -42,24 +34,29 @@ $(document).ready(function () {
             $("#entreNormal").slideUp()
 
     })
-})
 
-$(document).ready(function () {
     $("#navLinkProbabilidade").click(function () {
         $("#containerCard").hide ();
         $("#containerProbabilidade").show();
     })
-})
 
-$(document).ready(function () {
     $("#navLinkDescritiva").click(function () {
         $("#containerDivMae").show();
         $("#containerCard").hide();
 
     })
-})
 
-
+    $("[name='tipoEntrada']").change(function(event){
+        let valueSelecionado = event.target.value;
+        if(valueSelecionado == "csv"){
+            $("#divValoresTxt").slideUp("fast");
+            $("#divValoresCsv").slideDown("fast");            
+        }else{
+            $("#divValoresCsv").slideUp("fast");
+            $("#divValoresTxt").slideDown("fast");     
+        }
+    })
+});
 
 
 
