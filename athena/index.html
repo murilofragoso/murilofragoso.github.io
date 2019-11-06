@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/telaPrincipal.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/calculos.js"></script>
+    <script src="js/calculosProb.js"></script>
     <script src="js/header.js"></script>
     <script src="js/form.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
@@ -237,28 +238,25 @@
                 </div>
             </div>
         </div>
-
     </div>
 
-    <div id="containerProbabilidade" class=" container my-3 border" style="display: none;">
 
+    <div id="containerProbabilidade" class=" container my-4 border rounded" style="display: none;">
         <div>
-
-
             <div class="col-12">
 
                 <uL class="nav nav-pills justify-content-center my-3 " id="pills-nav" role="tablist">
 
                     <li class="nav-item">
-                        <a class="nav-link active" id="nav-pills-01" data-toggle="pill" href="#nav-item-01">Uniforme</a>
+                        <a class="nav-link active" id="nav-pills-01" data-toggle="pill" href="#nav-item-01" data-value="uni">Uniforme</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " id="nav-pills-02" data-toggle="pill" href="#nav-item-02">Binomial</a>
+                        <a class="nav-link " id="nav-pills-02" data-toggle="pill" href="#nav-item-02" data-value="bi">Binomial</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " id="nav-pills-03" data-toggle="pill" href="#nav-item-03">Normal</a>
+                        <a class="nav-link " id="nav-pills-03" data-toggle="pill" href="#nav-item-03" data-value="nor">Normal</a>
                     </li>
 
                 </uL>
@@ -266,7 +264,6 @@
                 <div class="col-12 text-center my-1">
                     <h3 style="color:black">Entrada de Dados</h3>
                 </div>
-
             </div>
 
         </div>
