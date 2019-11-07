@@ -33,25 +33,25 @@
             Athena
         </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a id="navLinkDescritiva" class="nav-link" href="" style="color: white">Estatística Descritiva <span
-                            class="sr-only">(página atual)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a id="navLinkProbabilidade" class="nav-link" href="#" style="color: white">Probabilidade</a>
-                </li>
-
-                <li class="nav-item">
-                    <a id="navLinkCorrelação" class="nav-link" href="#" style="color: white">Correlação</a>
-                </li>
-            </ul>
-        </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" style="display: none;" id="togglerNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse" id="conteudoNavbarSuportado" style="display: none;">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a id="navLinkDescritiva" class="nav-link" href="#" style="color: white">Estatística Descritiva 
+                            <span class="sr-only">(página atual)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="navLinkProbabilidade" class="nav-link" href="#" style="color: white">Probabilidade</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a id="navLinkCorrelação" class="nav-link" href="#" style="color: white">Correlação</a>
+                    </li>
+                </ul>
+            </div>
     </nav>
 
     <div id="containerCard" class="container my-4">
@@ -60,15 +60,15 @@
             <div class="card col-lg-4 col-md-6 my-3 align-items-center" style="border: white;">
                 <div class="face face1 rounded">
                     <div class="content text-center">
-                        <img src="img/primeiro.png">
+                        <img src="img/testePrimeiro.png">
                         <h3>Estatística</h3>
                         <h4>Descritiva</h4>
                     </div>
                 </div>
                 <div class="face face2 rounded">
                     <div class="content text-center">
-                        <p>Um pouco de texto.</p>
-                        <a id="bntDescritiva" class="bnt rounded" style="color: white;">Clique-me</a>
+                        <p> Permite-nos resumir, descrever e compreender os dados de uma distribuição.</p>
+                        <a id="bntDescritiva" class="bnt rounded" style="color: white;" data-btn-menu>Vamos lá!</a>
                     </div>
                 </div>
             </div>
@@ -85,8 +85,8 @@
                 </div>
                 <div class="face face2 rounded">
                     <div class="content text-center">
-                        <p> Um pouco de Texto.</p>
-                        <a id="bntProbabilidade" class="bnt rounded" style="color: white;">Clique-me</a>
+                        <p> Permite-nos estimar matematicamente a possibilidade de ocorrer eventos que acontecem ao acaso.</p>
+                        <a id="bntProbabilidade" class="bnt rounded" style="color: white;" data-btn-menu>Vamos lá!</a>
                     </div>
                 </div>
             </div>
@@ -103,8 +103,8 @@
                 </div>
                 <div class="face face2 rounded">
                     <div class="content text-center">
-                        <p>Um pouco de Texto.</p>
-                        <a id="bntRegressão" class="bnt rounded" style="color: white;">Clique-me</a>
+                        <p> Permite-nos estudar o comportamento conjunto de duas variáveis quantitativas distintas</p>
+                        <a id="bntRegressão" class="bnt rounded" style="color: white;" data-btn-menu>Vamos lá!</a>
                     </div>
                 </div>
             </div>

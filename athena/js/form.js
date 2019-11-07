@@ -8,8 +8,8 @@ $(document).ready(function () {
     })
 
     $("#bntDescritiva").click(function () {
-        $("#containerDivMae").show ();
-        $("#containerCard").hide ();
+        $("#containerDivMae").show();
+        $("#containerCard").hide();
     })
 
     $("#bntProbabilidade").click(function () {
@@ -21,7 +21,6 @@ $(document).ready(function () {
     $("#selectUniforme").change(function () {
         if ($(this).val() == "entre")
             $("#entreUniforme").slideDown()
-
         else
             $("#entreUniforme").slideUp()
 
@@ -30,7 +29,6 @@ $(document).ready(function () {
     $("#selectNormal").change(function () {
         if ($(this).val() == "entre")
             $("#entreNormal").slideDown();
-
         else
             $("#entreNormal").slideUp();
 
@@ -42,6 +40,12 @@ $(document).ready(function () {
         $("#containerProbabilidade").show();
     })
 
+    $("#navLinkDescritiva").click(function () {
+        $("#containerDivMae").show();
+        $("#containerCard").hide();
+        $("#containerProbabilidade").hide();
+    })
+
     $("[name='tipoEntrada']").change(function(event){
         let valueSelecionado = event.target.value;
         if(valueSelecionado == "csv"){
@@ -51,6 +55,12 @@ $(document).ready(function () {
             $("#divValoresCsv").slideUp("fast");
             $("#divValoresTxt").slideDown("fast");     
         }
+    })
+
+    $("[data-btn-menu]").click(function(){
+        $("#conteudoNavbarSuportado").show();
+        $("#togglerNav").show();
+        $("#conteudoNavbarSuportado").addClass("navbar-collapse")
     })
 });
 
