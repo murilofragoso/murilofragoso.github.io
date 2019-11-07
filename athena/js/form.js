@@ -58,9 +58,8 @@ $(document).ready(function () {
     })
 
     $("[data-btn-menu]").click(function(){
-        $("#conteudoNavbarSuportado").show();
-        $("#togglerNav").show();
-        $("#conteudoNavbarSuportado").addClass("navbar-collapse")
+        $("#togglerNav span").addClass("navbar-toggler-icon");
+        $("#conteudoNavbarSuportado").addClass("navbar-collapse").removeClass("hidden");
     })
 });
 

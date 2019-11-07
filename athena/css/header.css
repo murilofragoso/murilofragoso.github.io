@@ -17,3 +17,6 @@ header > .btnHeader{
     margin-right: 25px;
 }
 
+.hidden {
+    display: none;
+}
