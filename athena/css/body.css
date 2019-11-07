@@ -54,3 +54,7 @@ body{
 #idValores{
     width: 80%;
 }
+
+.alertInput{
+    border: 1px solid red !important;
+}

@@ -2,20 +2,33 @@ $(document).ready(function (){
 
     $("#bnt-probabilidade-Uniforme").click(function(){
         let abaSelecionada = $("#pills-nav a").attr("data-value");
-        if(abaSelecionada == "uni"){
-            uniforme();
+        if(validaCampos(abaSelecionada)){
+            switch(abaSelecionada){
+                case "uni": uniforme(); break;
+                case "bi": binomial(); break;
+                case "nor": normal(); break;
+            }
+            retiraAlertaCampos();
         }
-            
+        else
+            alert("Preencha todos os campos!");            
     });
 
     var fatorial = function fac(n) { return n < 2 ? 1 : n * fac(n - 1) }
 
-    function binomial(n, k, p, q) {
+    function binomial() {
         let analComb = 1;
+        let n = $("#amostraN").val();
+        let p = $("#chanceSucesso").val();
+        let q = $("#chanceFracasso").val();
+        let k = $("#eventoK").val();
         if (k != 0 || k != n) {
             analComb = fatorial(n) / (fatorial(k) * fatorial(n - k));
         }
-        return analComb * p ** k * q ** (n - k);
+
+        let result = analComb * p ** k * q ** (n - k);
+
+        console.log(result);
     }
 
     function uniforme() {
@@ -54,7 +67,12 @@ $(document).ready(function (){
         console.log("cv: " + cv);
     };
 
-    function normal(media, dp, x, y) {
+    function normal() {
+        let intervalo = $("#selectNormal").val();
+        let media = $("#normalMedia").val();
+        let dp = $("#normalDesvioPadrao").val();
+        let x = "";
+        let y = "";
         let z = ""
         let aux = ""
         let probabilidade = 0;
@@ -101,7 +119,9 @@ $(document).ready(function (){
             [0.5000, 0.5000, 0.5000, 0.5000, 0.5000, 0.5000, 0.5000, 0.5000, 0.5000, 0.5000],
         ];
 
-        if ("maiorQ") {
+        if (intervalo == "maior") {
+            x = $("#normalQuantidade").val();
+
             z += Math.abs(((x - media) / dp) * 100);
             z = vet[z[0] + z[1]][z[2]];
             if (x < media) {
@@ -111,7 +131,9 @@ $(document).ready(function (){
                 probabilidade = (0.5 + z) * 100
             }
         }
-        else if ("menorQ") {
+        else if (intervalo == "menor") {
+            x = $("#normalQuantidade").val();
+
             z += Math.abs(((x - media) / dp) * 100);
             z = vet[z[0] + z[1]][z[2]];
             if (x > media) {
@@ -121,7 +143,10 @@ $(document).ready(function (){
                 probabilidade = (0.5 - z) * 100
             }
         }
-        else if ("entre") {
+        else if (intervalo == "entre") {
+            x = $("#normalInputDe").val();
+            y = $("#normalInputAte").val();
+
             z += Math.abs(((x - media) / dp) * 100);
             z = vet[z[0] + z[1]][z[2]];
 
@@ -131,6 +156,104 @@ $(document).ready(function (){
             probabilidade = (z - aux) * 100
 
         }
+
+        console.log(probabilidade);
+    }
+
+    function validaCampos(abaSelecionada){
+        let result = true;
+
+        if(abaSelecionada == "uni"){
+            if(!$("#selectUniforme").val()){
+                $("#selectUniforme").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#inputQuantidade").val()){
+                $("#inputQuantidade").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#inputPontoMininmo").val()){
+                $("#inputPontoMininmo").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#inputPontoMaximo").val()){
+                $("#inputPontoMaximo").addClass("alertInput");
+                result = false;
+            }
+
+            if($("#selectUniforme").val() == "entre"){
+                if(!$("#uniformeInputDe").val()){
+                    $("#uniformeInputDe").addClass("alertInput");
+                    result = false;
+                }
+
+                if(!$("#uniformeInputAte").val()){
+                    $("#uniformeInputAte").addClass("alertInput");
+                    result = false;
+                }
+            }
+        } else if (abaSelecionada == "bi"){
+            if(!$("#amostraN").val()){
+                $("#amostraN").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#chanceSucesso").val()){
+                $("#chanceSucesso").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#chanceFracasso").val()){
+                $("#chanceFracasso").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#eventoK").val()){
+                $("#eventoK").addClass("alertInput");
+                result = false;
+            }
+        } else if (abaSelecionada == "nor"){
+            if(!$("#selectNormal").val()){
+                $("#selectNormal").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#normalMedia").val()){
+                $("#normalMedia").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#normalQuantidade").val()){
+                $("#normalQuantidade").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#normalDesvioPadrao").val()){
+                $("#normalDesvioPadrao").addClass("alertInput");
+                result = false;
+            }
+
+            if($("#selectNormal").val() == "entre"){
+                if(!$("#normalInputDe").val()){
+                    $("#normalInputDe").addClass("alertInput");
+                    result = false;
+                }
+
+                if(!$("#normalInputAte").val()){
+                    $("#normalInputAte").addClass("alertInput");
+                    result = false;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    function retiraAlertaCampos(){
+        $(".alertInput").removeClass("alertInput");
     }
 
     function correlacao(x, y) {
