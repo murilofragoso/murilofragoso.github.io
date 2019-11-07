@@ -15,6 +15,7 @@ $(document).ready(function () {
     $("#bntProbabilidade").click(function () {
         $("#containerCard").hide();
         $("#containerProbabilidade").show();
+        $("#containerDivMae").hide();
     })
 
     $("#selectUniforme").change(function () {
@@ -28,15 +29,16 @@ $(document).ready(function () {
 
     $("#selectNormal").change(function () {
         if ($(this).val() == "entre")
-            $("#entreNormal").slideDown()
+            $("#entreNormal").slideDown();
 
         else
-            $("#entreNormal").slideUp()
+            $("#entreNormal").slideUp();
 
     })
 
     $("#navLinkProbabilidade").click(function () {
         $("#containerCard").hide ();
+        $("#containerDivMae").hide();
         $("#containerProbabilidade").show();
     })
 
