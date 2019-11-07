@@ -50,11 +50,20 @@ body{
     background-color: rgb(10,10,50);
 }
 
-
 #idValores{
     width: 80%;
 }
 
 .alertInput{
     border: 1px solid red !important;
+}
+
+#divRadioDescritiva label{
+    color: rgb(25,25,112);
+    font-size: 16px;
+    margin-top: 0;
+}
+
+#radioCsv{
+    margin-left: 80px;
 }
