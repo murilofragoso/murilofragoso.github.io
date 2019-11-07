@@ -1,17 +1,17 @@
 $(document).ready(function (){
 
-    $("#bnt-probabilidade-Uniforme").click(function(){
-        let abaSelecionada = $("#pills-nav a").attr("data-value");
+    $("[data-btn-calcular]").click(function(){
+        retiraAlertaCampos();
+        let abaSelecionada = $("#pills-nav a.active").attr("data-value");
         if(validaCampos(abaSelecionada)){
             switch(abaSelecionada){
                 case "uni": uniforme(); break;
                 case "bi": binomial(); break;
                 case "nor": normal(); break;
             }
-            retiraAlertaCampos();
         }
         else
-            alert("Preencha todos os campos!");            
+            alert("Existem campos sem valores ou com valores incorretos!");            
     });
 
     var fatorial = function fac(n) { return n < 2 ? 1 : n * fac(n - 1) }
@@ -122,8 +122,12 @@ $(document).ready(function (){
         if (intervalo == "maior") {
             x = $("#normalQuantidade").val();
 
-            z += Math.abs(((x - media) / dp) * 100);
-            z = vet[z[0] + z[1]][z[2]];
+            z += (((x - media) / dp) * 100).toString().replace(/[^0-9]/g, '')
+            console.log("z: " + z);
+            console.log("x: " + x);
+            console.log("media: " + media);
+            console.log("dp: " + dp);
+            z = vet[parseInt(z[0]) + parseInt(z[1])][z[2]];
             if (x < media) {
                 probabilidade = (0.5 - z) * 100;
             }
@@ -134,8 +138,8 @@ $(document).ready(function (){
         else if (intervalo == "menor") {
             x = $("#normalQuantidade").val();
 
-            z += Math.abs(((x - media) / dp) * 100);
-            z = vet[z[0] + z[1]][z[2]];
+            z += (((x - media) / dp) * 100).toString().replace(/[^0-9]/g, '')
+            z = vet[parseInt(z[0]) + parseInt(z[1])][z[2]];
             if (x > media) {
                 probabilidade = (0.5 + z) * 100;
             }
@@ -147,8 +151,8 @@ $(document).ready(function (){
             x = $("#normalInputDe").val();
             y = $("#normalInputAte").val();
 
-            z += Math.abs(((x - media) / dp) * 100);
-            z = vet[z[0] + z[1]][z[2]];
+            z += (((x - media) / dp) * 100).toString().replace(/[^0-9]/g, '')
+            z = vet[parseInt(z[0]) + parseInt(z[1])][z[2]];
 
             aux += Math.abs(((y - media) / dp) * 100);
             aux = vet[aux[0] + aux[1]][aux[2]];
@@ -164,6 +168,7 @@ $(document).ready(function (){
         let result = true;
 
         if(abaSelecionada == "uni"){
+
             if(!$("#selectUniforme").val()){
                 $("#selectUniforme").addClass("alertInput");
                 result = false;
@@ -184,6 +189,21 @@ $(document).ready(function (){
                 result = false;
             }
 
+            if(isNaN($("#inputQuantidade").val())){
+                $("#inputQuantidade").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#inputPontoMininmo").val())){
+                $("#inputPontoMininmo").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#inputPontoMaximo").val())){
+                $("#inputPontoMaximo").addClass("alertInput");
+                result = false;
+            }
+
             if($("#selectUniforme").val() == "entre"){
                 if(!$("#uniformeInputDe").val()){
                     $("#uniformeInputDe").addClass("alertInput");
@@ -194,7 +214,18 @@ $(document).ready(function (){
                     $("#uniformeInputAte").addClass("alertInput");
                     result = false;
                 }
+
+                if(isNaN($("#uniformeInputDe").val())){
+                    $("#uniformeInputDe").addClass("alertInput");
+                    result = false;
+                }
+
+                if(isNaN($("#uniformeInputAte").val())){
+                    $("#uniformeInputAte").addClass("alertInput");
+                    result = false;
+                }
             }
+
         } else if (abaSelecionada == "bi"){
             if(!$("#amostraN").val()){
                 $("#amostraN").addClass("alertInput");
@@ -212,6 +243,26 @@ $(document).ready(function (){
             }
 
             if(!$("#eventoK").val()){
+                $("#eventoK").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#amostraN").val())){
+                $("#amostraN").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#chanceSucesso").val())){
+                $("#chanceSucesso").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#chanceFracasso").val())){
+                $("#chanceFracasso").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#eventoK").val())){
                 $("#eventoK").addClass("alertInput");
                 result = false;
             }
@@ -236,6 +287,21 @@ $(document).ready(function (){
                 result = false;
             }
 
+            if(isNaN($("#normalMedia").val())){
+                $("#normalMedia").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#normalQuantidade").val())){
+                $("#normalQuantidade").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#normalDesvioPadrao").val())){
+                $("#normalDesvioPadrao").addClass("alertInput");
+                result = false;
+            }
+
             if($("#selectNormal").val() == "entre"){
                 if(!$("#normalInputDe").val()){
                     $("#normalInputDe").addClass("alertInput");
@@ -243,6 +309,16 @@ $(document).ready(function (){
                 }
 
                 if(!$("#normalInputAte").val()){
+                    $("#normalInputAte").addClass("alertInput");
+                    result = false;
+                }
+
+                if(isNaN($("#normalInputDe").val())){
+                    $("#normalInputDe").addClass("alertInput");
+                    result = false;
+                }
+
+                if(isNaN($("#normalInputAte").val())){
                     $("#normalInputAte").addClass("alertInput");
                     result = false;
                 }
