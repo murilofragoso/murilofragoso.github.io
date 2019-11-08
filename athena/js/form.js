@@ -53,6 +53,7 @@ $(document).ready(function () {
         $("#containerDivMae").hide();
         $("#containerCorrelacao").hide();
         $("#containerProbabilidade").show();
+        $("#containerRegressao").hide();
     })
 
     $("#navLinkDescritiva").click(function () {
@@ -60,6 +61,7 @@ $(document).ready(function () {
         $("#containerCard").hide();
         $("#containerCorrelacao").hide();
         $("#containerProbabilidade").hide();
+        $("#containerRegressao").hide();
     })
 
     $("#navLinkRegressao").click(function () {
@@ -67,6 +69,7 @@ $(document).ready(function () {
         $("#containerCard").hide();
         $("#containerCorrelacao").show();
         $("#containerProbabilidade").hide();
+        $("#containerRegressao").hide();
     })
 
     $("[name='tipoEntrada']").change(function (event) {
@@ -88,22 +91,22 @@ $(document).ready(function () {
 
 // Apenas testando, se der muito trabalho no calculo pode tirar...
 
- /*$("#selectRegressao").change(function () {
-    if ($(this).val () == "X") {
-        $("#divCorrelacao01").hide ("fast");
-        $("#divCorrelacao03").hide("fast");
-        $("#divCorrelacao02").show("fast");
+/*$("#selectRegressao").change(function () {
+   if ($(this).val () == "X") {
+       $("#divCorrelacao01").hide ("fast");
+       $("#divCorrelacao03").hide("fast");
+       $("#divCorrelacao02").show("fast");
 
-    }  else if ($(this).val() == "Y") {
-        $("#divCorrelacao01").slideUp("fast");
-        $("#divCorrelacao02").slideUp("fast");
-        $("#divCorrelacao03").slideDown("fast");
+   }  else if ($(this).val() == "Y") {
+       $("#divCorrelacao01").slideUp("fast");
+       $("#divCorrelacao02").slideUp("fast");
+       $("#divCorrelacao03").slideDown("fast");
 
-    } /*else {
-        $("#divCorrelacao03").slideUp("fast");
-        $("#divCorrelacao02").slideUp("fast");
-        $("#divCorrelacao01").slideDown("fast");
-    } 
+   } /*else {
+       $("#divCorrelacao03").slideUp("fast");
+       $("#divCorrelacao02").slideUp("fast");
+       $("#divCorrelacao01").slideDown("fast");
+   }
 
 
 }) */
