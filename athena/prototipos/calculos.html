@@ -345,6 +345,10 @@
             let cv = dp / ((a + b) / 2) * 100;
         };
 
+        //media = media; dp = desvio padrão (sempre)
+        //x = quantidade (maior/menor)
+        // x = de; y = até (entre)
+        // O resultado a ser mostrado é o probabilidade
         function normal(media, dp, x, y) {
             let z = ""
             let aux = ""
@@ -424,6 +428,9 @@
             }
         }
 
+        //Declarar as globais a,b,xa and yb
+
+        //x =independente; y=denpendente
         function correlacao(x, y) {
             if (xi.length > yi.length) {
                 return -1
@@ -437,9 +444,31 @@
                 yi2 += y[i] ** 2;
             }
 
+            xa=xi/n;
+            yb=yi/n;
+            a = (n * soma - xi * yi)/(n * xi2 - (xi ** 2));
+            b = yb-a*xa;
+
             return ((n * soma - xi * yi) / Math.sqrt((n * xi2 - (xi ** 2)) * (n * yi2 - (xi ** 2)))) * 100
 
         }
+        
+        //x =independente; y=denpendente
+        function regressao(x,y){
+            if ("X"){
+                return y=a*x+b;
+            }
+            else{
+                return x=(y-b)/a
+            }
+        }
+
+        xi = 3300
+        yi=122
+        soma=59100
+        xi2=1990000
+        yi2=2858
+
     </script>
 
 </body>

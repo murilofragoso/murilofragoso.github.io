@@ -111,7 +111,7 @@ p{
     background: whitesmoke;
 }
 
-#containerProbabilidade{
+#containerProbabilidade , #containerRegressao{
 
     max-width: 400px;
     width: 100%;

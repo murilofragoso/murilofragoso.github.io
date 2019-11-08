@@ -33,25 +33,27 @@
             Athena
         </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a id="navLinkDescritiva" class="nav-link" href="" style="color: white">Estatística Descritiva <span
-                            class="sr-only">(página atual)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a id="navLinkProbabilidade" class="nav-link" href="#" style="color: white">Probabilidade</a>
-                </li>
-
-                <li class="nav-item">
-                    <a id="navLinkCorrelação" class="nav-link" href="#" style="color: white">Correlação</a>
-                </li>
-            </ul>
-        </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" id="togglerNav">
+                <span class=""></span>
+            </button>
+    
+            <div class="collapse hidden" id="conteudoNavbarSuportado">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a id="navLinkDescritiva" class="nav-link" href="#" style="color: white">Estatística Descritiva 
+                            <span class="sr-only">Menu Estatística Descritiva</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="navLinkProbabilidade" class="nav-link" href="#" style="color: white">Probabilidade
+                            <span class="sr-only">Menu Probabilidade</span></a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a id="navLinkRegressao" class="nav-link" href="#" style="color: white">Correlação e Regressão
+                            <span class="sr-only">Menu Correlação e Regressão</span></a>
+                    </li>
+                </ul>
+            </div>
     </nav>
 
     <div id="containerCard" class="container my-4">
@@ -60,15 +62,15 @@
             <div class="card col-lg-4 col-md-6 my-3 align-items-center" style="border: white;">
                 <div class="face face1 rounded">
                     <div class="content text-center">
-                        <img src="img/primeiro.png">
+                        <img src="img/testePrimeiro.png">
                         <h3>Estatística</h3>
                         <h4>Descritiva</h4>
                     </div>
                 </div>
                 <div class="face face2 rounded">
                     <div class="content text-center">
-                        <p>Um pouco de texto.</p>
-                        <a id="bntDescritiva" class="bnt rounded" style="color: white;">Clique-me</a>
+                        <p> Permite-nos resumir, descrever e compreender os dados de uma distribuição.</p>
+                        <a id="bntDescritiva" class="bnt rounded" style="color: white;" data-btn-menu>Vamos lá!</a>
                     </div>
                 </div>
             </div>
@@ -85,8 +87,8 @@
                 </div>
                 <div class="face face2 rounded">
                     <div class="content text-center">
-                        <p> Um pouco de Texto.</p>
-                        <a id="bntProbabilidade" class="bnt rounded" style="color: white;">Clique-me</a>
+                        <p> Permite-nos estimar matematicamente a possibilidade de ocorrer eventos que acontecem ao acaso.</p>
+                        <a id="bntProbabilidade" class="bnt rounded" style="color: white;" data-btn-menu>Vamos lá!</a>
                     </div>
                 </div>
             </div>
@@ -103,8 +105,8 @@
                 </div>
                 <div class="face face2 rounded">
                     <div class="content text-center">
-                        <p>Um pouco de Texto.</p>
-                        <a id="bntRegressão" class="bnt rounded" style="color: white;">Clique-me</a>
+                        <p> Permite-nos estudar o comportamento conjunto de duas variáveis quantitativas distintas</p>
+                        <a id="bntRegressão" class="bnt rounded" style="color: white;" data-btn-menu>Vamos lá!</a>
                     </div>
                 </div>
             </div>
@@ -125,9 +127,9 @@
                     <div>
                         <label>Entrada de Dados</label>
                     </div>
-                    <div>
-                        <input type="radio" name="tipoEntrada" checked value="txt"> Texto
-                        <input type="radio" name="tipoEntrada" value="csv"> CSV
+                    <div id="divRadioDescritiva">
+                        <input type="radio" name="tipoEntrada" checked value="txt" id="radioTxt"><label for="radioTxt">Texto</label>
+                        <input type="radio" name="tipoEntrada" value="csv" id="radioCsv"> <label for="radioCsv">CSV</label>
                     </div>
                     <div id="divValoresTxt">
                         <input type="text" id="idValores" placeholder="Ex: 1;2;3;...">
@@ -285,7 +287,7 @@
 
                     <div class="form-group col-sm-9">
                         <select class="custom-select  mr-sm-2" id="selectUniforme">
-                            <option selected>Selecione</option>
+                            <option selected value="">Selecione</option>
                             <option value="maior">Maior</option>
                             <option value="entre">Entre</option>
                             <option value="menor">Menor</option>
@@ -302,7 +304,7 @@
 
                 <div class="form-group" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
                     <!--label for="inputQuantidade">Quantidade</label -->
-                    <input type="text" class="form-control" id="inputPontoMininmo" placeholder="Ponto Mìnimo">
+                    <input type="text" class="form-control" id="inputPontoMininmo" placeholder="Ponto Mínimo">
                 </div>
 
                 <div class="form-group">
@@ -324,7 +326,7 @@
                 </div>
 
 
-                <button id="bnt-probabilidade-Uniforme" type="button" class="btn btn-lg btn-block mb-3"
+                <button id="bnt-probabilidade-Uniforme" type="button" class="btn btn-lg btn-block mb-3" data-btn-calcular
                     style="background:rgb(25,25,112); color: white;">Calcular</button>
 
             </div>
@@ -352,7 +354,7 @@
                 </div>
 
 
-                <button id="bnt-probabilidade-Binomial" type="button" class="btn btn-lg btn-block my-3"
+                <button id="bnt-probabilidade-Binomial" type="button" class="btn btn-lg btn-block my-3" data-btn-calcular
                     style="background:rgb(25,25,112); color: white;">Calcular</button>
 
             </div>
@@ -371,7 +373,7 @@
                     <div class="form-group col-sm-9">
 
                         <select class="custom-select my-1 mr-sm-2" id="selectNormal">
-                            <option selected>Selecione</option>
+                            <option selected value="">Selecione</option>
                             <option value="maior">Maior</option>
                             <option value="entre">Entre</option>
                             <option value="menor">Menor</option>
@@ -401,12 +403,12 @@
 
                     <div class="form-group col-sm-6">
                         <!--label for="inputQuantidade">Quantidade</label -->
-                        <input type="text" class="form-control" id="nomralInputDe" placeholder="Até">
+                        <input type="text" class="form-control" id="normalInputAte" placeholder="Até">
                     </div>
 
                 </div>
 
-                <button id="bnt-probabilidade-normal" type="button" class="btn btn-lg btn-block my-2"
+                <button id="bnt-probabilidade-normal" type="button" class="btn btn-lg btn-block my-2" data-btn-calcular
                     style="background:rgb(25,25,112); color: white;">Calcular</button>
 
 

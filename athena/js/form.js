@@ -8,8 +8,8 @@ $(document).ready(function () {
     })
 
     $("#bntDescritiva").click(function () {
-        $("#containerDivMae").show ();
-        $("#containerCard").hide ();
+        $("#containerDivMae").show();
+        $("#containerCard").hide();
     })
 
     $("#bntProbabilidade").click(function () {
@@ -18,16 +18,15 @@ $(document).ready(function () {
         $("#containerDivMae").hide();
     })
 
-    $("bntRegressao").click (function(){
+    $("#bntRegressão").click (function(){
         $("#containerCard").hide();
-        $("#containerRegressão").show ();   
+        $("#containerRegressao").show ();   
     })
 
 
     $("#selectUniforme").change(function () {
         if ($(this).val() == "entre")
             $("#entreUniforme").slideDown()
-
         else
             $("#entreUniforme").slideUp()
 
@@ -36,7 +35,6 @@ $(document).ready(function () {
     $("#selectNormal").change(function () {
         if ($(this).val() == "entre")
             $("#entreNormal").slideDown();
-
         else
             $("#entreNormal").slideUp();
 
@@ -45,7 +43,22 @@ $(document).ready(function () {
     $("#navLinkProbabilidade").click(function () {
         $("#containerCard").hide ();
         $("#containerDivMae").hide();
+        $("#containerRegressao").hide ();
         $("#containerProbabilidade").show();
+    })
+
+    $("#navLinkDescritiva").click(function () {
+        $("#containerDivMae").show();
+        $("#containerCard").hide();
+        $("#containerRegressao").hide ();
+        $("#containerProbabilidade").hide();
+    })
+
+    $("#navLinkRegressao").click(function () {
+        $("#containerDivMae").hide();
+        $("#containerCard").hide();
+        $("#containerRegressao").show ();
+        $("#containerProbabilidade").hide();
     })
 
     $("[name='tipoEntrada']").change(function(event){
@@ -57,6 +70,11 @@ $(document).ready(function () {
             $("#divValoresCsv").slideUp("fast");
             $("#divValoresTxt").slideDown("fast");     
         }
+    })
+
+    $("[data-btn-menu]").click(function(){
+        $("#togglerNav span").addClass("navbar-toggler-icon");
+        $("#conteudoNavbarSuportado").addClass("navbar-collapse").removeClass("hidden");
     })
 });
 

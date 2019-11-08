@@ -1,21 +1,34 @@
 $(document).ready(function (){
 
-    $("#bnt-probabilidade-Uniforme").click(function(){
-        let abaSelecionada = $("#pills-nav a").attr("data-value");
-        if(abaSelecionada == "uni"){
-            uniforme();
+    $("[data-btn-calcular]").click(function(){
+        retiraAlertaCampos();
+        let abaSelecionada = $("#pills-nav a.active").attr("data-value");
+        if(validaCampos(abaSelecionada)){
+            switch(abaSelecionada){
+                case "uni": uniforme(); break;
+                case "bi": binomial(); break;
+                case "nor": normal(); break;
+            }
         }
-            
+        else
+            alert("Existem campos sem valores ou com valores incorretos!");            
     });
 
     var fatorial = function fac(n) { return n < 2 ? 1 : n * fac(n - 1) }
 
-    function binomial(n, k, p, q) {
+    function binomial() {
         let analComb = 1;
+        let n = $("#amostraN").val();
+        let p = $("#chanceSucesso").val();
+        let q = $("#chanceFracasso").val();
+        let k = $("#eventoK").val();
         if (k != 0 || k != n) {
             analComb = fatorial(n) / (fatorial(k) * fatorial(n - k));
         }
-        return analComb * p ** k * q ** (n - k);
+
+        let result = analComb * p ** k * q ** (n - k);
+
+        console.log(result);
     }
 
     function uniforme() {
@@ -54,7 +67,12 @@ $(document).ready(function (){
         console.log("cv: " + cv);
     };
 
-    function normal(media, dp, x, y) {
+    function normal() {
+        let intervalo = $("#selectNormal").val();
+        let media = $("#normalMedia").val();
+        let dp = $("#normalDesvioPadrao").val();
+        let x = "";
+        let y = "";
         let z = ""
         let aux = ""
         let probabilidade = 0;
@@ -101,9 +119,15 @@ $(document).ready(function (){
             [0.5000, 0.5000, 0.5000, 0.5000, 0.5000, 0.5000, 0.5000, 0.5000, 0.5000, 0.5000],
         ];
 
-        if ("maiorQ") {
-            z += Math.abs(((x - media) / dp) * 100);
-            z = vet[z[0] + z[1]][z[2]];
+        if (intervalo == "maior") {
+            x = $("#normalQuantidade").val();
+
+            z += (((x - media) / dp) * 100).toString().replace(/[^0-9]/g, '')
+            console.log("z: " + z);
+            console.log("x: " + x);
+            console.log("media: " + media);
+            console.log("dp: " + dp);
+            z = vet[parseInt(z[0]) + parseInt(z[1])][z[2]];
             if (x < media) {
                 probabilidade = (0.5 - z) * 100;
             }
@@ -111,9 +135,11 @@ $(document).ready(function (){
                 probabilidade = (0.5 + z) * 100
             }
         }
-        else if ("menorQ") {
-            z += Math.abs(((x - media) / dp) * 100);
-            z = vet[z[0] + z[1]][z[2]];
+        else if (intervalo == "menor") {
+            x = $("#normalQuantidade").val();
+
+            z += (((x - media) / dp) * 100).toString().replace(/[^0-9]/g, '')
+            z = vet[parseInt(z[0]) + parseInt(z[1])][z[2]];
             if (x > media) {
                 probabilidade = (0.5 + z) * 100;
             }
@@ -121,9 +147,12 @@ $(document).ready(function (){
                 probabilidade = (0.5 - z) * 100
             }
         }
-        else if ("entre") {
-            z += Math.abs(((x - media) / dp) * 100);
-            z = vet[z[0] + z[1]][z[2]];
+        else if (intervalo == "entre") {
+            x = $("#normalInputDe").val();
+            y = $("#normalInputAte").val();
+
+            z += (((x - media) / dp) * 100).toString().replace(/[^0-9]/g, '')
+            z = vet[parseInt(z[0]) + parseInt(z[1])][z[2]];
 
             aux += Math.abs(((y - media) / dp) * 100);
             aux = vet[aux[0] + aux[1]][aux[2]];
@@ -131,22 +160,176 @@ $(document).ready(function (){
             probabilidade = (z - aux) * 100
 
         }
+
+        console.log(probabilidade);
     }
 
-    function correlacao(x, y) {
-        if (xi.length > yi.length) {
-            return -1
-        }
-        let soma = 0, xi2 = 0, yi2 = 0, xi = 0, yi = 0, n = x.length;
-        for (let i = 0; i < xi.length; i++) {
-            xi += x[i];
-            yi += y[i];
-            soma += x[i] + y[i];
-            xi2 += x[i] ** 2;
-            yi2 += y[i] ** 2;
+    function validaCampos(abaSelecionada){
+        let result = true;
+
+        if(abaSelecionada == "uni"){
+
+            if(!$("#selectUniforme").val()){
+                $("#selectUniforme").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#inputQuantidade").val()){
+                $("#inputQuantidade").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#inputPontoMininmo").val()){
+                $("#inputPontoMininmo").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#inputPontoMaximo").val()){
+                $("#inputPontoMaximo").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#inputQuantidade").val())){
+                $("#inputQuantidade").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#inputPontoMininmo").val())){
+                $("#inputPontoMininmo").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#inputPontoMaximo").val())){
+                $("#inputPontoMaximo").addClass("alertInput");
+                result = false;
+            }
+
+            if($("#selectUniforme").val() == "entre"){
+                if(!$("#uniformeInputDe").val()){
+                    $("#uniformeInputDe").addClass("alertInput");
+                    result = false;
+                }
+
+                if(!$("#uniformeInputAte").val()){
+                    $("#uniformeInputAte").addClass("alertInput");
+                    result = false;
+                }
+
+                if(isNaN($("#uniformeInputDe").val())){
+                    $("#uniformeInputDe").addClass("alertInput");
+                    result = false;
+                }
+
+                if(isNaN($("#uniformeInputAte").val())){
+                    $("#uniformeInputAte").addClass("alertInput");
+                    result = false;
+                }
+            }
+
+        } else if (abaSelecionada == "bi"){
+            if(!$("#amostraN").val()){
+                $("#amostraN").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#chanceSucesso").val()){
+                $("#chanceSucesso").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#chanceFracasso").val()){
+                $("#chanceFracasso").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#eventoK").val()){
+                $("#eventoK").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#amostraN").val())){
+                $("#amostraN").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#chanceSucesso").val())){
+                $("#chanceSucesso").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#chanceFracasso").val())){
+                $("#chanceFracasso").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#eventoK").val())){
+                $("#eventoK").addClass("alertInput");
+                result = false;
+            }
+        } else if (abaSelecionada == "nor"){
+            if(!$("#selectNormal").val()){
+                $("#selectNormal").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#normalMedia").val()){
+                $("#normalMedia").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#normalQuantidade").val()){
+                $("#normalQuantidade").addClass("alertInput");
+                result = false;
+            }
+
+            if(!$("#normalDesvioPadrao").val()){
+                $("#normalDesvioPadrao").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#normalMedia").val())){
+                $("#normalMedia").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#normalQuantidade").val())){
+                $("#normalQuantidade").addClass("alertInput");
+                result = false;
+            }
+
+            if(isNaN($("#normalDesvioPadrao").val())){
+                $("#normalDesvioPadrao").addClass("alertInput");
+                result = false;
+            }
+
+            if($("#selectNormal").val() == "entre"){
+                if(!$("#normalInputDe").val()){
+                    $("#normalInputDe").addClass("alertInput");
+                    result = false;
+                }
+
+                if(!$("#normalInputAte").val()){
+                    $("#normalInputAte").addClass("alertInput");
+                    result = false;
+                }
+
+                if(isNaN($("#normalInputDe").val())){
+                    $("#normalInputDe").addClass("alertInput");
+                    result = false;
+                }
+
+                if(isNaN($("#normalInputAte").val())){
+                    $("#normalInputAte").addClass("alertInput");
+                    result = false;
+                }
+            }
         }
 
-        return ((n * soma - xi * yi) / Math.sqrt((n * xi2 - (xi ** 2)) * (n * yi2 - (xi ** 2)))) * 100
-
+        return result;
     }
+
+    function retiraAlertaCampos(){
+        $(".alertInput").removeClass("alertInput");
+    }
+
 });
