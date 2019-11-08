@@ -18,6 +18,12 @@ $(document).ready(function () {
         $("#containerDivMae").hide();
     })
 
+    $("bntRegressao").click (function(){
+        $("#containerCard").hide();
+        $("#containerRegressão").show ();   
+    })
+
+
     $("#selectUniforme").change(function () {
         if ($(this).val() == "entre")
             $("#entreUniforme").slideDown()
