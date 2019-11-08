@@ -17,7 +17,7 @@ $( document ).ready(function(){
 
     function limparCamposProb(){
         //uniforme
-        $("#selectUniforme").val("");
+        $("#selectUniforme").val("").change();
         $("#inputQuantidade").val("");
         $("#inputPontoMininmo").val("");
         $("#inputPontoMaximo").val("");
@@ -31,7 +31,7 @@ $( document ).ready(function(){
         $("#eventoK").val("");
 
         //normal
-        $("#selectNormal").val("");
+        $("#selectNormal").val("").change();
         $("#normalMedia").val("");
         $("#normalQuantidade").val("");
         $("#normalDesvioPadrao").val("");

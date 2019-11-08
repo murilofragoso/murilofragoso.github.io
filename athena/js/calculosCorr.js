@@ -10,10 +10,6 @@ $(document).ready(function (){
             //calculando
             let corr = correlacao().toFixed(2);
             if(corr){
-                //limpando campos
-                $("#inputIndependente").val("");
-                $("#inputDependente").val("");
-
                 //escondendo formulário
                 $("#containerCorrelacao").hide();
 
@@ -42,9 +38,6 @@ $(document).ready(function (){
     function correlacao() {
         let x = $("#inputIndependente").val(),
             y = $("#inputDependente").val();
-        /*if (xi.length > yi.length) {
-            return -1
-        }*/
         x = x.split(";");
         y = y.split(";");
 
