@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/calculos.js"></script>
     <script src="js/calculosProb.js"></script>
+    <script src="js/calculosCorr.js"></script>
     <script src="js/header.js"></script>
     <script src="js/form.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
@@ -448,13 +449,13 @@
         <div class="form-group">
             <!--label for="inputQuantidade">Quantidade</label -->
             <input id="inputIndependente" type="text" class="form-control" id="inputQuantidade"
-                placeholder="Independente (X)">
+                placeholder="Independente (X) Ex: 10;20;30...">
         </div>
 
         <div class="form-group">
             <!--label for="inputQuantidade">Quantidade</label -->
-            <input id="inputDependnete" type="text" class="form-control" id="inputPontoMininmo"
-                placeholder="Dependente (Y)">
+            <input id="inputDependente" type="text" class="form-control" id="inputPontoMininmo"
+                placeholder="Dependente (Y) Ex: 10;20;30...">
         </div>
 
 
@@ -525,6 +526,7 @@
 
             <div class="form-group col-sm-12 text-center" id="resultadoProjecao">
                 <label>Resultado:</label>
+                <label id="resultRegress"></label>
             </div>
 
 

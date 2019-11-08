@@ -1,9 +1,16 @@
 $(document).ready(function (){
 
     $("[data-btn-calcular]").click(function(){
+        //reiniciando classe de alerta para validar
         retiraAlertaCampos();
+        
+        //buscando a aba selecionada
         let abaSelecionada = $("#pills-nav a.active").attr("data-value");
+
+        //validando campos
         if(validaCampos(abaSelecionada)){
+
+            //calculando de acordo com a aba selecionada
             switch(abaSelecionada){
                 case "uni": uniforme(); break;
                 case "bi": binomial(); break;
@@ -11,7 +18,7 @@ $(document).ready(function (){
             }
         }
         else
-            alert("Existem campos sem valores ou com valores incorretos!");            
+            alert("Existem campos sem valores ou com valores incorretos!"); //retornando erro        
     });
 
     var fatorial = function fac(n) { return n < 2 ? 1 : n * fac(n - 1) }
@@ -174,95 +181,50 @@ $(document).ready(function (){
                 result = false;
             }
 
-            if(!$("#inputQuantidade").val()){
+            if(!$("#inputQuantidade").val() || isNaN($("#inputQuantidade").val())){
                 $("#inputQuantidade").addClass("alertInput");
                 result = false;
             }
 
-            if(!$("#inputPontoMininmo").val()){
+            if(!$("#inputPontoMininmo").val() || isNaN($("#inputPontoMininmo").val())){
                 $("#inputPontoMininmo").addClass("alertInput");
                 result = false;
             }
 
-            if(!$("#inputPontoMaximo").val()){
-                $("#inputPontoMaximo").addClass("alertInput");
-                result = false;
-            }
-
-            if(isNaN($("#inputQuantidade").val())){
-                $("#inputQuantidade").addClass("alertInput");
-                result = false;
-            }
-
-            if(isNaN($("#inputPontoMininmo").val())){
-                $("#inputPontoMininmo").addClass("alertInput");
-                result = false;
-            }
-
-            if(isNaN($("#inputPontoMaximo").val())){
+            if(!$("#inputPontoMaximo").val() || isNaN($("#inputPontoMaximo").val())){
                 $("#inputPontoMaximo").addClass("alertInput");
                 result = false;
             }
 
             if($("#selectUniforme").val() == "entre"){
-                if(!$("#uniformeInputDe").val()){
+                if(!$("#uniformeInputDe").val() || isNaN($("#uniformeInputDe").val())){
                     $("#uniformeInputDe").addClass("alertInput");
                     result = false;
                 }
 
-                if(!$("#uniformeInputAte").val()){
-                    $("#uniformeInputAte").addClass("alertInput");
-                    result = false;
-                }
-
-                if(isNaN($("#uniformeInputDe").val())){
-                    $("#uniformeInputDe").addClass("alertInput");
-                    result = false;
-                }
-
-                if(isNaN($("#uniformeInputAte").val())){
+                if(!$("#uniformeInputAte").val() || isNaN($("#uniformeInputAte").val())){
                     $("#uniformeInputAte").addClass("alertInput");
                     result = false;
                 }
             }
 
         } else if (abaSelecionada == "bi"){
-            if(!$("#amostraN").val()){
+            if(!$("#amostraN").val() || isNaN($("#amostraN").val())){
                 $("#amostraN").addClass("alertInput");
                 result = false;
             }
 
-            if(!$("#chanceSucesso").val()){
+            if(!$("#chanceSucesso").val() || isNaN($("#chanceSucesso").val())){
                 $("#chanceSucesso").addClass("alertInput");
                 result = false;
             }
 
-            if(!$("#chanceFracasso").val()){
+            if(!$("#chanceFracasso").val() || isNaN($("#chanceFracasso").val())){
                 $("#chanceFracasso").addClass("alertInput");
                 result = false;
             }
 
-            if(!$("#eventoK").val()){
-                $("#eventoK").addClass("alertInput");
-                result = false;
-            }
-
-            if(isNaN($("#amostraN").val())){
-                $("#amostraN").addClass("alertInput");
-                result = false;
-            }
-
-            if(isNaN($("#chanceSucesso").val())){
-                $("#chanceSucesso").addClass("alertInput");
-                result = false;
-            }
-
-            if(isNaN($("#chanceFracasso").val())){
-                $("#chanceFracasso").addClass("alertInput");
-                result = false;
-            }
-
-            if(isNaN($("#eventoK").val())){
+            if(!$("#eventoK").val() || isNaN($("#eventoK").val())){
                 $("#eventoK").addClass("alertInput");
                 result = false;
             }
@@ -272,53 +234,28 @@ $(document).ready(function (){
                 result = false;
             }
 
-            if(!$("#normalMedia").val()){
+            if(!$("#normalMedia").val() || isNaN($("#normalMedia").val())){
                 $("#normalMedia").addClass("alertInput");
                 result = false;
             }
 
-            if(!$("#normalQuantidade").val()){
+            if(!$("#normalQuantidade").val() || isNaN($("#normalQuantidade").val())){
                 $("#normalQuantidade").addClass("alertInput");
                 result = false;
             }
 
-            if(!$("#normalDesvioPadrao").val()){
-                $("#normalDesvioPadrao").addClass("alertInput");
-                result = false;
-            }
-
-            if(isNaN($("#normalMedia").val())){
-                $("#normalMedia").addClass("alertInput");
-                result = false;
-            }
-
-            if(isNaN($("#normalQuantidade").val())){
-                $("#normalQuantidade").addClass("alertInput");
-                result = false;
-            }
-
-            if(isNaN($("#normalDesvioPadrao").val())){
+            if(!$("#normalDesvioPadrao").val() || isNaN($("#normalDesvioPadrao").val())){
                 $("#normalDesvioPadrao").addClass("alertInput");
                 result = false;
             }
 
             if($("#selectNormal").val() == "entre"){
-                if(!$("#normalInputDe").val()){
+                if(!$("#normalInputDe").val() || isNaN($("#normalInputDe").val())){
                     $("#normalInputDe").addClass("alertInput");
                     result = false;
                 }
 
-                if(!$("#normalInputAte").val()){
-                    $("#normalInputAte").addClass("alertInput");
-                    result = false;
-                }
-
-                if(isNaN($("#normalInputDe").val())){
-                    $("#normalInputDe").addClass("alertInput");
-                    result = false;
-                }
-
-                if(isNaN($("#normalInputAte").val())){
+                if(!$("#normalInputAte").val() || isNaN($("#normalInputAte").val())){
                     $("#normalInputAte").addClass("alertInput");
                     result = false;
                 }
