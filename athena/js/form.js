@@ -18,10 +18,18 @@ $(document).ready(function () {
         $("#containerDivMae").hide();
     })
 
-    $("#bntRegressão").click (function(){
+    $("#bntRegressão").click(function () {
         $("#containerCard").hide();
-        $("#containerRegressao").show ();   
+        $("#containerCorrelacao").show();
     })
+
+    $("#bntCorrelacao").click(function () {
+        $("#containerCard").hide();
+        $("#containerCorrelacao").hide();
+        $("#containerRegressao").show();
+    })
+
+
 
 
     $("#selectUniforme").change(function () {
@@ -41,42 +49,72 @@ $(document).ready(function () {
     })
 
     $("#navLinkProbabilidade").click(function () {
-        $("#containerCard").hide ();
+        $("#containerCard").hide();
         $("#containerDivMae").hide();
-        $("#containerRegressao").hide ();
+        $("#containerCorrelacao").hide();
         $("#containerProbabilidade").show();
     })
 
     $("#navLinkDescritiva").click(function () {
         $("#containerDivMae").show();
         $("#containerCard").hide();
-        $("#containerRegressao").hide ();
+        $("#containerCorrelacao").hide();
         $("#containerProbabilidade").hide();
     })
 
     $("#navLinkRegressao").click(function () {
         $("#containerDivMae").hide();
         $("#containerCard").hide();
-        $("#containerRegressao").show ();
+        $("#containerCorrelacao").show();
         $("#containerProbabilidade").hide();
     })
 
-    $("[name='tipoEntrada']").change(function(event){
+    $("[name='tipoEntrada']").change(function (event) {
         let valueSelecionado = event.target.value;
-        if(valueSelecionado == "csv"){
+        if (valueSelecionado == "csv") {
             $("#divValoresTxt").slideUp("fast");
-            $("#divValoresCsv").slideDown("fast");            
-        }else{
+            $("#divValoresCsv").slideDown("fast");
+        } else {
             $("#divValoresCsv").slideUp("fast");
-            $("#divValoresTxt").slideDown("fast");     
+            $("#divValoresTxt").slideDown("fast");
         }
     })
 
-    $("[data-btn-menu]").click(function(){
+    $("[data-btn-menu]").click(function () {
         $("#togglerNav span").addClass("navbar-toggler-icon");
         $("#conteudoNavbarSuportado").addClass("navbar-collapse").removeClass("hidden");
     })
 });
+
+// Apenas testando, se der muito trabalho no calculo pode tirar...
+
+ /*$("#selectRegressao").change(function () {
+    if ($(this).val () == "X") {
+        $("#divCorrelacao01").hide ("fast");
+        $("#divCorrelacao03").hide("fast");
+        $("#divCorrelacao02").show("fast");
+
+    }  else if ($(this).val() == "Y") {
+        $("#divCorrelacao01").slideUp("fast");
+        $("#divCorrelacao02").slideUp("fast");
+        $("#divCorrelacao03").slideDown("fast");
+
+    } /*else {
+        $("#divCorrelacao03").slideUp("fast");
+        $("#divCorrelacao02").slideUp("fast");
+        $("#divCorrelacao01").slideDown("fast");
+    } 
+
+
+}) */
+
+
+
+
+
+
+
+
 
 
 

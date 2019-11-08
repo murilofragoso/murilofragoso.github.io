@@ -33,27 +33,28 @@
             Athena
         </a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" id="togglerNav">
-                <span class=""></span>
-            </button>
-    
-            <div class="collapse hidden" id="conteudoNavbarSuportado">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a id="navLinkDescritiva" class="nav-link" href="#" style="color: white">Estatística Descritiva 
-                            <span class="sr-only">Menu Estatística Descritiva</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="navLinkProbabilidade" class="nav-link" href="#" style="color: white">Probabilidade
-                            <span class="sr-only">Menu Probabilidade</span></a>
-                    </li>
-    
-                    <li class="nav-item">
-                        <a id="navLinkRegressao" class="nav-link" href="#" style="color: white">Correlação e Regressão
-                            <span class="sr-only">Menu Correlação e Regressão</span></a>
-                    </li>
-                </ul>
-            </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado"
+            id="togglerNav">
+            <span class=""></span>
+        </button>
+
+        <div class="collapse hidden" id="conteudoNavbarSuportado">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a id="navLinkDescritiva" class="nav-link" href="#" style="color: white">Estatística Descritiva
+                        <span class="sr-only">Menu Estatística Descritiva</span></a>
+                </li>
+                <li class="nav-item">
+                    <a id="navLinkProbabilidade" class="nav-link" href="#" style="color: white">Probabilidade
+                        <span class="sr-only">Menu Probabilidade</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a id="navLinkRegressao" class="nav-link" href="#" style="color: white">Correlação e Regressão
+                        <span class="sr-only">Menu Correlação e Regressão</span></a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
     <div id="containerCard" class="container my-4">
@@ -87,7 +88,8 @@
                 </div>
                 <div class="face face2 rounded">
                     <div class="content text-center">
-                        <p> Permite-nos estimar matematicamente a possibilidade de ocorrer eventos que acontecem ao acaso.</p>
+                        <p> Permite-nos estimar matematicamente a possibilidade de ocorrer eventos que acontecem ao
+                            acaso.</p>
                         <a id="bntProbabilidade" class="bnt rounded" style="color: white;" data-btn-menu>Vamos lá!</a>
                     </div>
                 </div>
@@ -128,8 +130,10 @@
                         <label>Entrada de Dados</label>
                     </div>
                     <div id="divRadioDescritiva">
-                        <input type="radio" name="tipoEntrada" checked value="txt" id="radioTxt"><label for="radioTxt">Texto</label>
-                        <input type="radio" name="tipoEntrada" value="csv" id="radioCsv"> <label for="radioCsv">CSV</label>
+                        <input type="radio" name="tipoEntrada" checked value="txt" id="radioTxt"><label
+                            for="radioTxt">Texto</label>
+                        <input type="radio" name="tipoEntrada" value="csv" id="radioCsv"> <label
+                            for="radioCsv">CSV</label>
                     </div>
                     <div id="divValoresTxt">
                         <input type="text" id="idValores" placeholder="Ex: 1;2;3;...">
@@ -250,15 +254,18 @@
                 <uL class="nav nav-pills justify-content-center my-3 " id="pills-nav" role="tablist">
 
                     <li class="nav-item">
-                        <a class="nav-link active" id="nav-pills-01" data-toggle="pill" href="#nav-item-01" data-value="uni">Uniforme</a>
+                        <a class="nav-link active" id="nav-pills-01" data-toggle="pill" href="#nav-item-01"
+                            data-value="uni">Uniforme</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " id="nav-pills-02" data-toggle="pill" href="#nav-item-02" data-value="bi">Binomial</a>
+                        <a class="nav-link " id="nav-pills-02" data-toggle="pill" href="#nav-item-02"
+                            data-value="bi">Binomial</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " id="nav-pills-03" data-toggle="pill" href="#nav-item-03" data-value="nor">Normal</a>
+                        <a class="nav-link " id="nav-pills-03" data-toggle="pill" href="#nav-item-03"
+                            data-value="nor">Normal</a>
                     </li>
 
                 </uL>
@@ -326,8 +333,8 @@
                 </div>
 
 
-                <button id="bnt-probabilidade-Uniforme" type="button" class="btn btn-lg btn-block mb-3" data-btn-calcular
-                    style="background:rgb(25,25,112); color: white;">Calcular</button>
+                <button id="bnt-probabilidade-Uniforme" type="button" class="btn btn-lg btn-block mb-3"
+                    data-btn-calcular style="background:rgb(25,25,112); color: white;">Calcular</button>
 
             </div>
 
@@ -354,8 +361,8 @@
                 </div>
 
 
-                <button id="bnt-probabilidade-Binomial" type="button" class="btn btn-lg btn-block my-3" data-btn-calcular
-                    style="background:rgb(25,25,112); color: white;">Calcular</button>
+                <button id="bnt-probabilidade-Binomial" type="button" class="btn btn-lg btn-block my-3"
+                    data-btn-calcular style="background:rgb(25,25,112); color: white;">Calcular</button>
 
             </div>
 
@@ -419,7 +426,7 @@
 
     </div>
 
-    <div id="containerRegressao" class=" container my-4 border " style="display: none;">
+    <div id="containerCorrelacao" class=" container my-4 border " style="display: none;">
 
         <div>
 
@@ -434,24 +441,97 @@
         </div>
 
         <div class="form-group text-center my-3">
-            <h3>Regressão</h3>
+            <h3>Correlação</h3>
             <!--label id="teste" for="inputEntradaDeDados">Entrada de Dados</label-->
         </div>
 
         <div class="form-group">
             <!--label for="inputQuantidade">Quantidade</label -->
-            <input id="inputIndependente" type="text" class="form-control" id="inputQuantidade" placeholder="Independente (X)">
+            <input id="inputIndependente" type="text" class="form-control" id="inputQuantidade"
+                placeholder="Independente (X)">
         </div>
 
         <div class="form-group">
             <!--label for="inputQuantidade">Quantidade</label -->
-            <input id="inputDependete" type="text" class="form-control" id="inputPontoMininmo" placeholder="Dependente (Y)">
+            <input id="inputDependnete" type="text" class="form-control" id="inputPontoMininmo"
+                placeholder="Dependente (Y)">
         </div>
 
 
 
-        <button id="bnt-probabilidade-Uniforme" type="button" class="btn btn-lg btn-block my-3"
+        <button id="bntCorrelacao" type="button" class="btn btn-lg btn-block my-3"
             style="background:rgb(25,25,112); color: white;">Calcular</button>
+
+
+    </div>
+
+    <div id="containerRegressao" class="container my-4 border" style="display: none;">
+
+        <div class="col-12 my-3">
+            <div class="col-12 text-center my-1">
+                <h3> Resultado Correlação</h3>
+            </div>
+
+        </div>
+
+        <hr style="color:midnightblue">
+
+        <div class="row justify-content-center my-3">
+
+            <div id="divEquacao" class="form group col-sm-6">
+                <label>Equação da Reta: 5 </label>
+            </div>
+
+            <div id="divCorrelacao" class="form group col-sm-6">
+                <label>Correlação: </label>
+            </div>
+
+        </div>
+
+        <hr style="color:midnightblue">
+
+        <div class="col-12 my-3">
+            <div class="col-12 text-center my-1">
+                <h3>Regressão</h3>
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center my-3">
+
+            <div class="form-group col-sm-6">
+                <label>Projeções</label>
+                <select class="custom-select mr-sm-2 my-1" id="selectRegressao">
+                    <option selected>Selecione</option>
+                    <option value="X">X</option>
+                    <option value="Y">Y</option>
+                </select>
+            </div>
+
+            <div id="divCorrelacao01" class="form group col-sm-6">
+                <label>Valor de:</label>
+                <input  type="text" class="form-control my-1" id="regressaoSelecione" placeholder="...">
+            </div>
+
+            <div id="divCorrelacao02" class="form group col-sm-6" style="display: none;" >
+                <label>Valor de: X</label>
+                <input  type="text" class="form-control my-1" id="regressaoDeX" placeholder="(X)">
+            </div>
+
+            <div id="divCorrelacao03" class="form group col-sm-6" style="display:none">
+                <label>Valor de: Y</label>
+                <input  type="text" class="form-control my-1" id="regressaoDeY" placeholder="(Y)">
+            </div>
+
+            <div class="form-group col-sm-12 text-center" id="resultadoProjecao">
+                <label>Resultado:</label>
+            </div>
+
+
+        </div>
+
+        <hr style="color: midnightblue;">
+
 
 
     </div>
