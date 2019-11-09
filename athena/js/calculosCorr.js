@@ -13,18 +13,21 @@ $(document).ready(function (){
                 //escondendo formulário
                 $("#containerCorrelacao").hide();
 
-                //exibindo resultados
-                $("#divEquacao label").text("Equação da Reta: " + corr + "%");
-                if(corr < 0)
+                //exibindo resultados  
+                let prop = "diretamente proporcional";
+                if(corr < 0){
                     corr = corr * -1;
-                let forcaCorr
-                if(corr < 0.3)
-                    forcaCorr = "Inexistente à fraca";
-                else if(corr < 0.6)
-                    forcaCorr = "Fraca à média";
-                else if(corr >= 0.6)
-                    forcaCorr = "Média à forte";
-                    
+                    prop = "inversamente proporcional";
+                }
+                let forcaCorr;
+                if(corr < 30)
+                    forcaCorr = "Inexistente à fraca, "+ prop;
+                else if(corr < 60)
+                    forcaCorr = "Fraca à média, "+ prop;
+                else if(corr >= 60)
+                    forcaCorr = "Média à forte, " + prop;
+
+                $("#divEquacao label").text("Equação da Reta: " + corr + "%");    
                 $("#divCorrelacao label").text("Correlação: " + forcaCorr);    
                 $("#containerRegressao").show();
             }
@@ -67,10 +70,10 @@ $(document).ready(function (){
     //x =independente; y=denpendente
     $("#regressaoSelecione").blur(function(){
         let result;
-        if ($("#selectRegressao").val() == "X"){
+        if ($("#selectRegressao").val() == "Y"){
             result = a * $(this).val() + b;
         }
-        else{
+        else if ($("#selectRegressao").val() == "X"){
             result = ($(this).val() - b) / a;
         }
 
