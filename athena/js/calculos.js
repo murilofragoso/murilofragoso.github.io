@@ -164,16 +164,6 @@ $(document).ready(function () {
         }
 
         let result = "Resultado: " + vetGlobal[Math.round((vetGlobal.length - 1) / (100 / porcentagem))];
-        /*if (vetGlobal.length % 2 != 0)
-            result += vetGlobal[Math.round((vetGlobal.length - 1) / (100 / porcentagem))];
-        else {
-            if (indQuantiGlobal) {
-                result += (parseInt(vetGlobal[Math.round((vetGlobal.length - 1) / (100 / porcentagem)) - 1]) + parseInt(vetGlobal[Math.round((vetGlobal.length - 1) / (100 / porcentagem))])) / 2;
-            }
-            else
-                result += vetGlobal[Math.round((vetGlobal.length - 1) / (100 / porcentagem) - 1)] + " e " + vetGlobal[Math.round((vetGlobal.length - 1) / (100 / porcentagem))];
-        }*/
-
         $("#resultMedidasSeparatrizes").text(result);
     }
 

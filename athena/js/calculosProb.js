@@ -34,6 +34,8 @@ $(document).ready(function (){
         }
 
         let result = analComb * p ** k * q ** (n - k);
+        let media = n*p;
+        let dp = Math.sqrt(n*p*q);
 
         console.log(result);
     }
@@ -69,16 +71,11 @@ $(document).ready(function (){
         let dp = Math.sqrt((b - a) ** 2 / 12);
         let cv = dp / ((a + b) / 2) * 100;
 
-        console.log("result: " + result);
-        console.log("variancia: " + variancia);
-        console.log("dp: " + dp);
-        console.log("cv: " + cv);
-
-        $("#resultadoUniforme").text("Resultado: " + result);   
-        $("#cvUniforme").text("Coeficiente de Variancia: " + cv);
-        $("#dpUniforme").text("Desvio Padrão: " + dp);
-        $("#varianciaUniforme").text("Variancia: " + variancia);
-        $("#resultadosProbabilidade").show ();
+        $("#resultadoUniforme label").text("Resultado: " + result);   
+        $("#cvUniforme label").text("Coeficiente de Variancia: " + cv);
+        $("#dpUniforme label").text("Desvio Padrão: " + dp);
+        $("#varianciaUniforme label").text("Variancia: " + variancia);
+        $("#resultadosUniforme").show();
 
     };
 
@@ -140,10 +137,6 @@ $(document).ready(function (){
             x = $("#normalQuantidade").val();
 
             z += (((x - media) / dp) * 100).toString().replace(/[^0-9]/g, '')
-            console.log("z: " + z);
-            console.log("x: " + x);
-            console.log("media: " + media);
-            console.log("dp: " + dp);
             z = vet[parseInt(z[0]) + parseInt(z[1])][z[2]];
             if (x < media) {
                 probabilidade = (0.5 - z) * 100;
@@ -178,7 +171,8 @@ $(document).ready(function (){
 
         }
 
-        console.log(probabilidade);
+        $("#probabilidadeNormal label").text("Probabilidade: " + probabilidade)
+        $("#resultadosNormal").show();
     }
 
     function validaCampos(abaSelecionada){
