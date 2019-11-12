@@ -50,6 +50,7 @@ $(document).ready(function () {
         $("#containerCorrelacao").hide();
         $("#containerProbabilidade").show();
         $("#containerRegressao").hide();
+        limparResultProb();
     })
 
     $("#navLinkDescritiva").click(function () {
@@ -58,6 +59,7 @@ $(document).ready(function () {
         $("#containerCorrelacao").hide();
         $("#containerProbabilidade").hide();
         $("#containerRegressao").hide();
+        limparResultProb();
     })
 
     $("#navLinkRegressao").click(function () {
@@ -66,6 +68,7 @@ $(document).ready(function () {
         $("#containerCorrelacao").show();
         $("#containerProbabilidade").hide();
         $("#containerRegressao").hide();
+        limparResultProb();
     })
 
     $("[name='tipoEntrada']").change(function (event) {
@@ -83,6 +86,18 @@ $(document).ready(function () {
         $("#togglerNav span").addClass("navbar-toggler-icon");
         $("#conteudoNavbarSuportado").addClass("navbar-collapse").removeClass("hidden");
     })
+
+    $("#pills-nav .nav-item").click(function(){
+        var item = $(this).find('a');
+        if(!item.hasClass("active"))
+            limparResultProb();
+    })
+
+    function limparResultProb(){
+        $("#resultadosUniforme").hide();
+        $("#resultadosBinomial").hide();
+        $("#resultadosNormal").hide();
+    }
 });
 
 // Apenas testando, se der muito trabalho no calculo pode tirar...

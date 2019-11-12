@@ -29,13 +29,13 @@ $(document).ready(function (){
         let p = $("#chanceSucesso").val();
         let q = $("#chanceFracasso").val();
         let k = $("#eventoK").val();
-        if (k != 0 || k != n) {
+        if (k != 0 && k != n) {
             analComb = fatorial(n) / (fatorial(k) * fatorial(n - k));
         }
 
-        let result = analComb * p ** k * q ** (n - k);
+        let result = ((analComb * p ** k * q ** (n - k)) * 100).toFixed(2);
         let media = n*p;
-        let dp = Math.sqrt(n*p*q);
+        let dp = Math.sqrt(n*p*q).toFixed(2);
 
         $("#probabilidadeBinomial label").text("Probabilidade: " + result);
         $("#mediaBinomial label").text("Média: " + media);
@@ -69,10 +69,10 @@ $(document).ready(function (){
             x = x - y;
         }
 
-        let result = 1 / (b - a) * x * 100;
-        let variancia = (b - a) ** 2 / 12;
-        let dp = Math.sqrt((b - a) ** 2 / 12);
-        let cv = dp / ((a + b) / 2) * 100;
+        let result = (1 / (b - a) * x * 100).toFixed(2);
+        let variancia = ((b - a) ** 2 / 12).toFixed(2);
+        let dp = Math.sqrt((b - a) ** 2 / 12).toFixed(2);
+        let cv = (dp / ((a + b) / 2) * 100).toFixed(2);
 
         $("#resultadoUniforme label").text("Resultado: " + result);   
         $("#cvUniforme label").text("Coeficiente de Variancia: " + cv);
