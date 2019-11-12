@@ -23,15 +23,6 @@ $(document).ready(function () {
         $("#containerCorrelacao").show();
     })
 
-    $("#bntCorrelacao").click(function () {
-        $("#containerCard").hide();
-        $("#containerCorrelacao").hide();
-        $("#containerRegressao").show();
-    })
-
-
-
-
     $("#selectUniforme").change(function () {
         if ($(this).val() == "entre")
             $("#entreUniforme").slideDown()
