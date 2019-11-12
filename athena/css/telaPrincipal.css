@@ -111,7 +111,7 @@ p{
     background: whitesmoke;
 }
 
-#containerProbabilidade , #containerCorrelacao{
+#containerProbabilidade , #containerCorrelacao, #resultadosUniforme , #resultadosBinomial ,#resultadosNormal{
 
     max-width: 400px;
     width: 100%;
@@ -156,7 +156,8 @@ p{
     text-align: center;
 }
 
-#containerRegressao div label {
+#containerRegressao div label , #resultadosUniforme div label , 
+#resultadosBinomial div label , #resultadosNormal div label {
     display: inline-block;
     color: rgb(25,25,112);
     font-size: 22px;

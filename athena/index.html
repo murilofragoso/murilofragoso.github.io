@@ -27,7 +27,7 @@
 
 <body>
 
-
+    <!--Nav bar da tela principal-->
     <nav class="navbar navbar-expand-lg navbar-light " style="background-color: rgb(25,25,112);">
         <a class="navbar-brand" href="" style="color: white;">
             <img src="img/athena.png" width="70" height="70" class="d-inline-block">
@@ -57,7 +57,7 @@
             </ul>
         </div>
     </nav>
-
+    <!--Cards da tela principal-->
     <div id="containerCard" class="container my-4">
         <div class="row">
 
@@ -120,7 +120,7 @@
 
 
     </div>
-    <!---->
+    <!--Tela da Estatistica discreta-->
     <div id="containerDivMae" class="container my-3" style="display: none;">
 
         <div id="divMae">
@@ -241,26 +241,26 @@
                     <hr style="color: midnightblue;">
 
                     <div class="row justify-content-center">
-                        
-                            <div class="form-group col-sm-4">
-                                <label for="idSeparatrizes">Medidas Separatrizes :</label>
-                            </div>
-                            <div class="form-group col-sm-4">
-                                <select class="custom-select mr-sm-2" id="idSeparatrizes">
-                                    <option value="">Selecione</option>
-                                    <option value="Q">Quartil</option>
-                                    <option value="Qui">Quintil</option>
-                                    <option value="D">Decil</option>
-                                    <option value="Pe">Percentil</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-sm-4">
-                                <select class="custom-select mr-sm-2" id="idNumeroSeparatrizes">
-                                    <option value="">Selecione</option>
-                                </select>
-                            </div>
-                            <label id="resultMedidasSeparatrizes"></label>
-                
+
+                        <div class="form-group col-sm-4">
+                            <label for="idSeparatrizes">Medidas Separatrizes :</label>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <select class="custom-select mr-sm-2" id="idSeparatrizes">
+                                <option value="">Selecione</option>
+                                <option value="Q">Quartil</option>
+                                <option value="Qui">Quintil</option>
+                                <option value="D">Decil</option>
+                                <option value="Pe">Percentil</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <select class="custom-select mr-sm-2" id="idNumeroSeparatrizes">
+                                <option value="">Selecione</option>
+                            </select>
+                        </div>
+                        <label id="resultMedidasSeparatrizes"></label>
+
                     </div>
                     <hr style="color: midnightblue;">
                     <div class="row justify-content-center">
@@ -274,7 +274,7 @@
         </div>
     </div>
 
-
+    <!--Tela da Probabilidade-->
     <div id="containerProbabilidade" class=" container my-4 border " style="display: none;">
         <div>
             <div class="col-12">
@@ -452,7 +452,7 @@
         </div>
 
     </div>
-
+    <!--Tela da correlação-->
     <div id="containerCorrelacao" class=" container my-4 border " style="display: none;">
 
         <div>
@@ -492,6 +492,7 @@
 
     </div>
 
+    <!--Tela de Resultados da correlação e regressao-->
     <div id="containerRegressao" class="container my-4 border" style="display: none;">
 
         <div class="col-12 my-3">
@@ -563,6 +564,79 @@
 
 
     </div>
+    <!-- Resultados Probabilidade Uniforme-->
+    <div class="container my-4 border" id="resultadosUniforme" style="display: none;">
+
+        <div class="form-froup text-center my-3">
+            <h3> Resultados Uniforme </h3>
+        </div>
+
+        <hr style="color: black;">
+        <div class="form-row">
+
+            <div id="resultadoUniforme" class="form-group col-sm-12">
+                <label> Resultado: </label>
+            </div>
+
+            <div id="cvUniforme" class="form-group col-sm-12">
+                <label>Coeficiente de Variancia:</label>
+            </div>
+
+            <div id="dpUniforme" class="form-group col-sm-12">
+                <label>Desvio Padrão:</label>
+            </div>
+
+            <div id="varianciaUniforme" class="form-group col-sm-12">
+                <label> Variancia:</label>
+            </div>
+
+
+        </div>
+    </div>
+    <!--Resultados probabilidade Binomial-->
+    <div class="container my-4 border" id="resultadosBinomial" style="display: none;">
+        <div class="form-froup text-center my-3">
+            <h3> Resultado Binomial </h3>
+        </div>
+
+        <hr style="color: black;">
+
+        <div id="probabilidadeUniforme" class="form-group col-sm-12">
+            <label>Probabilidade:</label>
+        </div>
+    </div>
+
+    <!--Resultados probabilidade Normal-->
+    <div class="container my-4 border" id="resultadosNormal" style="display: none;">
+        <div class="form-froup text-center my-3">
+            <h3> Resultados Normal </h3>
+        </div>
+
+        <hr style="color: black;">
+
+        <div id="probabilidadeNormal" class="form-group col-sm-12">
+            <label> Probabilidade: </label>
+        </div>
+
+        <div id="valorDeZ" class="form-group col-sm-12">
+            <label>Valor de Z:</label>
+        </div>
+
+        <div id="valorDeX" class="form-group col-sm-12">
+            <label>Valor de X:</label>
+        </div>
+
+        <div id="mediaNormal" class="form-group col-sm-12">
+            <label> Média:</label>
+        </div>
+
+        <div id="dpNormal" class="form-group col-sm-12">
+            <label>Desvio Padrão:</label>
+        </div>
+
+    </div>
+
+
 
 
 

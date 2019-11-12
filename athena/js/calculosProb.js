@@ -38,7 +38,8 @@ $(document).ready(function (){
         console.log(result);
     }
 
-    function uniforme() {
+
+   function uniforme() {
         //quantidade = x (maior/menor)
         //minimo = a
         //maximo = b
@@ -72,7 +73,16 @@ $(document).ready(function (){
         console.log("variancia: " + variancia);
         console.log("dp: " + dp);
         console.log("cv: " + cv);
+
+        $("#resultadoUniforme").text("Resultado: " + result);   
+        $("#cvUniforme").text("Coeficiente de Variancia: " + cv);
+        $("#dpUniforme").text("Desvio Padrão: " + dp);
+        $("#varianciaUniforme").text("Variancia: " + variancia);
+        $("#resultadosProbabilidade").show ();
+
     };
+
+
 
     function normal() {
         let intervalo = $("#selectNormal").val();
