@@ -12,7 +12,7 @@ body{
     justify-content: center;
 }
 
-#divContent{
+/*#divContent{
     width: 70%;
     max-height: 90%;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(25,25,112,0.22);
@@ -21,10 +21,10 @@ body{
     background-color: whitesmoke;
     border-radius: 1em;
     padding: 10px;
-}
+} */
 
 
-#divContent label{
+#divContentTable label , #divContent label{
     display: inline-block;
     color: rgb(25,25,112);
     font-size: 22px;
@@ -36,9 +36,9 @@ body{
 
 #divContentForm input{
     margin-top: 0.2%;
-}
-
-#divContentForm button{
+} 
+ 
+/* #divContentForm button{
     background-color: rgb(25,25,112);
     color: white;
     padding: 15px 25px 15px 25px;
@@ -52,7 +52,7 @@ body{
 
 #idValores{
     width: 80%;
-}
+} */
 
 .alertInput{
     border: 1px solid red !important;

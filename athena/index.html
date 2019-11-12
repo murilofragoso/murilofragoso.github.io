@@ -107,7 +107,8 @@
                 </div>
                 <div class="face face2 rounded">
                     <div class="content text-center">
-                        <p> Permite-nos estudar o comportamento conjunto de duas variáveis quantitativas distintas</p>
+                        <p> Permite-nos quantificar a interdependência entre duas variáveis quantitativas distintas e
+                            projetar suas futuras interações.</p>
                         <a id="bntRegressão" class="bnt rounded" style="color: white;" data-btn-menu>Vamos lá!</a>
                     </div>
                 </div>
@@ -123,126 +124,152 @@
 
         <div id="divMae">
             <div id="divContent">
-
-                <div id="divContentForm" class="my-3">
+                <div id="divContentForm" class="container my-4 text-center">
 
                     <div>
-                        <label>Entrada de Dados</label>
+                        <h3>Entrada de Dados</h3>
                     </div>
-                    <div id="divRadioDescritiva">
+
+                    <div id="divRadioDescritiva" class="my-3">
                         <input type="radio" name="tipoEntrada" checked value="txt" id="radioTxt"><label
                             for="radioTxt">Texto</label>
                         <input type="radio" name="tipoEntrada" value="csv" id="radioCsv"> <label
                             for="radioCsv">CSV</label>
                     </div>
-                    <div id="divValoresTxt">
-                        <input type="text" id="idValores" placeholder="Ex: 1;2;3;...">
+
+                    <div id="divValoresTxt" class="form-group my-3">
+                        <input type="text" class="form-control" id="idValores" placeholder="Ex: 1;2;3;...">
                     </div>
-                    <div id="divValoresCsv" style="display: none;">
+
+                    <div id="divValoresCsv" class=" form-group my-3 text-center" style="display: none;">
                         <input type="file" id="idFileValores">
                     </div>
-                    <div>
-                        <label for="idNomeVariavel">Nome da Variável</label>
-                        <input type="text" id="idNomeVariavel">
+
+                    <div class="form-group">
+                        <!--label for="idNomeVariavel">Nome da Variável</label -->
+                        <input type="text" class="form-control " id="idNomeVariavel" placeholder="Nome da Variável...">
                     </div>
-                    <div>
-                        <label for="idTipoDePesquisa">Tipo de Pesquisa</label>
-                        <select id="idTipoDePesquisa">
-                            <option value="">Selecione</option>
-                            <option value="A">Amostra</option>
-                            <option value="P">População</option>
-                        </select>
+
+                    <div class="form-row">
+
+                        <div class="form-group col-sm-5">
+                            <label for="idTipoDePesquisa">Tipo de Pesquisa:</label>
+                        </div>
+
+                        <div class="form-group col-sm-7">
+                            <select class="custom-select  mr-sm-2" id="idTipoDePesquisa">
+                                <option value="">Selecione</option>
+                                <option value="A">Amostra</option>
+                                <option value="P">População</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-sm-5">
+                            <label for="idTipoDeVariavel">Tipo de Variável: </label>
+                        </div>
+
+
+                        <div class="form-group col-sm-7">
+
+                            <select class="custom-select mr-sm-2" id="idTipoDeVariavel">
+                                <option value="">Selecione</option>
+                                <option value="QN">Qualitativa Nominal</option>
+                                <option value="QO">Qualitativa Ordinal</option>
+                                <option value="QD">Quantitativa Discreta</option>
+                                <option value="QC">Quantitativa Contínua</option>
+                            </select>
+                        </div>
+
                     </div>
-                    <div>
-                        <label for="idTipoDeVariavel">Tipo de Variável</label>
-                        <select id="idTipoDeVariavel">
-                            <option value="">Selecione</option>
-                            <option value="QN">Qualitativa Nominal</option>
-                            <option value="QO">Qualitativa Ordinal</option>
-                            <option value="QD">Quantitativa Discreta</option>
-                            <option value="QC">Quantitativa Contínua</option>
-                        </select>
-                    </div>
-                    <div style="display: none" id="divOrdemVariaveis">
-                        <label for="idOrdemVariavel">Ordem das Variavéis</label>
-                        <input type="text" id="idOrdemVariavel" placeholder="Ex: 1;2;3;...">
+
+                    <div style="display: none" class="form-group" id="divOrdemVariaveis">
+                        <!--label for="idOrdemVariavel">Ordem das Variavéis</label -->
+                        <input type="text" class="form-control" id="idOrdemVariavel"
+                            placeholder="Ordem das Variavéis...">
                     </div>
 
 
-                    <div>
-                        <button id="bntCalcular">Calcular</button>
-                    </div>
+                    <button id="bntCalcular" type="button" class="btn btn-lg btn-block my-3" data-btn-calcular
+                        style="background:rgb(25,25,112); color: white;">Calcular</button>
+
                 </div>
+            </div>
 
 
+            <div id="divContentTable" class="container-my4 border" style="display: none;">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="tableResult">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" id="headVariavel">Variável pesquisada</th>
+                                            <th scope="col">Frequência simples (Fi)</th>
+                                            <th scope="col">Frequência simples % (Fr%)</th>
+                                            <th scope="col">Frequência acumulada(Fac)</th>
+                                            <th scope="col">Frequência acumulada % (Fac%)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                <div id="divContentTable" style="display: none;">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-sm-12">
-                                <div class="table-responsive">
-                                    <table class="table table-striped" id="tableResult">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" id="headVariavel">Variável pesquisada</th>
-                                                <th scope="col">Frequência simples (Fi)</th>
-                                                <th scope="col">Frequência simples % (Fr%)</th>
-                                                <th scope="col">Frequência acumulada(Fac)</th>
-                                                <th scope="col">Frequência acumulada % (Fac%)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="row justify-content-center">
-                            <div class="col-sm-4" id="divMedia" style="display: none;">
-                                <label>Média: 5</label>
-                            </div>
-                            <div class="col-sm-4" id="divModa">
-                                <label>Moda: 5</label>
-                            </div>
-                            <div class="col-sm-4" id="divMediana">
-                                <label>Mediana: 5</label>
-                            </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4" id="divMedia" style="display: none;">
+                            <label>Média: 5</label>
                         </div>
-                        <div id="rowDesvioPadrao" class="row justify-content-center" style="display: none;">
-                            <div class="col-sm-6" id="divDesvioPadrao">
-                                <label></label>
-                            </div>
-                            <div class="col-sm-6" id="divCoeficiente">
-                                <label></label>
-                            </div>
+                        <div class="col-sm-4" id="divModa">
+                            <label>Moda: 5</label>
                         </div>
-                        <hr style="color: midnightblue;">
-                        <div class="row justify-content-center">
-                            <div class="col-sm-8">
-                                <label for="idSeparatrizes">Medidas Separatrizes</label>
-                                <select id="idSeparatrizes">
+                        <div class="col-sm-4" id="divMediana">
+                            <label>Mediana: 5</label>
+                        </div>
+                    </div>
+                    <div id="rowDesvioPadrao" class="row justify-content-center" style="display: none;">
+                        <div class="col-sm-6" id="divDesvioPadrao">
+                            <label></label>
+                        </div>
+                        <div class="col-sm-6" id="divCoeficiente">
+                            <label></label>
+                        </div>
+                    </div>
+                    <hr style="color: midnightblue;">
+
+                    <div class="row justify-content-center">
+                        
+                            <div class="form-group col-sm-4">
+                                <label for="idSeparatrizes">Medidas Separatrizes :</label>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <select class="custom-select mr-sm-2" id="idSeparatrizes">
                                     <option value="">Selecione</option>
                                     <option value="Q">Quartil</option>
                                     <option value="Qui">Quintil</option>
                                     <option value="D">Decil</option>
                                     <option value="Pe">Percentil</option>
                                 </select>
-                                <select id="idNumeroSeparatrizes">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <select class="custom-select mr-sm-2" id="idNumeroSeparatrizes">
                                     <option value="">Selecione</option>
                                 </select>
-                                <label id="resultMedidasSeparatrizes"></label>
                             </div>
-                        </div>
-                        <hr style="color: midnightblue;">
-                        <div class="row justify-content-center">
-                            <div class="col-sm-8" id="divGraph">
-                                <canvas id="canvasGraph"></canvas>
-                            </div>
+                            <label id="resultMedidasSeparatrizes"></label>
+                
+                    </div>
+                    <hr style="color: midnightblue;">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-8" id="divGraph">
+                            <canvas id="canvasGraph"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -379,7 +406,7 @@
 
                     <div class="form-group col-sm-9">
 
-                        <select class="custom-select my-1 mr-sm-2" id="selectNormal">
+                        <select class="custom-select  mr-sm-2" id="selectNormal">
                             <option selected value="">Selecione</option>
                             <option value="maior">Maior</option>
                             <option value="entre">Entre</option>
@@ -397,25 +424,24 @@
                     <input type="text" class="form-control my-3" id="normalQuantidade" placeholder="Quantidade">
                 </div>
 
-                <div class="fomr-group my-3">
-                    <input type="text" class="form-control" id="normalDesvioPadrao" placeholder="Desvio Padrão">
-                </div>
-
-
-                <div id="entreNormal" class="form-row " style="display: none;">
-                    <div class="form-group col-sm-6">
+                <div id="entreNormal" class="form-row" style="display: none;">
+                    <div class="form-group col-sm-6 my-3">
                         <!--label for="inputQuantidade">Quantidade</label -->
                         <input type="text" class="form-control" id="normalInputDe" placeholder="De">
                     </div>
 
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-sm-6 my-3">
                         <!--label for="inputQuantidade">Quantidade</label -->
                         <input type="text" class="form-control" id="normalInputAte" placeholder="Até">
                     </div>
 
                 </div>
 
-                <button id="bnt-probabilidade-normal" type="button" class="btn btn-lg btn-block my-2" data-btn-calcular
+                <div class="fomr-group ">
+                    <input type="text" class="form-control" id="normalDesvioPadrao" placeholder="Desvio Padrão">
+                </div>
+
+                <button id="bnt-probabilidade-normal" type="button" class="btn btn-lg btn-block my-3" data-btn-calcular
                     style="background:rgb(25,25,112); color: white;">Calcular</button>
 
 
@@ -510,17 +536,17 @@
 
             <div id="divCorrelacao01" class="form group col-sm-6">
                 <label>Valor de:</label>
-                <input  type="text" class="form-control my-1" id="regressaoSelecione" placeholder="...">
+                <input type="text" class="form-control my-1" id="regressaoSelecione" placeholder="...">
             </div>
 
-            <div id="divCorrelacao02" class="form group col-sm-6" style="display: none;" >
+            <div id="divCorrelacao02" class="form group col-sm-6" style="display: none;">
                 <label>Valor de: X</label>
-                <input  type="text" class="form-control my-1" id="regressaoDeX" placeholder="(X)">
+                <input type="text" class="form-control my-1" id="regressaoDeX" placeholder="(X)">
             </div>
 
             <div id="divCorrelacao03" class="form group col-sm-6" style="display:none">
                 <label>Valor de: Y</label>
-                <input  type="text" class="form-control my-1" id="regressaoDeY" placeholder="(Y)">
+                <input type="text" class="form-control my-1" id="regressaoDeY" placeholder="(Y)">
             </div>
 
             <div class="form-group col-sm-12 text-center" id="resultadoProjecao">

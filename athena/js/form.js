@@ -41,10 +41,15 @@ $(document).ready(function () {
     })
 
     $("#selectNormal").change(function () {
-        if ($(this).val() == "entre")
+        if ($(this).val() == "entre") {
+            $("#normalQuantidade").slideUp();
             $("#entreNormal").slideDown();
-        else
+            
+        } else {
             $("#entreNormal").slideUp();
+            $("#normalQuantidade").slideDown();
+        }
+
 
     })
 

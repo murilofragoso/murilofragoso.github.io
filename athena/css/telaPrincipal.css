@@ -146,9 +146,30 @@ p{
   
 }
 
+#divContent {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 1em;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(25,25,112,0.22);
+    text-align: center;
+}
+
 #containerRegressao div label {
     display: inline-block;
     color: rgb(25,25,112);
     font-size: 22px;
+}
+
+#divContentTable{
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 1em;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(25,25,112,0.22);
+    text-align: center;
+
 }
 
