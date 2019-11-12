@@ -37,7 +37,10 @@ $(document).ready(function (){
         let media = n*p;
         let dp = Math.sqrt(n*p*q);
 
-        console.log(result);
+        $("#probabilidadeBinomial label").text("Probabilidade: " + result);
+        $("#mediaBinomial label").text("Média: " + media);
+        $("#dpBinomial label").text("Desvio Padrão: " + dp);
+        $("#resultadosBinomial").show();
     }
 
 
