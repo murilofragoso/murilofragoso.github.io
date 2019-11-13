@@ -12,13 +12,29 @@ $(document).ready(function () {
         $("#containerCard").hide();
     })
 
+    $("#cardDescritiva").click(function () {
+        $("#containerDivMae").show();
+        $("#containerCard").hide();
+    })
+
     $("#bntProbabilidade").click(function () {
         $("#containerCard").hide();
         $("#containerProbabilidade").show();
         $("#containerDivMae").hide();
     })
 
+    $("#cardProbabilidade").click(function () {
+        $("#containerCard").hide();
+        $("#containerProbabilidade").show();
+        $("#containerDivMae").hide();
+    })
+
     $("#bntRegressão").click(function () {
+        $("#containerCard").hide();
+        $("#containerCorrelacao").show();
+    })
+
+    $("#cardCorrelacao").click(function () {
         $("#containerCard").hide();
         $("#containerCorrelacao").show();
     })
@@ -35,7 +51,7 @@ $(document).ready(function () {
         if ($(this).val() == "entre") {
             $("#normalQuantidade").slideUp();
             $("#entreNormal").slideDown();
-            
+
         } else {
             $("#entreNormal").slideUp();
             $("#normalQuantidade").slideDown();
@@ -82,18 +98,18 @@ $(document).ready(function () {
         }
     })
 
-    $("[data-btn-menu]").click(function () {
+    $("[data-btn-menu], [data-card-option]").click(function () {
         $("#togglerNav span").addClass("navbar-toggler-icon");
         $("#conteudoNavbarSuportado").addClass("navbar-collapse").removeClass("hidden");
     })
 
-    $("#pills-nav .nav-item").click(function(){
+    $("#pills-nav .nav-item").click(function () {
         var item = $(this).find('a');
-        if(!item.hasClass("active"))
+        if (!item.hasClass("active"))
             limparResultProb();
     })
 
-    function limparResultProb(){
+    function limparResultProb() {
         $("#resultadosUniforme").hide();
         $("#resultadosBinomial").hide();
         $("#resultadosNormal").hide();

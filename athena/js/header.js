@@ -1,5 +1,5 @@
-$( document ).ready(function(){
-    function limparCamposDescritiva(){
+$(document).ready(function () {
+    function limparCamposDescritiva() {
         $("#idTipoDePesquisa").val("");
         $("#idTipoDeVariavel").val("");
         $("#idNomeVariavel").val("");
@@ -15,7 +15,7 @@ $( document ).ready(function(){
         matrizGlobal = [];
     }
 
-    function limparCamposProb(){
+    function limparCamposProb() {
         //uniforme
         $("#selectUniforme").val("").change();
         $("#inputQuantidade").val("");
@@ -39,7 +39,7 @@ $( document ).ready(function(){
         $("#normalInputAte").val("");
     }
 
-    function limparCamposCorr(){
+    function limparCamposCorr() {
         $("#inputIndependente").val("");
         $("#inputDependente").val("");
         a = 0;
@@ -49,4 +49,10 @@ $( document ).ready(function(){
     $("#navLinkDescritiva").click(limparCamposDescritiva)
     $("#navLinkProbabilidade").click(limparCamposProb)
     $("#navLinkRegressao").click(limparCamposCorr)
+
+    $("#pills-nav .nav-item").click(function () {
+        var item = $(this).find('a');
+        if (!item.hasClass("active"))
+            limparCamposProb();
+    })
 })
