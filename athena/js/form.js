@@ -75,6 +75,8 @@ $(document).ready(function () {
         $("#containerCorrelacao").hide();
         $("#containerProbabilidade").hide();
         $("#containerRegressao").hide();
+        $("#divContentForm").show();
+        $("#divContentTable").hide();
         limparResultProb();
     })
 
