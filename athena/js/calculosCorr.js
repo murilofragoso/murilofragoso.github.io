@@ -37,6 +37,32 @@ $(document).ready(function (){
         }
     })
 
+    var leitorCSVCorr = new FileReader();
+    leitorCSVCorr.onload = function(evt){
+        let fileArr  = evt.target.result.split('\n').filter(x => x && x != " ");
+        let fileString = "";
+
+        console.log(fileArr);
+
+        //x = 1 se o primeiro item for o nome da variavel, se não mudar para x = 0
+        /*for (let x = 1; x < fileArr.length; x++) {
+            fileString += fileArr[x] + (x == fileArr.length -1 ? "" : ";")
+        }
+
+        valoresCalculo = fileString;*/
+    }
+
+    function getValoresCsv(){
+        let file = document.getElementById("idFileValoresCorr").files[0];
+        if(!file){
+            alert("Nenhum documento selecionado!")
+            return;
+        }
+        leitorCSVCorr.readAsText(file);
+    }
+
+    $("#btnTesteCsv").click(getValoresCsv);
+
     //x =independente; y=denpendente
     function correlacao() {
         let x = $("#inputIndependente").val(),
