@@ -188,11 +188,6 @@ $(document).ready(function (){
                 result = false;
             }
 
-            if(!$("#inputQuantidade").val() || isNaN($("#inputQuantidade").val())){
-                $("#inputQuantidade").addClass("alertInput");
-                result = false;
-            }
-
             if(!$("#inputPontoMininmo").val() || isNaN($("#inputPontoMininmo").val())){
                 $("#inputPontoMininmo").addClass("alertInput");
                 result = false;
@@ -213,6 +208,13 @@ $(document).ready(function (){
                     $("#uniformeInputAte").addClass("alertInput");
                     result = false;
                 }
+            }else{
+
+                if(!$("#inputQuantidade").val() || isNaN($("#inputQuantidade").val())){
+                    $("#inputQuantidade").addClass("alertInput");
+                    result = false;
+                }
+
             }
 
         } else if (abaSelecionada == "bi"){
@@ -246,10 +248,7 @@ $(document).ready(function (){
                 result = false;
             }
 
-            if(!$("#normalQuantidade").val() || isNaN($("#normalQuantidade").val())){
-                $("#normalQuantidade").addClass("alertInput");
-                result = false;
-            }
+            
 
             if(!$("#normalDesvioPadrao").val() || isNaN($("#normalDesvioPadrao").val())){
                 $("#normalDesvioPadrao").addClass("alertInput");
@@ -266,6 +265,13 @@ $(document).ready(function (){
                     $("#normalInputAte").addClass("alertInput");
                     result = false;
                 }
+            }else{
+
+                if(!$("#normalQuantidade").val() || isNaN($("#normalQuantidade").val())){
+                    $("#normalQuantidade").addClass("alertInput");
+                    result = false;
+                }
+
             }
         }
 

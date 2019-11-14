@@ -18,8 +18,17 @@ var valoresCalculo;
 $(document).ready(function () {
     //Eventos Form
     $("#bntCalcular").click(function () {
+        retiraAlertaCamposDescr();
+
         if(!$("#idNomeVariavel").val()){
             alert("Insira o nome da variável");
+            $("#idNomeVariavel").addClass("alertInput");
+            return;
+        }    
+
+        if(!$("#idTipoDePesquisa").val()){
+            alert("Selecione o tipo de pesquisa");
+            $("#idTipoDePesquisa").addClass("alertInput");
             return;
         }    
 
@@ -65,6 +74,7 @@ $(document).ready(function () {
 
         if (!$("#idOrdemVariavel").val()) {
             alert("Insira a ordem das variaveis");
+            $("#idOrdemVariavel").addClass("alertInput");
             return;
         }
 
@@ -248,7 +258,9 @@ $(document).ready(function () {
         for (let x = 0; x < vetor.length; x++) {
             let aux = (vetor[x]);
             if (!isNaN(aux)) {
-                alert('Este tipo de variável so aceita texto')
+                alert('Este tipo de variável so aceita texto');
+                $("#idTipoDeVariavel").addClass("alertInput");
+                $("#idFileValores").addClass("alertInput");
                 return false;
             }
         }
@@ -260,7 +272,9 @@ $(document).ready(function () {
         for (let x = 0; x < vetor.length; x++) {
             let aux = parseInt(vetor[x]);
             if (isNaN(aux)) {
-                alert('Este tipo de variável só aceita números ')
+                alert('Este tipo de variável só aceita números ');
+                $("#idTipoDeVariavel").addClass("alertInput");
+                $("#idFileValores").addClass("alertInput");
                 return false;
             }
         }
@@ -756,6 +770,7 @@ $(document).ready(function () {
         let file = document.getElementById("idFileValores").files[0];
         if(!file){
             alert("Nenhum documento selecionado!")
+            $("#idFileValores").addClass("alertInput");
             return;
         }
         leitorCSV.readAsText(file);
@@ -767,6 +782,7 @@ $(document).ready(function () {
         else{
             if (!$("#idValores").val()) {
                 alert("Insira os valores");
+                $("#idValores").addClass("alertInput");
                 return;
             }
 
@@ -782,12 +798,16 @@ $(document).ready(function () {
             case "QO": getQualitativaOrdinal(); break;
             case "QD": getQuantitativaDiscreta(); break;
             case "QC": getQuantitativaContinua(); break;
-            default: alert("Escolha um tipo de variável");
+            default: alert("Escolha um tipo de variável"); $("#idTipoDeVariavel").addClass("alertInput");
         }
 
         tipoVarGlobal = tipoVariavel;
 
         $("#headVariavel").text($("#idNomeVariavel").val());
+    }
+
+    function retiraAlertaCamposDescr(){
+        $(".alertInput").removeClass("alertInput");
     }
 
 }) 
