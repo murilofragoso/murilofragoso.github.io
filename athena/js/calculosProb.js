@@ -164,14 +164,24 @@ $(document).ready(function (){
             x = $("#normalInputDe").val();
             y = $("#normalInputAte").val();
 
-            z += (((x - media) / dp) * 100).toString().replace(/[^0-9]/g, '')
-            z = vet[parseInt(z[0]) + parseInt(z[1])][z[2]];
+            if(x==media){
+                aux += (((y - media) / dp) * 100).toString().replace(/[^0-9]/g, '');
+                aux = vet[parseInt(aux[0]) + parseInt(aux[1])][parseInt(aux[2])];  
+                probabilidade = aux*100;  
+            }
+            else if(y==media){
+                z += (((x - media) / dp) * 100).toString().replace(/[^0-9]/g, '')
+                z = vet[parseInt(z[0]) + parseInt(z[1])][parseInt(z[2])];
+                probabilidade = aux*100;    
+            }
+            else{
+                z += (((x - media) / dp) * 100).toString().replace(/[^0-9]/g, '')
+                z = vet[parseInt(z[0]) + parseInt(z[1])][parseInt(z[2])];
 
-            aux += Math.abs(((y - media) / dp) * 100);
-            aux = vet[aux[0] + aux[1]][aux[2]];
-
-            probabilidade = (z - aux) * 100
-
+                aux += (((y - media) / dp) * 100).toString().replace(/[^0-9]/g, '');
+                aux = vet[parseInt(aux[0]) + parseInt(aux[1])][parseInt(aux[2])];
+                probabilidade = (z - aux) * 100 
+            }
         }
 
         $("#probabilidadeNormal label").text("Probabilidade: " + probabilidade)
