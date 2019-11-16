@@ -40,16 +40,23 @@ $(document).ready(function (){
     var leitorCSVCorr = new FileReader();
     leitorCSVCorr.onload = function(evt){
         let fileArr  = evt.target.result.split('\n').filter(x => x && x != " ");
-        let fileString = "";
+        let fileStringX = "";
+        let fileStringY = "";
 
         console.log(fileArr);
 
         //x = 1 se o primeiro item for o nome da variavel, se não mudar para x = 0
-        /*for (let x = 1; x < fileArr.length; x++) {
-            fileString += fileArr[x] + (x == fileArr.length -1 ? "" : ";")
+        for (let x = 0; x < fileArr.length; x++) {
+            let fileArrPartido = fileArr[x].split(";");
+            fileStringX += fileArrPartido[0] + (x == fileArr.length -1 ? "" : ";")
+            fileStringY += fileArrPartido[1] + (x == fileArr.length -1 ? "" : ";")
         }
 
-        valoresCalculo = fileString;*/
+        valoresCalculoX = fileStringX;
+        valoresCalculoY = fileStringY;
+
+        console.log(valoresCalculoX);
+        console.log(valoresCalculoY);
     }
 
     function getValoresCsv(){
