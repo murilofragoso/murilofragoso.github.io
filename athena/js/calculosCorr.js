@@ -1,5 +1,7 @@
 var a = 0;
 var b = 0;
+var valoresCalculoX;
+var valoresCalculoY;
 
 $(document).ready(function (){
     $("#bntCorrelacao").click(function () {
@@ -7,29 +9,13 @@ $(document).ready(function (){
         retiraAlertaCamposCorr();
         //validando campos
         if(validaCamposCorr()){
-            //calculando
-            let corr = correlacao().toFixed(2);
-            if(corr){
-                //escondendo formulário
-                $("#containerCorrelacao").hide();
-
-                //exibindo resultados  
-                let prop = "diretamente proporcional";
-                if(corr < 0){
-                    corr = corr * -1;
-                    prop = "inversamente proporcional";
-                }
-                let forcaCorr;
-                if(corr < 30)
-                    forcaCorr = "Inexistente à fraca, "+ prop;
-                else if(corr < 60)
-                    forcaCorr = "Fraca à média, "+ prop;
-                else if(corr >= 60)
-                    forcaCorr = "Média à forte, " + prop;
-
-                $("#divEquacao label").text("Equação da Reta: " + corr + "%");    
-                $("#divCorrelacao label").text("Correlação: " + forcaCorr);    
-                $("#containerRegressao").show();
+            //recuperando valores
+            if($("[name='tipoEntrada']:checked").val() == "csv")
+                getValoresCsv();
+            else{
+                valoresCalculoX = $("#inputIndependente").val(),
+                valoresCalculoY = $("#inputDependente").val();
+                calcularCorr();
             }
         }else{
             //retornando erro
@@ -37,13 +23,38 @@ $(document).ready(function (){
         }
     })
 
+    function calcularCorr(){
+        //calculando
+        let corr = correlacao().toFixed(2);
+        if(corr){
+            //escondendo formulário
+            $("#containerCorrelacao").hide();
+
+            //exibindo resultados  
+            let prop = "diretamente proporcional";
+            if(corr < 0){
+                corr = corr * -1;
+                prop = "inversamente proporcional";
+            }
+            let forcaCorr;
+            if(corr < 30)
+                forcaCorr = "Inexistente à fraca, "+ prop;
+            else if(corr < 60)
+                forcaCorr = "Fraca à média, "+ prop;
+            else if(corr >= 60)
+                forcaCorr = "Média à forte, " + prop;
+
+            $("#divEquacao label").text("Equação da Reta: " + corr + "%");    
+            $("#divCorrelacao label").text("Correlação: " + forcaCorr);    
+            $("#containerRegressao").show();
+        }
+    }
+
     var leitorCSVCorr = new FileReader();
     leitorCSVCorr.onload = function(evt){
         let fileArr  = evt.target.result.split('\n').filter(x => x && x != " ");
         let fileStringX = "";
         let fileStringY = "";
-
-        console.log(fileArr);
 
         //x = 1 se o primeiro item for o nome da variavel, se não mudar para x = 0
         for (let x = 0; x < fileArr.length; x++) {
@@ -54,9 +65,7 @@ $(document).ready(function (){
 
         valoresCalculoX = fileStringX;
         valoresCalculoY = fileStringY;
-
-        console.log(valoresCalculoX);
-        console.log(valoresCalculoY);
+        calcularCorr();
     }
 
     function getValoresCsv(){
@@ -72,10 +81,8 @@ $(document).ready(function (){
 
     //x =independente; y=denpendente
     function correlacao() {
-        let x = $("#inputIndependente").val(),
-            y = $("#inputDependente").val();
-        x = x.split(";");
-        y = y.split(";");
+        let x = valoresCalculoX.split(";"),
+            y = valoresCalculoY.split(";");
 
         if(x.length != y.length){
             alert("Os dados possuem quantidades diferentes de valores!");
@@ -114,20 +121,29 @@ $(document).ready(function (){
     })
 
     function validaCamposCorr(){
-        let x = $("#inputIndependente").val(),
-            y = $("#inputDependente").val(),
-            result = true;
+        let result = true;
 
-        if(!x){
-            $("#inputIndependente").addClass("alertInput");
-            result = false;
+        if($("[name='tipoEntrada']:checked").val() == "csv"){
+            let file = document.getElementById("idFileValoresCorr").files[0];
+            if(!file){
+                $("#idFileValoresCorr").addClass("alertInput");
+                result = false;
+            }
+        }else{
+            let x = $("#inputIndependente").val(),
+                y = $("#inputDependente").val();
+                
+            if(!x){
+                $("#inputIndependente").addClass("alertInput");
+                result = false;
+            }
+
+            if(!y){
+                $("#inputDependente").addClass("alertInput");
+                result = false;
+            }
         }
-
-        if(!y){
-            $("#inputDependente").addClass("alertInput");
-            result = false;
-        }
-
+        
         return result;
     }
 

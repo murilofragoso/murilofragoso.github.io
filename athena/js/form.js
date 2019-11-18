@@ -92,11 +92,28 @@ $(document).ready(function () {
     $("[name='tipoEntrada']").change(function (event) {
         let valueSelecionado = event.target.value;
         if (valueSelecionado == "csv") {
-            $("#divValoresTxt").slideUp("fast");
-            $("#divValoresCsv").slideDown("fast");
+            $("#divValoresTxt").slideUp("fast", function(){
+                $("#divValoresCsv").slideDown("fast");
+            });
         } else {
-            $("#divValoresCsv").slideUp("fast");
-            $("#divValoresTxt").slideDown("fast");
+            $("#divValoresCsv").slideUp("fast", function(){
+                $("#divValoresTxt").slideDown("fast");
+            });
+        }
+    })
+
+    $("[name='tipoEntradaCorr']").change(function (event) {
+        let valueSelecionado = event.target.value;
+        if (valueSelecionado == "csv") {
+            $("#divValoresTxtCorr").slideUp("fast", function(){
+                $("#divValoresCsvCorr").slideDown("fast");
+            });
+            
+        } else {
+            $("#divValoresCsvCorr").slideUp("fast", function(){
+                $("#divValoresTxtCorr").slideDown("fast");
+            });
+            
         }
     })
 
