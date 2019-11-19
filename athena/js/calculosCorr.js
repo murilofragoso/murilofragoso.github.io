@@ -109,13 +109,13 @@ $(document).ready(function (){
     }
 
     //x =independente; y=denpendente
-    $("#regressaoSelecione").blur(function(){
+    $("#bntRegressao").click(function(){
         let result;
         if ($("#selectRegressao").val() == "Y"){
-            result = a * $(this).val() + b;
+            result = a * $("#regressaoSelecione").val() + b;
         }
         else if ($("#selectRegressao").val() == "X"){
-            result = ($(this).val() - b) / a;
+            result = ($("#regressaoSelecione").val() - b) / a;
         }
 
         $("#resultRegress").text(result);
