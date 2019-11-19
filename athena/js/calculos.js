@@ -760,16 +760,18 @@ $(document).ready(function () {
 
     var leitorCSV = new FileReader();
     leitorCSV.onload = function(evt){
-        let fileArr  = evt.target.result.split('\n').filter(x => x && x != " ");
+        let fileArr  = evt.target.result.split('\n')
         let fileString = "";
 
-        //x = 1 se o primeiro item for o nome da variavel, se não mudar para x = 0
+        console.log(fileArr);
+
+        /*//x = 1 se o primeiro item for o nome da variavel, se não mudar para x = 0
         for (let x = 1; x < fileArr.length; x++) {
             fileString += fileArr[x] + (x == fileArr.length -1 ? "" : ";")
         }
 
         valoresCalculo = fileString;
-        calcular();
+        calcular();*/
     }
 
     function getValoresCsv(){
