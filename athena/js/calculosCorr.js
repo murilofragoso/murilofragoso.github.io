@@ -163,9 +163,14 @@ $(document).ready(function (){
             dataPontos.push({x: x[i], value: value[i]})
         }
 
+        let comecoLinhaX = x[0],
+            comecoLinhaValue = a * comecoLinhaX + b,
+            fimLinhaX = x[x.length - 1],
+            fimLinhaValue = a * fimLinhaX + b
+
         var dataLinha = [
-            {x: 300, value: 33},
-            {x: 800, value: 10}
+            {x: comecoLinhaX, value: comecoLinhaValue},
+            {x: fimLinhaX, value: fimLinhaValue}
         ];
 
         chart = anychart.scatter();
