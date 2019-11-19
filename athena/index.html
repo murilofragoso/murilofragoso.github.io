@@ -82,7 +82,8 @@
 
 
 
-            <div class="card col-lg-4  col-md-6 my-3 align-items-center" data-card-option id="cardProbabilidade" style="border: white;">
+            <div class="card col-lg-4  col-md-6 my-3 align-items-center" data-card-option id="cardProbabilidade"
+                style="border: white;">
                 <div class="face face1 rounded">
                     <div class="content text-center">
                         <img src="img/segundo.png">
@@ -100,7 +101,8 @@
 
 
 
-            <div class="card col-lg-4 col-md-12 my-3 align-items-center" data-card-option id="cardCorrelacao" style="border: white;">
+            <div class="card col-lg-4 col-md-12 my-3 align-items-center" data-card-option id="cardCorrelacao"
+                style="border: white;">
                 <div class="face face1 rounded">
                     <div class="content text-center">
                         <img src="img/terceiro.png">
@@ -339,13 +341,10 @@
                         </div>
 
 
-                        <div class="form-group">
-                            <!--label for="inputQuantidade">Quantidade</label -->
-                            <input type="text" class="form-control" id="inputQuantidade" placeholder="Quantidade">
 
-                        </div>
 
-                        <div class="form-group" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
+                        <div class="form-group" data-toggle="tooltip" data-placement="right"
+                            title="Digite os dados separados por ;">
                             <!--label for="inputQuantidade">Quantidade</label -->
                             <input type="text" class="form-control" id="inputPontoMininmo" placeholder="Ponto Mínimo">
                         </div>
@@ -355,19 +354,23 @@
                             <input type="text" class="form-control" id="inputPontoMaximo" placeholder="Ponto Máximo">
                         </div>
 
+                        <div class="form-group">
+                            <!--label for="inputQuantidade">Quantidade</label -->
+                            <input type="text" class="form-control" id="inputQuantidade" placeholder="Quantidade">
+                        </div>
+
                         <div id="entreUniforme" class="form-row" style="display: none;">
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-6 ">
                                 <!--label for="inputQuantidade">Quantidade</label -->
                                 <input type="text" class="form-control" id="uniformeInputDe" placeholder="De">
                             </div>
 
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-6 ">
                                 <!--label for="inputQuantidade">Quantidade</label -->
                                 <input type="text" class="form-control" id="uniformeInputAte" placeholder="Até">
                             </div>
 
                         </div>
-
 
                         <button id="bnt-probabilidade-Uniforme" type="button" class="btn btn-lg btn-block mb-3"
                             data-btn-calcular style="background:rgb(25,25,112); color: white;">Calcular</button>
@@ -425,32 +428,32 @@
                             </div>
                         </div>
 
-                        <div class="fomr-group">
+                        <div class="form-group">
                             <input type="text" class="form-control" id="normalMedia" placeholder="Média">
                         </div>
 
-                        <div class="fomr-group">
-                            <input type="text" class="form-control my-3" id="normalQuantidade" placeholder="Quantidade">
-                        </div>
-
-                        <div id="entreNormal" class="form-row" style="display: none;">
-                            <div class="form-group col-sm-6 my-3">
-                                <!--label for="inputQuantidade">Quantidade</label -->
-                                <input type="text" class="form-control" id="normalInputDe" placeholder="De">
-                            </div>
-
-                            <div class="form-group col-sm-6 my-3">
-                                <!--label for="inputQuantidade">Quantidade</label -->
-                                <input type="text" class="form-control" id="normalInputAte" placeholder="Até">
-                            </div>
-
-                        </div>
-
-                        <div class="fomr-group ">
+                        <div class="form-group">
                             <input type="text" class="form-control" id="normalDesvioPadrao" placeholder="Desvio Padrão">
                         </div>
 
-                        <button id="bnt-probabilidade-normal" type="button" class="btn btn-lg btn-block my-3"
+                        <div class="form-group">
+                                <input type="text" class="form-control my-3" id="normalQuantidade" placeholder="Quantidade">
+                            </div>
+    
+                            <div id="entreNormal" class="form-row" style="display: none;">
+                                <div class="form-group col-sm-6">
+                                    <!--label for="inputQuantidade">Quantidade</label -->
+                                    <input type="text" class="form-control" id="normalInputDe" placeholder="De">
+                                </div>
+    
+                                <div class="form-group col-sm-6">
+                                    <!--label for="inputQuantidade">Quantidade</label -->
+                                    <input type="text" class="form-control" id="normalInputAte" placeholder="Até">
+                                </div>
+    
+                            </div>
+
+                        <button id="bnt-probabilidade-normal" type="button" class="btn btn-lg btn-block mb-3"
                             data-btn-calcular style="background:rgb(25,25,112); color: white;">Calcular</button>
 
 
@@ -464,7 +467,7 @@
             </div>
 
             <!-- Resultados Probabilidade Uniforme-->
-            <div class="container my-4 border col-lg-6 col-md-12  col-sm-12" id="resultadosUniforme"
+            <div class="container my-4 border col-lg-6 col-md-12  col-sm-12 text-center" id="resultadosUniforme"
                 style="display: none;">
 
                 <div class="form-froup text-center my-3">
@@ -495,7 +498,7 @@
             </div>
 
             <!--Resultados probabilidade Binomial-->
-            <div class="container my-4 border  col-lg-6 col-md-12  col-sm-12" id="resultadosBinomial"
+            <div class="container my-4 border  col-lg-6 col-md-12  col-sm-12 text-center" id="resultadosBinomial"
                 style="display: none;">
                 <div class="form-froup text-center my-3">
                     <h3> Resultados Binomial </h3>
@@ -517,7 +520,7 @@
             </div>
 
             <!--Resultados probabilidade Normal-->
-            <div class="container my-4 border  col-lg-6 col-md-12  col-sm-12" id="resultadosNormal"
+            <div class="container my-4 border  col-lg-6 col-md-12  col-sm-12 text-center" id="resultadosNormal"
                 style="display: none;">
                 <div class="form-froup text-center my-3">
                     <h3> Resultados Normal </h3>
@@ -622,9 +625,9 @@
 
         </div>
 
-        <div class="row justify-content-center my-3">
+        <div class="form-row justify-content-center my-3">
 
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-4">
                 <label>Projeções</label>
                 <select class="custom-select mr-sm-2 my-1" id="selectRegressao">
                     <option selected>Selecione</option>
@@ -633,12 +636,15 @@
                 </select>
             </div>
 
-            <div id="divCorrelacao01" class="form group col-sm-6">
+            <div id="divCorrelacao01" class="form group col-sm-4">
                 <label>Valor de:</label>
                 <input type="text" class="form-control my-1" id="regressaoSelecione" placeholder="...">
             </div>
-
-            <div id="divCorrelacao02" class="form group col-sm-6" style="display: none;">
+            <div id="divBotaoRegressao" class="form-group col-sm-4">
+                <button id="bntRegressao" type="button" class="btn btn-block"
+                    style="background:rgb(25,25,112); color: white;">Calcular</button>
+            </div>
+            <div id="divCorrelacao02" class="form group col-sm-4" style="display: none;">
                 <label>Valor de: X</label>
                 <input type="text" class="form-control my-1" id="regressaoDeX" placeholder="(X)">
             </div>
