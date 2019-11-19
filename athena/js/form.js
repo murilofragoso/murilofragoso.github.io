@@ -39,26 +39,6 @@ $(document).ready(function () {
         $("#containerCorrelacao").show();
     })
 
-    $("#selectUniforme").change(function () {
-        if ($(this).val() == "entre")
-            $("#entreUniforme").slideDown()
-        else
-            $("#entreUniforme").slideUp()
-
-    })
-
-    $("#selectNormal").change(function () {
-        if ($(this).val() == "entre") {
-            $("#normalQuantidade").slideUp();
-            $("#entreNormal").slideDown();
-
-        } else {
-            $("#entreNormal").slideUp();
-            $("#normalQuantidade").slideDown();
-        }
-
-
-    })
 
     $("#navLinkProbabilidade").click(function () {
         $("#containerCard").hide();
@@ -92,11 +72,11 @@ $(document).ready(function () {
     $("[name='tipoEntrada']").change(function (event) {
         let valueSelecionado = event.target.value;
         if (valueSelecionado == "csv") {
-            $("#divValoresTxt").slideUp("fast", function(){
+            $("#divValoresTxt").slideUp("fast", function () {
                 $("#divValoresCsv").slideDown("fast");
             });
         } else {
-            $("#divValoresCsv").slideUp("fast", function(){
+            $("#divValoresCsv").slideUp("fast", function () {
                 $("#divValoresTxt").slideDown("fast");
             });
         }
@@ -105,15 +85,46 @@ $(document).ready(function () {
     $("[name='tipoEntradaCorr']").change(function (event) {
         let valueSelecionado = event.target.value;
         if (valueSelecionado == "csv") {
-            $("#divValoresTxtCorr").slideUp("fast", function(){
+            $("#divValoresTxtCorr").slideUp("fast", function () {
                 $("#divValoresCsvCorr").slideDown("fast");
             });
-            
+
         } else {
-            $("#divValoresCsvCorr").slideUp("fast", function(){
+            $("#divValoresCsvCorr").slideUp("fast", function () {
                 $("#divValoresTxtCorr").slideDown("fast");
             });
+
+        }
+    })
+
+    $("#selectUniforme").change(function (event) {
+        let valueSelecionado = event.target.value
+        if (valueSelecionado == 'entre') {
+            $("#inputQuantidade").slideUp('fast',function(){
+                $("#entreUniforme").slideDown('fast')
+            })
             
+        } else {
+            $("#entreUniforme").slideUp('fast',function(){
+                $("#inputQuantidade").slideDown('fast')
+            })
+            
+        }
+    })
+
+    $("#selectNormal").change(function (event) {
+        let valueSelecionado = event.target.value;
+        if (valueSelecionado == "entre") {
+            $("#normalQuantidade").slideUp("fast", function () {
+                $("#entreNormal").slideDown('fast');
+            })
+
+
+        } else {
+            $("#entreNormal").slideUp('fast', function () {
+                $("#normalQuantidade").slideDown('fast');
+            });
+
         }
     })
 
