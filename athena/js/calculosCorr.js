@@ -54,18 +54,8 @@ $(document).ready(function (){
     var leitorCSVCorr = new FileReader();
     leitorCSVCorr.onload = function(evt){
         let fileArr  = evt.target.result.split('\n').filter(x => x && x != " ");
-        let fileStringX = "";
-        let fileStringY = "";
-
-        //x = 1 se o primeiro item for o nome da variavel, se não mudar para x = 0
-        for (let x = 0; x < fileArr.length; x++) {
-            let fileArrPartido = fileArr[x].split(";");
-            fileStringX += fileArrPartido[0] + (x == fileArr.length -1 ? "" : ";")
-            fileStringY += fileArrPartido[1] + (x == fileArr.length -1 ? "" : ";")
-        }
-
-        valoresCalculoX = fileStringX;
-        valoresCalculoY = fileStringY;
+        valoresCalculoX = fileArr[0];
+        valoresCalculoY = fileArr[1];
         calcularCorr();
     }
 
@@ -92,17 +82,17 @@ $(document).ready(function (){
 
         let soma = 0, xi2 = 0, yi2 = 0, xi = 0, yi = 0, n = x.length;
         for (let i = 0; i < n; i++) {
-            xi += parseInt(x[i]);
-            yi += parseInt(y[i]);
-            soma += parseInt(x[i]) * parseInt(y[i]);
-            xi2 += x[i] ** 2;
-            yi2 += y[i] ** 2;
+            xi += parseFloat(x[i]);
+            yi += parseFloat(y[i]);
+            soma += parseFloat(x[i]) * parseFloat(y[i]);
+            xi2 += parseFloat(x[i]) ** 2;
+            yi2 += parseFloat(y[i]) ** 2;
         }
 
         xa=xi/n;
         yb=yi/n;
-        a = (n * soma - xi * yi)/(n * xi2 - (xi ** 2));
-        b = yb-a*xa;
+        a = ((n * soma - xi * yi)/(n * xi2 - (xi ** 2))).toFixed(2);
+        b = (yb-a*xa).toFixed(2);
 
         return ((n * soma - xi * yi) / Math.sqrt((n * xi2 - (xi ** 2)) * (n * yi2 - (yi ** 2)))) * 100;
 
@@ -111,14 +101,14 @@ $(document).ready(function (){
     //x =independente; y=denpendente
     $("#bntRegressao").click(function(){
         let result;
-        if ($("#selectRegressao").val() == "Y"){
+        if ($("#selectRegressao").val() == "X"){
             result = a * $("#regressaoSelecione").val() + b;
         }
-        else if ($("#selectRegressao").val() == "X"){
+        else if ($("#selectRegressao").val() == "Y"){
             result = ($("#regressaoSelecione").val() - b) / a;
         }
 
-        $("#resultRegress").text(result);
+        $("#resultRegress").text(result.toFixed(2));
     })
 
     function validaCamposCorr(){
