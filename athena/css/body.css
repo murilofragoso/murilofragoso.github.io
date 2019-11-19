@@ -64,6 +64,6 @@ body{
     margin-top: 0;
 }
 
-#radioCsv{
+#radioCsv, #radioCsvCorr{
     margin-left: 80px;
 }

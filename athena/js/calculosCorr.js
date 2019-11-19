@@ -171,8 +171,12 @@ $(document).ready(function (){
         chart = anychart.scatter();
 
         var series1 = chart.marker(dataPontos);
-
         var series2 = chart.line(dataLinha);
+
+        chart.xGrid(true);
+        chart.yGrid(true);
+        chart.xMinorGrid(true);
+        chart.yMinorGrid(true);
 
         chart.container("divGraficoCorr");
 
