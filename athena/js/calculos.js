@@ -473,6 +473,22 @@ $(document).ready(function () {
             return false;
         }
 
+        for(let i = 0; i < vet.length; i++){
+            if(VetOrd.indexOf(vet[i]) == -1){
+                alert("A ordem não pussui todas as variaveis");
+                $("#idOrdemVariavel").addClass("alertInput");
+                return false;
+            }
+        }
+
+        for(let i = 0; i < VetOrd.length; i++){
+            if(vet.indexOf(VetOrd[i]) == -1){
+                alert("A ordem pussui variaveis não listadas");
+                $("#idOrdemVariavel").addClass("alertInput");
+                return false;
+            }
+        }
+
         for (let i = 0; i < VetOrd.length; i++) {
 
             let ord = VetOrd[i];
