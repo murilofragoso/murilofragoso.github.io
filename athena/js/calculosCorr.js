@@ -9,6 +9,8 @@ $(document).ready(function (){
         retiraAlertaCamposCorr();
         //validando campos
         if(validaCamposCorr()){
+            valoresCalculoX = "";
+            valoresCalculoY = "";
             //recuperando valores
             if($("[name='tipoEntradaCorr']:checked").val() == "csv")
                 getValoresCsv();
@@ -91,8 +93,8 @@ $(document).ready(function (){
 
         xa=xi/n;
         yb=yi/n;
-        a = ((n * soma - xi * yi)/(n * xi2 - (xi ** 2))).toFixed(2);
-        b = (yb-a*xa).toFixed(2);
+        a = parseFloat(((n * soma - xi * yi)/(n * xi2 - (xi ** 2))).toFixed(2));
+        b = parseFloat((yb-a*xa).toFixed(2));
 
         return ((n * soma - xi * yi) / Math.sqrt((n * xi2 - (xi ** 2)) * (n * yi2 - (yi ** 2)))) * 100;
 
