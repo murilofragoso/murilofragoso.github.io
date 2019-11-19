@@ -8,11 +8,11 @@ var mediaGlobal;
 var vetPassosAux=[];
 var ptMedio = [];
 var coresGraficos = [
-    'rgb(25,25,112)',
+    'rgb(0,128,0)',
     'rgb(0,0,205)',
-    'rgb(65,105,225)',
-    'rgb(70,130,180)',
-    'rgb(100,149,237)',
+    'rgb(210,105,30)',
+    'rgb(128,0,128)',
+    'rgb(180,0,0)',
 ]
 var valoresCalculo;
 $(document).ready(function () {
