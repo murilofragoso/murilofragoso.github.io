@@ -157,7 +157,8 @@ p{
 }
 
 #containerRegressao div label , #resultadosUniforme div label , 
-#resultadosBinomial div label , #resultadosNormal div label {
+#resultadosBinomial div label , #resultadosNormal div label,
+#dnvBotaoRegressao div label {
     display: inline-block;
     color: rgb(25,25,112);
     font-size: 22px;
@@ -179,6 +180,16 @@ p{
     max-width: 1000px;
 
 }
+
+#divBotaoRegressao{
+    padding-top: 44px;
+} 
+
+#bntRegressao{
+    padding: 6px;
+} 
+
+
 
 
 

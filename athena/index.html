@@ -82,7 +82,8 @@
 
 
 
-            <div class="card col-lg-4  col-md-6 my-3 align-items-center" data-card-option id="cardProbabilidade" style="border: white;">
+            <div class="card col-lg-4  col-md-6 my-3 align-items-center" data-card-option id="cardProbabilidade"
+                style="border: white;">
                 <div class="face face1 rounded">
                     <div class="content text-center">
                         <img src="img/segundo.png">
@@ -100,7 +101,8 @@
 
 
 
-            <div class="card col-lg-4 col-md-12 my-3 align-items-center" data-card-option id="cardCorrelacao" style="border: white;">
+            <div class="card col-lg-4 col-md-12 my-3 align-items-center" data-card-option id="cardCorrelacao"
+                style="border: white;">
                 <div class="face face1 rounded">
                     <div class="content text-center">
                         <img src="img/terceiro.png">
@@ -624,7 +626,7 @@
 
         <div class="row justify-content-center my-3">
 
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-4">
                 <label>Projeções</label>
                 <select class="custom-select mr-sm-2 my-1" id="selectRegressao">
                     <option selected>Selecione</option>
@@ -633,12 +635,15 @@
                 </select>
             </div>
 
-            <div id="divCorrelacao01" class="form group col-sm-6">
+            <div id="divCorrelacao01" class="form group col-sm-4">
                 <label>Valor de:</label>
                 <input type="text" class="form-control my-1" id="regressaoSelecione" placeholder="...">
             </div>
-
-            <div id="divCorrelacao02" class="form group col-sm-6" style="display: none;">
+            <div id="divBotaoRegressao" class="form-group col-sm-4">
+                <button id="bntRegressao" type="button" class="btn btn-block"
+                    style="background:rgb(25,25,112); color: white;">Calcular</button>
+            </div>
+            <div id="divCorrelacao02" class="form group col-sm-4" style="display: none;">
                 <label>Valor de: X</label>
                 <input type="text" class="form-control my-1" id="regressaoDeX" placeholder="(X)">
             </div>
