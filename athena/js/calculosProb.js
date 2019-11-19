@@ -75,9 +75,9 @@ $(document).ready(function (){
         let cv = (dp / ((a + b) / 2) * 100).toFixed(2);
 
         $("#resultadoUniforme label").text("Resultado: " + result);   
-        $("#cvUniforme label").text("Coeficiente de Variancia: " + cv);
+        $("#cvUniforme label").text("Coeficiente de Variância: " + cv);
         $("#dpUniforme label").text("Desvio Padrão: " + dp);
-        $("#varianciaUniforme label").text("Variancia: " + variancia);
+        $("#varianciaUniforme label").text("Variância: " + variancia);
         $("#resultadosUniforme").show();
 
     };
