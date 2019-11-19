@@ -10,7 +10,7 @@ $(document).ready(function (){
         //validando campos
         if(validaCamposCorr()){
             //recuperando valores
-            if($("[name='tipoEntrada']:checked").val() == "csv")
+            if($("[name='tipoEntradaCorr']:checked").val() == "csv")
                 getValoresCsv();
             else{
                 valoresCalculoX = $("#inputIndependente").val(),
@@ -47,6 +47,7 @@ $(document).ready(function (){
             $("#divEquacao label").text("Equação da Reta: " + corr + "%");    
             $("#divCorrelacao label").text("Correlação: " + forcaCorr);    
             $("#containerRegressao").show();
+            gerarGraficos();
         }
     }
 
@@ -123,7 +124,7 @@ $(document).ready(function (){
     function validaCamposCorr(){
         let result = true;
 
-        if($("[name='tipoEntrada']:checked").val() == "csv"){
+        if($("[name='tipoEntradaCorr']:checked").val() == "csv"){
             let file = document.getElementById("idFileValoresCorr").files[0];
             if(!file){
                 $("#idFileValoresCorr").addClass("alertInput");
@@ -149,5 +150,32 @@ $(document).ready(function (){
 
     function retiraAlertaCamposCorr(){
         $(".alertInput").removeClass("alertInput");
+    }
+
+
+    function gerarGraficos(){
+        let x = valoresCalculoX.split(";"),
+            value = valoresCalculoY.split(";"),
+            dataPontos = [];
+
+
+        for(let i = 0; i < x.length; i++){
+            dataPontos.push({x: x[i], value: value[i]})
+        }
+
+        var dataLinha = [
+            {x: 300, value: 33},
+            {x: 800, value: 10}
+        ];
+
+        chart = anychart.scatter();
+
+        var series1 = chart.marker(dataPontos);
+
+        var series2 = chart.line(dataLinha);
+
+        chart.container("divGraficoCorr");
+
+        chart.draw();
     }
 })
