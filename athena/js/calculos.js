@@ -13,6 +13,12 @@ var coresGraficos = [
     'rgb(210,105,30)',
     'rgb(128,0,128)',
     'rgb(180,0,0)',
+    'rgb(0,191,255)',
+    'rgb(0,250,154)',
+    'rgb(255,0,255)',
+    'rgb(218,165,32)',
+    'rgb(128,0,0)'
+
 ]
 var valoresCalculo;
 $(document).ready(function () {

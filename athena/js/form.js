@@ -100,15 +100,15 @@ $(document).ready(function () {
     $("#selectUniforme").change(function (event) {
         let valueSelecionado = event.target.value
         if (valueSelecionado == 'entre') {
-            $("#inputQuantidade").slideUp('fast',function(){
+            $("#inputQuantidade").slideUp('fast', function () {
                 $("#entreUniforme").slideDown('fast')
             })
-            
+
         } else {
-            $("#entreUniforme").slideUp('fast',function(){
+            $("#entreUniforme").slideUp('fast', function () {
                 $("#inputQuantidade").slideDown('fast')
             })
-            
+
         }
     })
 
@@ -144,7 +144,19 @@ $(document).ready(function () {
         $("#resultadosBinomial").hide();
         $("#resultadosNormal").hide();
     }
+
+
+  
+    $(function () {
+        $('[data-toggle="popoverNormalQuantidade"]').popover()
+    })
+    
+
+
+
+
 });
+
 
 // Apenas testando, se der muito trabalho no calculo pode tirar...
 
@@ -167,6 +179,7 @@ $(document).ready(function () {
 
 
 }) */
+
 
 
 
