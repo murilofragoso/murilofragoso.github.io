@@ -189,6 +189,11 @@ p{
     padding: 6px;
 } 
 
+.navbar-dark{
+    color: white;
+    border-color: rgb(25,25,112);
+}
+
 
 
 

@@ -112,7 +112,7 @@ $(document).ready(function (){
     $("#bntRegressao").click(function(){
         let result;
         if ($("#selectRegressao").val() == "Y"){
-            result = a * $("#regressaoSelecione").val() + b;
+            result =`Resultado de X = ${$("#regressaoSelecione").val()} x ${a} + ${b} ` +   a * $("#regressaoSelecione").val() + b;
         }
         else if ($("#selectRegressao").val() == "X"){
             result = ($("#regressaoSelecione").val() - b) / a;

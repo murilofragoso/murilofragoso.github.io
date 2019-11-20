@@ -147,9 +147,13 @@ $(document).ready(function () {
 
 
   
-    $(function () {
-        $('[data-toggle="popoverNormalQuantidade"]').popover()
-    })
+$(".inputMensagem").focus(function(){
+    $(this).popover('show');
+});
+
+$(".inputMensagem").blur(function(){
+    $(this).popover('hide');
+});
     
 
 
