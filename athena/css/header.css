@@ -20,3 +20,11 @@ header > .btnHeader{
 .hidden {
     display: none;
 }
+
+.nav-link:hover{
+    text-decoration: underline;
+}
+
+.sublinhado{
+    text-decoration: underline !important;
+}

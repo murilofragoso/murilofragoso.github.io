@@ -9,6 +9,8 @@ $(document).ready(function (){
         retiraAlertaCamposCorr();
         //validando campos
         if(validaCamposCorr()){
+            valoresCalculoX = "";
+            valoresCalculoY = "";
             //recuperando valores
             if($("[name='tipoEntradaCorr']:checked").val() == "csv")
                 getValoresCsv();
@@ -54,18 +56,8 @@ $(document).ready(function (){
     var leitorCSVCorr = new FileReader();
     leitorCSVCorr.onload = function(evt){
         let fileArr  = evt.target.result.split('\n').filter(x => x && x != " ");
-        let fileStringX = "";
-        let fileStringY = "";
-
-        //x = 1 se o primeiro item for o nome da variavel, se não mudar para x = 0
-        for (let x = 0; x < fileArr.length; x++) {
-            let fileArrPartido = fileArr[x].split(";");
-            fileStringX += fileArrPartido[0] + (x == fileArr.length -1 ? "" : ";")
-            fileStringY += fileArrPartido[1] + (x == fileArr.length -1 ? "" : ";")
-        }
-
-        valoresCalculoX = fileStringX;
-        valoresCalculoY = fileStringY;
+        valoresCalculoX = fileArr[0];
+        valoresCalculoY = fileArr[1];
         calcularCorr();
     }
 
@@ -92,17 +84,17 @@ $(document).ready(function (){
 
         let soma = 0, xi2 = 0, yi2 = 0, xi = 0, yi = 0, n = x.length;
         for (let i = 0; i < n; i++) {
-            xi += parseInt(x[i]);
-            yi += parseInt(y[i]);
-            soma += parseInt(x[i]) * parseInt(y[i]);
-            xi2 += x[i] ** 2;
-            yi2 += y[i] ** 2;
+            xi += parseFloat(x[i]);
+            yi += parseFloat(y[i]);
+            soma += parseFloat(x[i]) * parseFloat(y[i]);
+            xi2 += parseFloat(x[i]) ** 2;
+            yi2 += parseFloat(y[i]) ** 2;
         }
 
         xa=xi/n;
         yb=yi/n;
-        a = (n * soma - xi * yi)/(n * xi2 - (xi ** 2));
-        b = yb-a*xa;
+        a = parseFloat(((n * soma - xi * yi)/(n * xi2 - (xi ** 2))).toFixed(2));
+        b = parseFloat((yb-a*xa).toFixed(2));
 
         return ((n * soma - xi * yi) / Math.sqrt((n * xi2 - (xi ** 2)) * (n * yi2 - (yi ** 2)))) * 100;
 
@@ -111,14 +103,15 @@ $(document).ready(function (){
     //x =independente; y=denpendente
     $("#bntRegressao").click(function(){
         let result;
-        if ($("#selectRegressao").val() == "Y"){
-            result =`Resultado de X = ${$("#regressaoSelecione").val()} x ${a} + ${b} ` +   a * $("#regressaoSelecione").val() + b;
+        if ($("#selectRegressao").val() == "X"){
+            result =`Resultado de Y = X * ${a} + ${b} = ` +   (a * $("#regressaoSelecione").val() + b).toFixed(2);
         }
-        else if ($("#selectRegressao").val() == "X"){
-            result = ($("#regressaoSelecione").val() - b) / a;
+        else if ($("#selectRegressao").val() == "Y"){
+            result = `Resultado de X = ( Y - ${b}) / ${a} = ` + (($("#regressaoSelecione").val() - b) / a).toFixed(2);
         }
-
+        
         $("#resultRegress").text(result);
+        $('#regressaoSelecione').innerText('...');
     })
 
     function validaCamposCorr(){
@@ -163,9 +156,14 @@ $(document).ready(function (){
             dataPontos.push({x: x[i], value: value[i]})
         }
 
+        let comecoLinhaX = x[0],
+            comecoLinhaValue = a * comecoLinhaX + b,
+            fimLinhaX = x[x.length - 1],
+            fimLinhaValue = a * fimLinhaX + b
+
         var dataLinha = [
-            {x: 300, value: 33},
-            {x: 800, value: 10}
+            {x: comecoLinhaX, value: comecoLinhaValue},
+            {x: fimLinhaX, value: fimLinhaValue}
         ];
 
         chart = anychart.scatter();

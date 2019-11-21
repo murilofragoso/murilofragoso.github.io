@@ -55,4 +55,9 @@ $(document).ready(function () {
         if (!item.hasClass("active"))
             limparCamposProb();
     })
+
+    $(".nav-link").click(function(){
+        $(".sublinhado").removeClass("sublinhado")
+        $(this).addClass("sublinhado")
+    })
 })

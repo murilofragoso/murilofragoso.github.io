@@ -10,33 +10,39 @@ $(document).ready(function () {
     $("#bntDescritiva").click(function () {
         $("#containerDivMae").show();
         $("#containerCard").hide();
+        $("#navLinkDescritiva").addClass("sublinhado");
     })
 
     $("#cardDescritiva").click(function () {
         $("#containerDivMae").show();
         $("#containerCard").hide();
+        $("#navLinkDescritiva").addClass("sublinhado");
     })
 
     $("#bntProbabilidade").click(function () {
         $("#containerCard").hide();
         $("#containerProbabilidade").show();
         $("#containerDivMae").hide();
+        $("#navLinkProbabilidade").addClass("sublinhado");
     })
 
     $("#cardProbabilidade").click(function () {
         $("#containerCard").hide();
         $("#containerProbabilidade").show();
         $("#containerDivMae").hide();
+        $("#navLinkProbabilidade").addClass("sublinhado");
     })
 
     $("#bntRegressão").click(function () {
         $("#containerCard").hide();
         $("#containerCorrelacao").show();
+        $("#navLinkRegressao").addClass("sublinhado");
     })
 
     $("#cardCorrelacao").click(function () {
         $("#containerCard").hide();
         $("#containerCorrelacao").show();
+        $("#navLinkRegressao").addClass("sublinhado");
     })
 
 
