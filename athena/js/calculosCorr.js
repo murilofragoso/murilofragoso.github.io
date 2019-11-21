@@ -33,21 +33,22 @@ $(document).ready(function (){
             $("#containerCorrelacao").hide();
 
             //exibindo resultados  
-            let prop = "diretamente proporcional";
+            let prop = "Diretamente proporcional";
             if(corr < 0){
                 corr = corr * -1;
-                prop = "inversamente proporcional";
+                prop = "Inversamente proporcional";
             }
             let forcaCorr;
             if(corr < 30)
-                forcaCorr = "Inexistente à fraca, "+ prop;
+                forcaCorr = "Inexistente à fraca";
             else if(corr < 60)
-                forcaCorr = "Fraca à média, "+ prop;
+                forcaCorr = "Fraca à média";
             else if(corr >= 60)
-                forcaCorr = "Média à forte, " + prop;
+                forcaCorr = "Média à forte";
 
-            $("#divEquacao label").text("Equação da Reta: " + corr + "%");    
-            $("#divCorrelacao label").text("Correlação: " + forcaCorr);    
+            $("#resultCorr").text(corr + "%");
+            $("#resultCorrForca").text(forcaCorr);
+            $("#resultCorrProp").text(prop);
             $("#containerRegressao").show();
             gerarGraficos();
         }
