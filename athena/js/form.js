@@ -151,24 +151,32 @@ $(document).ready(function () {
         $("#resultadosNormal").hide();
     }
 
-    $(".inputMensagem").focus(function(){
+    $(".inputMensagem").focus(function () {
         $(this).popover('show');
     });
 
-    $(".inputMensagem").blur(function(){
+    $(".inputMensagem").blur(function () {
         $(this).popover('hide');
     });
 
     var counterZoom = 0;
-    $("#zoomIn").click(function(){
+    $("#zoomIn").click(function () {
         let campos = $("label, h3, h4, a, p");
         console.log(counterZoom);
-        for(let campo of campos){
+        for (let campo of campos) {
             let tamanho = parseFloat($(campo).css("font-size"));
-            $(campo).css({"font-size": counterZoom < 3 ? tamanho + 1 : tamanho - 3});
+            $(campo).css({ "font-size": counterZoom < 3 ? tamanho + 1 : tamanho - 3 });
         }
         counterZoom < 3 ? counterZoom++ : counterZoom = 0;
     })
+
+    $("#fecharDiscreta").click(function () {
+        $("#containerDivMae").show();
+        $("#containerCard").hide();
+        $("#divContentTable").hide();
+                $("#navLinkDescritiva").addClass("sublinhado");
+    });
+
 });
 
 
