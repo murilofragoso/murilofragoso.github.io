@@ -171,11 +171,18 @@ $(document).ready(function () {
     })
 
     $("#fecharDiscreta").click(function () {
-        $("#containerDivMae").show();
+        $("#divContentForm").show();
         $("#containerCard").hide();
         $("#divContentTable").hide();
-                $("#navLinkDescritiva").addClass("sublinhado");
+        $("#navLinkDescritiva").addClass("sublinhado");
     });
+
+    $("#fecharRegressao").click (function(){
+        $("#containerRegressao").hide ();
+        $("#containerCorrelacao").show();
+        $("#navLinkRegressao").addClass("sublinhado");
+
+    })
 
 });
 

@@ -59,9 +59,9 @@
             </ul>
         </div>
 
-        <div>
+        <!--div>
             <button id="zoomIn">zoom +</button>
-        </div>
+        </div-->
     </nav>
     <!--Cards da tela principal-->
     <div id="containerCard" class="container my-4">
@@ -211,14 +211,13 @@
             </div>
 
 
-            <div id="divContentTable" class="container-my4 border" style="display: none;">
+            <div id="divContentTable" class="container border" style="display: none;">
                 <div class="container">
-                    <div class="float-right my-3" >
-                        <button  id="fecharDiscreta" type="button" class="close" aria-label="Close" width="70" height="70"
-                            class="d-inline-block">
-                            <img src="img/excluir.png" width="20" height="20" class="d-inline-block">
-                        </button>
-                    </div>
+
+                    <button id="fecharDiscreta" type="button" class="close my-3" aria-label="Close">
+                        <img src="img/excluir.png" width="20" height="20" class="d-inline-block">
+                    </button>
+
                     <div class="row justify-content-center">
                         <div class="col-sm-12">
                             <div class="table-responsive">
@@ -607,22 +606,23 @@
     </div>
 
     <!--Tela de Resultados da correlação e regressao-->
-    <div id="containerRegressao" class="container my-4 border" style="display: none;">
+    <div id="containerRegressao" class="container my-3 border" style="display: none;">
 
-        <div class="float-right my-3 ">
-            <button type="button" class="close" aria-label="Close" width="70" height="70" class="d-inline-block">
-                <img src="img/excluir.png" width="20" height="20" class="d-inline-block">
-            </button>
-        </div>
+            
 
-        <div class="col-12 my-3">
-            <div class="col-12 text-center my-1">
-                <h3> Resultado Correlação</h3>
-
+        <div class="row justify-content-center">
+            <div id="tituloRegressao" class="form-group col-12 my-3 text-center">
+                    <button id="fecharRegressao" type="button" class="close float-right" aria-label="Close">
+                            <img src="img/excluir.png" width="20">
+                    </button>
+        
+                <h3 id="teste"> Resultado Correlação </h3>
+               
             </div>
-
-
         </div>
+
+
+
 
         <hr style="color:midnightblue">
 
@@ -696,10 +696,9 @@
     </div>
 
 
-    <a class="fixed-bottom mb-1" style="left: auto;" href="" id="aumentarFonte">
-        <img src="img/zoom-aumentando-o-contorno-do-botao.png" width="70" height="70" class="d-inline-block">
-        <label></label>
-    </a>
+    <a id="zoomIn" href="#"  class="fixed-bottom my-2" style="left: auto;">
+        <img  id="zoomIn" src="img/zoom-aumentando-o-contorno-do-botao.png" width="70" height="70" >
+    </button>
 
 
 </body>
