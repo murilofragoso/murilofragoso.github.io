@@ -162,7 +162,6 @@ $(document).ready(function () {
     var counterZoom = 0;
     $("#zoomIn").click(function () {
         let campos = $("label, h3, h4, a, p");
-        console.log(counterZoom);
         for (let campo of campos) {
             let tamanho = parseFloat($(campo).css("font-size"));
             $(campo).css({ "font-size": counterZoom < 3 ? tamanho + 1 : tamanho - 3 });
