@@ -16,6 +16,7 @@
     <script src="js/calculosCorr.js"></script>
     <script src="js/header.js"></script>
     <script src="js/form.js"></script>
+    <script src="js/acessibilidade.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
@@ -35,8 +36,8 @@
             Athena
         </a>
 
-        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse"  data-target="#conteudoNavbarSuportado"
-            id="togglerNav"  >
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse"
+            data-target="#conteudoNavbarSuportado" id="togglerNav">
             <span class=""></span>
         </button>
 
@@ -44,7 +45,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a id="navLinkDescritiva" class="nav-link" href="#" style="color: white">Estatística Descritiva
-                        <span class="sr-only">Menu Estatística Descritiva</span></a>
+                        <span class="sr-only acessibilidade">Menu Estatística Descritiva</span></a>
                 </li>
                 <li class="nav-item">
                     <a id="navLinkProbabilidade" class="nav-link" href="#" style="color: white">Probabilidade
@@ -151,18 +152,18 @@
                     </div>
 
                     <div id="divValoresTxt" class="form-group my-3">
-                        <input type="text" class="form-control inputMensagem" id="idValores" placeholder="Ex: 1;2;3;..." 
-                        data-content="Digite aqui os dados da pesquisa. Sendo separados por ;">
+                        <input type="text" class="form-control inputMensagem" id="idValores" placeholder="Ex: 1;2;3;..."
+                            data-content="Digite aqui os dados da pesquisa. Sendo separados por ;">
                     </div>
 
                     <div id="divValoresCsv" class=" form-group my-3 text-center" style="display: none;">
-                        <input type="file" id="idFileValores" >
+                        <input type="file" id="idFileValores">
                     </div>
 
                     <div class="form-group">
                         <!--label for="idNomeVariavel">Nome da Variável</label -->
-                        <input type="text" class="form-control inputMensagem " id="idNomeVariavel" placeholder="Nome da Variável..."
-                        data-content="Nome da variável pesquisada.">
+                        <input type="text" class="form-control inputMensagem " id="idNomeVariavel"
+                            placeholder="Nome da Variável..." data-content="Nome da variável pesquisada.">
                     </div>
 
                     <div class="form-row">
@@ -352,20 +353,20 @@
 
                         <div class="form-group">
                             <!--label for="inputQuantidade">Quantidade</label -->
-                            <input type="text" class="form-control inputMensagem " id="inputPontoMininmo" placeholder="Ponto Mínimo"
-                            data-content="Digite o ponto mínimo, da função pesquisada.">
+                            <input type="text" class="form-control inputMensagem " id="inputPontoMininmo"
+                                placeholder="Ponto Mínimo" data-content="Digite o ponto mínimo, da função pesquisada.">
                         </div>
 
                         <div class="form-group">
                             <!--label for="inputQuantidade">Quantidade</label -->
-                            <input type="text" class="form-control inputMensagem"  id="inputPontoMaximo" placeholder="Ponto Máximo"
-                            data-content="Digite o ponto máximo, da função pesquisada.">
+                            <input type="text" class="form-control inputMensagem" id="inputPontoMaximo"
+                                placeholder="Ponto Máximo" data-content="Digite o ponto máximo, da função pesquisada.">
                         </div>
 
                         <div class="form-group">
                             <!--label for="inputQuantidade">Quantidade</label -->
-                            <input type="text" class="form-control inputMensagem" id="inputQuantidade" placeholder="Quantidade"
-                            data-content="">
+                            <input type="text" class="form-control inputMensagem" id="inputQuantidade"
+                                placeholder="Quantidade" data-content="">
                         </div>
 
                         <div id="entreUniforme" class="form-row" style="display: none;">
@@ -446,7 +447,8 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control my-3 inputMensagem" id="normalQuantidade" placeholder="Quantidade"
+                            <input type="text" class="form-control my-3 inputMensagem" id="normalQuantidade"
+                                placeholder="Quantidade"
                                 data-content="And here's some amazing content. It's very engaging. Right?">
                         </div>
 
@@ -679,6 +681,13 @@
 
 
     </div>
+
+    
+        <a  class="float-right mb-1" href="" id="aumentarFonte">
+            <img src="img/zoom-aumentando-o-contorno-do-botao.png" width="70" height="70" class="d-inline-block">
+            <label></label>
+        </a>
+    
 
 </body>
 

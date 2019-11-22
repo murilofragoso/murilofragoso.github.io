@@ -159,7 +159,6 @@ $(document).ready(function () {
         $(this).popover('hide');
     });
 
-
     $("#zoomIn").click(function(){
         let campos = $("label, h3, h4, a, p");
         for(let campo of campos){
