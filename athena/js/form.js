@@ -151,43 +151,25 @@ $(document).ready(function () {
         $("#resultadosNormal").hide();
     }
 
+    $(".inputMensagem").focus(function(){
+        $(this).popover('show');
+    });
 
-  
-$(".inputMensagem").focus(function(){
-    $(this).popover('show');
+    $(".inputMensagem").blur(function(){
+        $(this).popover('hide');
+    });
+
+    var counterZoom = 0;
+    $("#zoomIn").click(function(){
+        let campos = $("label, h3, h4, a, p");
+        console.log(counterZoom);
+        for(let campo of campos){
+            let tamanho = parseFloat($(campo).css("font-size"));
+            $(campo).css({"font-size": counterZoom < 3 ? tamanho + 1 : tamanho - 3});
+        }
+        counterZoom < 3 ? counterZoom++ : counterZoom = 0;
+    })
 });
-
-$(".inputMensagem").blur(function(){
-    $(this).popover('hide');
-});
-
-    
-
-
-});
-
-
-// Apenas testando, se der muito trabalho no calculo pode tirar...
-
-/*$("#selectRegressao").change(function () {
-   if ($(this).val () == "X") {
-       $("#divCorrelacao01").hide ("fast");
-       $("#divCorrelacao03").hide("fast");
-       $("#divCorrelacao02").show("fast");
-
-   }  else if ($(this).val() == "Y") {
-       $("#divCorrelacao01").slideUp("fast");
-       $("#divCorrelacao02").slideUp("fast");
-       $("#divCorrelacao03").slideDown("fast");
-
-   } /*else {
-       $("#divCorrelacao03").slideUp("fast");
-       $("#divCorrelacao02").slideUp("fast");
-       $("#divCorrelacao01").slideDown("fast");
-   }
-
-
-}) */
 
 
 
