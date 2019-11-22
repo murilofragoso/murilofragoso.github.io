@@ -159,20 +159,15 @@ $(document).ready(function () {
         $(this).popover('hide');
     });
 
+    var counterZoom = 0;
     $("#zoomIn").click(function(){
         let campos = $("label, h3, h4, a, p");
+        console.log(counterZoom);
         for(let campo of campos){
             let tamanho = parseFloat($(campo).css("font-size"));
-            $(campo).css({"font-size": tamanho + 1});
+            $(campo).css({"font-size": counterZoom < 3 ? tamanho + 1 : tamanho - 3});
         }
-    })
-
-    $("#zoomOut").click(function(){
-        let campos = $("label, h3, h4, a, p");
-        for(let campo of campos){
-            let tamanho = parseFloat($(campo).css("font-size"));
-            $(campo).css({"font-size": tamanho - 1});
-        }
+        counterZoom < 3 ? counterZoom++ : counterZoom = 0;
     })
 });
 
