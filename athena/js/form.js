@@ -160,9 +160,8 @@ $(".inputMensagem").focus(function(){
 $(".inputMensagem").blur(function(){
     $(this).popover('hide');
 });
+
     
-
-
 
 
 });
