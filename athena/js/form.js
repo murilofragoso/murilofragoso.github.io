@@ -181,7 +181,12 @@ $(document).ready(function () {
         $("#containerCorrelacao").show();
         $("#navLinkRegressao").addClass("sublinhado");
 
-    })
+    });
+
+    $("#selectRegressao").change(function(){
+        $("#regressaoSelecione").val("");
+        $("#resultRegress").text("");
+    });
 
 });
 

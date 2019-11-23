@@ -112,7 +112,6 @@ $(document).ready(function (){
         }
         
         $("#resultRegress").text(result);
-        $('#regressaoSelecione').innerText('...');
     })
 
     function validaCamposCorr(){
