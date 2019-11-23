@@ -211,7 +211,12 @@ $(document).ready(function () {
         $("#navLinkRegressao").addClass("sublinhado");
         limparCamposRegressaoFechar();
 
-    })
+    });
+
+    $("#selectRegressao").change(function(){
+        $("#regressaoSelecione").val("");
+        $("#resultRegress").text("");
+    });
 
 });
 

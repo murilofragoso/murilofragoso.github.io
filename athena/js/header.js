@@ -59,7 +59,7 @@ $(document).ready(function () {
             limparCamposProb();
     })
 
-    $(".nav-link").click(function(){
+    $("nav .nav-link").click(function(){
         $(".sublinhado").removeClass("sublinhado")
         $(this).addClass("sublinhado")
     })
