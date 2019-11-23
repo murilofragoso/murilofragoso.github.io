@@ -1,4 +1,32 @@
 $(document).ready(function () {
+    function limparCamposDescritivaFechar() {
+        $("#idTipoDePesquisa").val("");
+        $("#idTipoDeVariavel").val("");
+        $("#idNomeVariavel").val("");
+        $("#idSeparatrizes").val("");
+        $("#idNumeroSeparatrizes").val("");
+        $("#idValores").val("");
+        $("#tableResult tbody").html("");
+        $("#divGraph").html('<canvas id="canvasGraph"></canvas>');
+        $("#resultMedidasSeparatrizes").html("");
+        $("#idFileValores").val("");
+        vetGlobal = [];
+        indQuantiGlobal = false;
+        facsGlobal = [];
+        matrizGlobal = [];
+    }
+
+    function limparCamposRegressaoFechar (){
+        $("#idFileValoresCorr").val ("");
+        $("#inputIndependente").val("");
+        $("#inputDependente").val("");
+        a = 0;
+        b = 0;
+    }
+
+
+
+
     $("#idTipoDeVariavel").change(function () {
         if ($(this).val() == "QO")
             $("#divOrdemVariaveis").slideDown()
@@ -173,13 +201,15 @@ $(document).ready(function () {
         $("#divContentForm").show();
         $("#containerCard").hide();
         $("#divContentTable").hide();
+        limparCamposDescritivaFechar();
         $("#navLinkDescritiva").addClass("sublinhado");
     });
 
-    $("#fecharRegressao").click (function(){
-        $("#containerRegressao").hide ();
+    $("#fecharRegressao").click(function () {
+        $("#containerRegressao").hide();
         $("#containerCorrelacao").show();
         $("#navLinkRegressao").addClass("sublinhado");
+        limparCamposRegressaoFechar();
 
     })
 

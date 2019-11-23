@@ -9,6 +9,7 @@ $(document).ready(function () {
         $("#tableResult tbody").html("");
         $("#divGraph").html('<canvas id="canvasGraph"></canvas>');
         $("#resultMedidasSeparatrizes").html("");
+        $("#idFileValores").val("");
         vetGlobal = [];
         indQuantiGlobal = false;
         facsGlobal = [];
@@ -23,6 +24,7 @@ $(document).ready(function () {
         $("#inputPontoMaximo").val("");
         $("#uniformeInputDe").val("");
         $("#uniformeInputAte").val("");
+
 
         //binomial
         $("#amostraN").val("");
@@ -40,6 +42,7 @@ $(document).ready(function () {
     }
 
     function limparCamposCorr() {
+        $("#idFileValoresCorr").val ("");
         $("#inputIndependente").val("");
         $("#inputDependente").val("");
         a = 0;
