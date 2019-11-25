@@ -175,16 +175,23 @@ $(document).ready(function (){
                 probabilidade = aux*100;    
             }
             else{
-                z += (((x - media) / dp) * 100).toString().replace(/[^0-9]/g, '')
+                z += (((x - media) / dp) * 100).toString().replace(/[^0-9]/g, '');
+                z = z.length = 2 ? "0" + z : z;
                 z = vet[parseInt(z[0]) + parseInt(z[1])][parseInt(z[2])];
 
                 aux += (((y - media) / dp) * 100).toString().replace(/[^0-9]/g, '');
+                aux = aux.length = 2 ? "0" + aux : aux;
                 aux = vet[parseInt(aux[0]) + parseInt(aux[1])][parseInt(aux[2])];
-                probabilidade = (z - aux) * 100 
+                probabilidade = 
+                    x < media && y <= media 
+                        ? (z - aux) * 100 
+                        : x >= media && y > media 
+                            ? (aux - z) * 100 
+                            : (z + aux) * 100
             }
         }
 
-        $("#probabilidadeNormal label").text("Probabilidade: " + probabilidade)
+        $("#probabilidadeNormal label").text("Probabilidade: " + probabilidade.toFixed(2) + "%")
         $("#resultadosNormal").show();
     }
 
