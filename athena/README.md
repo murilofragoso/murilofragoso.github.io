@@ -1,1 +1,3 @@
-# Easy Statistics
+# Athena
+
+https://murilofragoso.github.io/athena/
