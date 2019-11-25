@@ -147,6 +147,7 @@ $(document).ready(function (){
 
 
     function gerarGraficos(){
+        $("#divGraficoCorr").html("");
         let x = valoresCalculoX.split(";"),
             value = valoresCalculoY.split(";"),
             dataPontos = [];
