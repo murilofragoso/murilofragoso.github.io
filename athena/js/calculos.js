@@ -409,7 +409,7 @@ $(document).ready(function () {
             if (i == 0) {
                 matriz.push([vet[i]]);
             }
-            else if (vet[i] == vet[i - 1]) {
+            else if (vet[i].trim() == vet[i - 1].trim()) {
                 matriz[cont].push(vet[i]);
             }
             else {
@@ -566,7 +566,7 @@ $(document).ready(function () {
             if (i == 0) {
                 matriz.push([vet[i]]);
             }
-            else if (vet[i] == vet[i - 1]) {
+            else if (vet[i].trim() == +vet[i - 1].trim()) {
                 matriz[cont].push(vet[i]);
             }
             else {
