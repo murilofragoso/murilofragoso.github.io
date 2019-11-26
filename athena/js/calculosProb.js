@@ -37,7 +37,7 @@ $(document).ready(function (){
         let media = n*p;
         let dp = Math.sqrt(n*p*q).toFixed(2);
 
-        $("#probabilidadeBinomial label").text("Probabilidade: " + result);
+        $("#probabilidadeBinomial label").text("Probabilidade: " + result + "%");
         $("#mediaBinomial label").text("Média: " + media);
         $("#dpBinomial label").text("Desvio Padrão: " + dp);
         $("#resultadosBinomial").show();
@@ -74,7 +74,7 @@ $(document).ready(function (){
         let dp = Math.sqrt((b - a) ** 2 / 12).toFixed(2);
         let cv = (dp / ((a + b) / 2) * 100).toFixed(2);
 
-        $("#resultadoUniforme label").text("Resultado: " + result);   
+        $("#resultadoUniforme label").text("Resultado: " + result + "%");   
         $("#cvUniforme label").text("Coeficiente de Variância: " + cv);
         $("#dpUniforme label").text("Desvio Padrão: " + dp);
         $("#varianciaUniforme label").text("Variância: " + variancia);
