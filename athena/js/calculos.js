@@ -467,7 +467,14 @@ $(document).ready(function () {
         let matriz = [];
         let cont = 0;
 
-        vet.sort();
+        let vetTrim = []
+
+        vet.forEach(function(x){
+            vetTrim.push(x.trim());
+        })
+
+        vet = vetTrim.sort();
+
 
         if (!validaLetras(vet)){
             return false;
@@ -496,7 +503,7 @@ $(document).ready(function () {
 
             for (let j = 0; j < vet.length; j++) {
 
-                if (vet[j] == ord) {
+                if (vet[j].trim() == ord.trim()) {
                     matriz[cont].push(vet[j]);
                 }
             }
