@@ -68,7 +68,7 @@ $(document).ready(function (){
             alert("Nenhum documento selecionado!")
             return;
         }
-        leitorCSVCorr.readAsText(file);
+        leitorCSVCorr.readAsText(file, 'ISO-8859-4');
     }
 
     $("#btnTesteCsv").click(getValoresCsv);

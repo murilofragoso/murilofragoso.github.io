@@ -788,7 +788,7 @@ $(document).ready(function () {
             $("#idFileValores").addClass("alertInput");
             return;
         }
-        leitorCSV.readAsText(file);
+        leitorCSV.readAsText(file, 'ISO-8859-4');
     }
 
     function setValoresCalc(){
