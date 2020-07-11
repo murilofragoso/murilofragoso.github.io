@@ -1,0 +1,29 @@
+.balance{
+    margin-bottom: 20px;
+    font-size: 120%;
+}
+
+.new-item-button-container {
+    margin-bottom: 20px;
+ 
+    .mat-raised-button {
+       font-size: 120%;
+    }
+}
+
+.log-out-button-container{
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.divTitle{
+    h1, div{
+        display: inline-block;
+    }
+
+    .rigth{
+        position: absolute;
+        right: 0;
+        padding-right: 38px;
+    }
+}
