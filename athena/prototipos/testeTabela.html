@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>       
+    </head>
+
+    <body>
+        
+            <div class="table-responsive">
+            <table class="table table-bordered table-dark"; style = "width:90px" id="tabelaFofa">
+                    <thead>
+                      <tr>
+                        <th scope="col">Classe</th>
+                        <th scope="col">Variável pesquisada</th>
+                        <th scope="col">Frequência simples (Fi)</th>
+                        <th scope="col">Frequência simples % (Fr%)</th>
+                        <th scope="col">Frequência acumulada(Fac)</th>
+                        <th scope="col">Frequência acumulada % (Fac%)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <script>
+                    function clonarLinha(qtdLinhaAdd){
+                      for(var x = 0; x <= qtdLinhaAdd; x++){
+                          $("#tabelaFofa tbody").append(
+                            "<tr>" +
+                              "<th scope='row'>" + x + "</th>" +
+                              "<td></td>" +
+                              "<td></td>" +
+                              "<td></td>" +
+                              "<td></td>" +
+                              "<td></td>" +
+                            "</tr>")
+                      }
+                    }
+                  </script>
+    </body>
+
+</html>

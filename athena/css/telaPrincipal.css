@@ -1,0 +1,208 @@
+
+
+.container .card{
+    position: relative;
+    cursor: pointer;
+}
+
+.container .card .face{
+    width: 300px;
+    height: 200px;
+    transition: 0.5s;
+}
+
+.container .card .face.face1{
+    position: relative;
+    background:rgb(25,25,112);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transform: translateY(100px);
+}
+
+.container .card:hover .face.face1{
+    background:rgb(25,25,112);
+    transform: translateY(0);
+}
+
+.container .card .face.face1 .content{
+    opacity: 0.2;
+    transition: 0.5s;
+}
+
+.container .card:hover .face.face1 .content{
+    opacity: 1;
+}
+
+.container .card .face.face1 .content img{
+    max-width: 100px;
+}
+
+.container .card .face.face1 .content h3 {
+    margin: 10px 0 0;
+    padding: 0;
+    color:white;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+
+.container .card .face.face1 .content h4 {
+    margin: 10px 0 0;
+    padding: 0;
+    color:white;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.container .card .face.face2{
+    position: relative;
+    background:whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+    transform: translateY(-100px);
+    
+}
+
+.container .card:hover .face.face2{
+    transform: translateY(0);
+}
+
+.container .card .face.face2 .content p{
+    margin: 0;
+    padding: 0;
+}
+
+.container .card .face.face2 .content a{
+    margin: 15px 0 0;
+    display:  inline-block;
+    text-decoration: none;
+    
+    color: rgb(91, 91, 226);
+    padding: 5px;
+    border: 1px solid;
+}
+
+.container .card .face.face2 .content a:hover{
+
+    background:rgb(91, 91, 226);
+    color:white; 
+}
+
+.bnt{
+    background-color:rgb(25,25,112) ;
+    color: white;
+}
+
+p{
+    color: black;
+}
+
+.row{
+    color: black;
+}
+
+.card{
+    background: whitesmoke;
+}
+
+#containerProbabilidade , #containerCorrelacao, #resultadosUniforme , #resultadosBinomial ,#resultadosNormal{
+
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 1em;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(25,25,112,0.22);
+
+  
+}
+
+.nav-pills>li>a.active {
+    background-color: rgb(25,25,112)!important;
+}
+
+.nav-pills>li>a:not(.active) {
+    color: rgb(25,25,112)!important;
+}
+
+#labelIntervalo {
+    display: inline-block;
+    font-size: 22px;
+}
+
+#containerRegressao{
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 1em;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(25,25,112,0.22);
+  
+}
+
+#divContent {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 1em;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(25,25,112,0.22);
+    text-align: center;
+}
+
+#containerRegressao div label , #resultadosUniforme div label , 
+#resultadosBinomial div label , #resultadosNormal div label,
+#dnvBotaoRegressao div label {
+    display: inline-block;
+    color: rgb(25,25,112);
+    font-size: 22px;
+}
+
+#divContentTable{
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 1em;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(25,25,112,0.22);
+    text-align: center;
+
+}
+
+#telaprobabilidade {
+
+    max-width: 1000px;
+
+}
+
+#divBotaoRegressao{
+    padding-top: 45px;
+} 
+
+#bntRegressao{
+    padding: 6px;
+} 
+
+.navbar-dark{
+    color: white;
+    border-color: rgb(25,25,112);
+}
+
+#teste{
+    margin-left: 43px;
+}
+
+
+
+
+
+
+
+
+

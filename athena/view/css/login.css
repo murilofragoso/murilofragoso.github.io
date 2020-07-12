@@ -1,0 +1,63 @@
+form{
+    /* Apenas para centralizar o form na página */
+    margin: 0 auto;
+    width: 400px;
+    /* Para ver as bordas do formulário */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    background:  rgb(25,25,112);;
+    margin-top: 130px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+
+
+    /*width: 500px;
+    height: 50%;
+    border-radius: 10px;
+    text-align: center;
+    background: rgb(103, 58, 183);
+    box-shadow:  5px 5px 10px rgba(0, 0, 0, 363);
+
+    position: absolute;
+    top: 34%; /* posiciona na metade da tela 
+    margin-top: -25px;*/
+}
+
+h1{
+    font-size: 40px;
+    color:white;
+    padding:  0 10px 0;
+    font-family: Arial,sans-serif;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+header{
+    background-color:  rgb(25,25,112);
+    height: 90px;
+    font-size: 30px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    color: white;
+}
+
+.form-check-label{
+    color: white;
+}
+
+
+header > label{
+    font-weight: bold;
+    margin: 25px 0px 0px 25px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+header > .btnHeader{
+    float: right;
+    margin-right: 25px;
+}
+
+.nav{
+    background: blue;
+}

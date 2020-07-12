@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf8">
+    </head>
+    <body>
+        <div style="width: 650px; height: 650px;">
+            <canvas class="doughnut-chart"></canvas>
+            <canvas class="line-chart1"></canvas>
+            <canvas class="line-chart2"></canvas>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script>
+
+        //Funções de Gráficos
+        function graficoPizza() {   
+            var ctx = document.getElementsByClassName("doughnut-chart");
+
+            var pieChart = new Chart(ctx, {
+                type: "doughnut",
+                data: {
+                    datasets: [{
+                        data: [20, 30, 10, 20,10, 10],
+                        backgroundColor: ['rgba(24, 255, 255)',
+                            'rgba(26, 35, 126)',
+                            'rgba(100, 149, 237, 1)',
+                            'rgba(0, 131, 143)',
+                        ]
+                    }],
+                        labels: [
+                            'EF',
+                            'EM',
+                            'ES',
+                            'PG',
+                            'teste',
+                            'teste2'
+                        ]
+                }
+            });
+        }
+        graficoPizza()
+
+        function GraficoBarraJunta() {
+            var ctx = document.getElementsByClassName("line-chart1");
+
+            var chartGraph = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: ['2000', '3000', '4000', '5000'],
+                    datasets: [{
+                        label: ["Número de peças produzidas por dia", "teste"],
+                        data: [20, 40, 20, 10],
+                        backgroundColor: ['rgba(24, 255, 255)',
+                            'rgba(26, 35, 126)',
+                            'rgba(100, 149, 237, 1)',
+                            'rgba(0, 131, 143)',
+                        ]
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+
+                            }
+                        }]
+                    }
+                }
+            });
+
+        }
+        GraficoBarraJunta()
+
+        function GraficoBarraSeparada() {
+            var ctx = document.getElementsByClassName("line-chart2");
+
+            var chartGraph = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: ['20|-28', '28|-36', '36|-44', '44|-52', '52|-60', '60|-68'],
+                    datasets: [{
+                        label: "Número de peças produzidas por dia",
+                        data: [14, 19, 24, 19, 14, 10],
+                        borderColor: 'rgba(77, 166, 253, 0.85)',
+                        backgroundColor: ['rgba(77, 166, 253, 0.85)',
+                            'rgba(0, 0, 255, 1)',
+                            'rgba(24, 255, 255)',
+                            'rgba(26, 35, 126)',
+                            'rgba(100, 149, 237, 1)',
+                            'rgba(0, 131, 143)',
+                        ]
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            categoryPercentage: 1.0,
+                            barPercentage: 1.0,
+                            ticks: {
+                                fonColor: '#000'
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontColor: '#000',
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+        GraficoBarraSeparada()
+        
+        </script>
+    </body>
+</html>
