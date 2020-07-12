@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiBaseUri: 'https://mu-bank.herokuapp.com/'
 };

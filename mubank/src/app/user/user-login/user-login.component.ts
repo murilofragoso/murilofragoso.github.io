@@ -20,6 +20,10 @@ export class UserLoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    //if already logged in, redirect to transaction list
+    let idUser = window.localStorage.getItem('idUser');
+    if(idUser)
+      this.router.navigate(['/transaction'])
   }
 
   async login(form: NgForm){
