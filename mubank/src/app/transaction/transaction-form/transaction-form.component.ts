@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class TransactionFormComponent implements OnInit {
 
   tran: any = {};
+  balance: any;
   types: any = [
     {value: "W", viewValue: "Withdraw"},
     {value: "D", viewValue: "Deposit"}
@@ -23,10 +24,11 @@ export class TransactionFormComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     let idUser = window.localStorage.getItem('idUser');
     if(idUser){
       this.tran.user = idUser;
+      this.balance = await this.tranSrv.getBalance(idUser);
     }else{
       this.snackBar.open('You are not logged in!', 'Ok', { duration: 5000 });
       this.router.navigate([''])

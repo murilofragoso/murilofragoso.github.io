@@ -1,6 +1,6 @@
 <mat-card>
     <h1>New Transaction</h1>
-
+    <h2>Balance: ${{balance}}</h2>
     <form class="std-form" #f="ngForm" (ngSubmit)="new(f)">
         <mat-form-field>
             <mat-select placeholder="Type" required [(ngModel)]="tran.type" name="type">
@@ -13,7 +13,7 @@
         <mat-form-field>
             <mat-label>Amount</mat-label>
             <input matInput [(ngModel)]="tran.amount"
-                name="amount">
+                name="amount" type="number">
         </mat-form-field>
 
         <mat-toolbar class="form-buttons">
